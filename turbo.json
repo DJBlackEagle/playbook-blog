@@ -1,0 +1,59 @@
+{
+  "$schema": "./node_modules/turbo/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "outputLogs": "full",
+      "cache": false
+    },
+    "build:dev": {
+      "dependsOn": ["^build:dev"],
+      "outputs": ["dist/**"],
+      "outputLogs": "hash-only"
+    },
+    "format": {},
+    "lint": {},
+    "start": {
+      "cache": false
+    },
+    "start:dev": {
+      "dependsOn": ["build:dev"],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["build"]
+    },
+    "test:watch": {
+      "dependsOn": ["build"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "clean": {
+      "dependsOn": ["clean:build", "clean:turbo", "clean:node"],
+      "outputLogs": "hash-only",
+      "persistent": true,
+      "cache": false
+    },
+    "clean:build": {
+      "outputLogs": "hash-only",
+      "cache": false
+    },
+    "clean:turbo": {
+      "outputLogs": "hash-only",
+      "cache": false
+    },
+    "clean:node": {
+      "outputLogs": "hash-only",
+      "cache": false
+    }
+  }
+}

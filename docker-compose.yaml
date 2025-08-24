@@ -1,0 +1,32 @@
+name: dev_blog
+
+services:
+  mongodb:
+    image: docker.io/mongo:latest
+    restart: no
+    volumes:
+      - mongodb-configdb:/data/configdb
+      - mongodb-db:/data/db
+    networks:
+      - dev_blog_network
+    ports:
+      - '127.0.0.1:27017:27017'
+  mongo-express:
+    image: docker.io/mongo-express:latest
+    restart: no
+    environment:
+      - ME_CONFIG_BASICAUTH=false
+      - ME_CONFIG_BASICAUTH_ENABLED=false
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017
+    networks:
+      - dev_blog_network
+    ports:
+      - '127.0.0.1:8081:8081'
+
+volumes:
+  mongodb-configdb:
+  mongodb-db:
+
+networks:
+  dev_blog_network: {}
