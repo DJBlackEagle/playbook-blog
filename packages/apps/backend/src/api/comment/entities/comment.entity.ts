@@ -1,5 +1,5 @@
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { SchemaTypes } from 'mongoose';
+import { SchemaTypes, Types } from 'mongoose';
 import { BaseEntity } from '../../../base';
 import { PostEntityModel } from '../../post/entities/post.entity';
 
@@ -13,7 +13,7 @@ class CommentEntity extends BaseEntity {
     ref: PostEntityModel.name,
     required: true,
   })
-  post: string;
+  post: Types.ObjectId;
 }
 
 const CommentEntitySchema = SchemaFactory.createForClass(CommentEntity);
