@@ -41,7 +41,7 @@ class UserEntity extends BaseEntity {
   @Prop()
   tokenIdentifier: string;
 
-  @Prop({ select: false })
+  @Prop()
   refreshTokenHash: string;
 
   @Prop({ type: SchemaTypes.ObjectId, ref: 'Role', required: false })

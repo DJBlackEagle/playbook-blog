@@ -60,6 +60,15 @@ export class UserService extends MongooseQueryService<UserEntity> {
     return this.getById(userId);
   }
 
+  async isLoggedIn(userId: string): Promise<boolean> {
+    this.logger.debug('isLoggedIn called');
+
+    const user = await this.getById(userId);
+    if (!user) return false;
+
+    return !!user.refreshTokenHash;
+  }
+
   async setLastLogin(userId: string): Promise<UserEntity | null> {
     this.logger.debug('setLastLogin called');
 
