@@ -1,0 +1,37 @@
+<div class="post-detail-container">
+  <a routerLink="/" class="back-link">← Back to all posts</a>
+
+  @if (status() === 'loading') {
+    <p>Loading post...</p>
+  }
+
+  @if (status() === 'error') {
+    <p class="error">Could not load the post. Please try again later.</p>
+  }
+
+  @if (post(); as p) {
+    <article>
+      <h1>{{ p.title }}</h1>
+      <p class="post-meta">Published on {{ p.createdAt | date: 'longDate' }}</p>
+
+      <div class="teaser">
+        <p>
+          <em>{{ p.teaser }}</em>
+        </p>
+      </div>
+
+      <p class="post-content" [innerHTML]="p.content | nl2br"></p>
+
+      @if (p.sources && p.sources.length > 0) {
+        <div class="sources-section">
+          <h4>Sources</h4>
+          <ul>
+            @for (source of p.sources; track $index) {
+              <li>{{ source }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </article>
+  }
+</div>
