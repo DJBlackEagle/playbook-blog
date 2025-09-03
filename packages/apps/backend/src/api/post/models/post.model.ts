@@ -31,4 +31,10 @@ export class Post extends BaseModel {
     description: 'Comments associated with the post',
   })
   comments?: Comment[];
+
+  @Field(() => [String], {
+    nullable: true,
+    description: 'Sources of the post',
+  })
+  sources?: string[];
 }
