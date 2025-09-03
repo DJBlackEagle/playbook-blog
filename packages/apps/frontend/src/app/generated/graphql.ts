@@ -69,9 +69,11 @@ export type CommentConnection = {
 
 export type CommentDeleteFilter = {
   and?: InputMaybe<Array<CommentDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<CommentDeleteFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type CommentDeleteResponse = {
@@ -100,9 +102,11 @@ export type CommentEdge = {
 
 export type CommentFilter = {
   and?: InputMaybe<Array<CommentFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<CommentFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type CommentSort = {
@@ -112,8 +116,10 @@ export type CommentSort = {
 };
 
 export enum CommentSortFields {
+  CreatedAt = 'createdAt',
   Deleted = 'deleted',
-  DeletedAt = 'deletedAt'
+  DeletedAt = 'deletedAt',
+  UpdatedAt = 'updatedAt'
 }
 
 /** Input for creating a comment */
@@ -168,6 +174,8 @@ export type CreateOneUserInput = {
 export type CreatePostInput = {
   /** The content of the post. */
   content: Scalars['String']['input'];
+  /** The sources of the post. */
+  sources: Array<Scalars['String']['input']>;
   /** The teaser of the post. */
   teaser: Scalars['String']['input'];
   /** The title of the post. */
@@ -493,6 +501,8 @@ export type Post = {
   deletedAt?: Maybe<Scalars['DateTime']['output']>;
   /** Unique identifier for the resource */
   id: Scalars['ID']['output'];
+  /** Sources of the post */
+  sources?: Maybe<Array<Scalars['String']['output']>>;
   /** Teaser of the post */
   teaser: Scalars['String']['output'];
   /** Title of the post */
@@ -532,11 +542,13 @@ export type PostConnection = {
 export type PostDeleteFilter = {
   and?: InputMaybe<Array<PostDeleteFilter>>;
   content?: InputMaybe<StringFieldComparison>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<PostDeleteFilter>>;
   teaser?: InputMaybe<StringFieldComparison>;
   title?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type PostDeleteResponse = {
@@ -551,6 +563,8 @@ export type PostDeleteResponse = {
   deletedAt?: Maybe<Scalars['DateTime']['output']>;
   /** Unique identifier for the resource */
   id?: Maybe<Scalars['ID']['output']>;
+  /** Sources of the post */
+  sources?: Maybe<Array<Scalars['String']['output']>>;
   teaser?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   /** Timestamp of last update to the resource */
@@ -568,11 +582,13 @@ export type PostEdge = {
 export type PostFilter = {
   and?: InputMaybe<Array<PostFilter>>;
   content?: InputMaybe<StringFieldComparison>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<PostFilter>>;
   teaser?: InputMaybe<StringFieldComparison>;
   title?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type PostSort = {
@@ -583,20 +599,24 @@ export type PostSort = {
 
 export enum PostSortFields {
   Content = 'content',
+  CreatedAt = 'createdAt',
   Deleted = 'deleted',
   DeletedAt = 'deletedAt',
   Teaser = 'teaser',
-  Title = 'title'
+  Title = 'title',
+  UpdatedAt = 'updatedAt'
 }
 
 export type PostUpdateFilter = {
   and?: InputMaybe<Array<PostUpdateFilter>>;
   content?: InputMaybe<StringFieldComparison>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<PostUpdateFilter>>;
   teaser?: InputMaybe<StringFieldComparison>;
   title?: InputMaybe<StringFieldComparison>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type Query = {
@@ -750,9 +770,11 @@ export type RoleConnection = {
 
 export type RoleDeleteFilter = {
   and?: InputMaybe<Array<RoleDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<RoleDeleteFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type RoleDeleteResponse = {
@@ -786,9 +808,11 @@ export type RoleEdge = {
 
 export type RoleFilter = {
   and?: InputMaybe<Array<RoleFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<RoleFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type RoleSort = {
@@ -798,15 +822,19 @@ export type RoleSort = {
 };
 
 export enum RoleSortFields {
+  CreatedAt = 'createdAt',
   Deleted = 'deleted',
-  DeletedAt = 'deletedAt'
+  DeletedAt = 'deletedAt',
+  UpdatedAt = 'updatedAt'
 }
 
 export type RoleUpdateFilter = {
   and?: InputMaybe<Array<RoleUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   or?: InputMaybe<Array<RoleUpdateFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
 };
 
 export type RoleUsersConnection = {
@@ -1077,6 +1105,8 @@ export type UpdateOneUserInput = {
 export type UpdatePostInput = {
   /** The content of the post. */
   content?: InputMaybe<Scalars['String']['input']>;
+  /** The sources of the post. */
+  sources?: InputMaybe<Array<Scalars['String']['input']>>;
   /** The teaser of the post. */
   teaser?: InputMaybe<Scalars['String']['input']>;
   /** The title of the post. */
@@ -1136,10 +1166,12 @@ export type UserConnection = {
 
 export type UserDeleteFilter = {
   and?: InputMaybe<Array<UserDeleteFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   email?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserDeleteFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
   username?: InputMaybe<StringFieldComparison>;
 };
 
@@ -1172,10 +1204,12 @@ export type UserEdge = {
 
 export type UserFilter = {
   and?: InputMaybe<Array<UserFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   email?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
   username?: InputMaybe<StringFieldComparison>;
 };
 
@@ -1186,18 +1220,22 @@ export type UserSort = {
 };
 
 export enum UserSortFields {
+  CreatedAt = 'createdAt',
   Deleted = 'deleted',
   DeletedAt = 'deletedAt',
   Email = 'email',
+  UpdatedAt = 'updatedAt',
   Username = 'username'
 }
 
 export type UserUpdateFilter = {
   and?: InputMaybe<Array<UserUpdateFilter>>;
+  createdAt?: InputMaybe<DateFieldComparison>;
   deleted?: InputMaybe<BooleanFieldComparison>;
   deletedAt?: InputMaybe<DateFieldComparison>;
   email?: InputMaybe<StringFieldComparison>;
   or?: InputMaybe<Array<UserUpdateFilter>>;
+  updatedAt?: InputMaybe<DateFieldComparison>;
   username?: InputMaybe<StringFieldComparison>;
 };
 
@@ -1206,6 +1244,7 @@ export type GetPostsQueryVariables = Exact<{
   after?: InputMaybe<Scalars['ConnectionCursor']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   before?: InputMaybe<Scalars['ConnectionCursor']['input']>;
+  sorting: Array<PostSort> | PostSort;
 }>;
 
 
@@ -1216,11 +1255,14 @@ export type GetPostByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, title: string, teaser: string, content: string, createdAt?: any | null } };
+export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null } };
 
 export const GetPostsDocument = gql`
-    query GetPosts($first: Int, $after: ConnectionCursor, $last: Int, $before: ConnectionCursor) {
-  posts(paging: {first: $first, after: $after, last: $last, before: $before}) {
+    query GetPosts($first: Int, $after: ConnectionCursor, $last: Int, $before: ConnectionCursor, $sorting: [PostSort!]!) {
+  posts(
+    paging: {first: $first, after: $after, last: $last, before: $before}
+    sorting: $sorting
+  ) {
     totalCount
     edges {
       node {
@@ -1254,10 +1296,11 @@ export const GetPostByIdDocument = gql`
     query GetPostById($id: ID!) {
   post(id: $id) {
     id
+    createdAt
     title
     teaser
     content
-    createdAt
+    sources
   }
 }
     `;

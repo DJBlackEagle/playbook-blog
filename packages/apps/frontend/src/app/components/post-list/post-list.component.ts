@@ -1,4 +1,3 @@
-// Fügen Sie 'computed' zum Import hinzu
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -9,9 +8,17 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ApolloQueryResult } from '@apollo/client/core';
-import { QueryRef } from 'apollo-angular';
-import { GetPostsGQL, GetPostsQuery, PageInfo, Post } from '../../generated/graphql';
+import { firstValueFrom } from 'rxjs'; // Wichtig für die neue Logik
+import {
+  GetPostsGQL,
+  GetPostsQuery,
+  GetPostsQueryVariables,
+  PageInfo,
+  Post,
+  PostSortFields,
+  SortDirection,
+} from '../../generated/graphql';
+import { NavigationService } from '../../services/navigation.service';
 
 type PostEdge = GetPostsQuery['posts']['edges'][0];
 
@@ -22,6 +29,16 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
   template: `
     <div class="post-container">
       <h2>Latest Posts</h2>
+
+      <div class="sort-controls">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" (change)="onSortChange($event)">
+          <option value="createdAt-DESC">Newest First</option>
+          <option value="createdAt-ASC">Oldest First</option>
+          <option value="title-ASC">Title (A-Z)</option>
+          <option value="title-DESC">Title (Z-A)</option>
+        </select>
+      </div>
 
       @if (loading()) {
         <p>Loading posts...</p>
@@ -52,13 +69,19 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
       </div>
     </div>
   `,
-  // ... styles bleiben unverändert
   styles: `
     .post-container {
       width: 100%;
       max-width: 800px;
       margin: 2rem auto;
       padding: 1rem;
+    }
+    .sort-controls {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
     .post-list {
       list-style: none;
@@ -80,6 +103,13 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
       color: #666;
       font-style: italic;
     }
+    .post-link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .post-item:hover {
+      border-color: #007bff;
+    }
     .pagination-controls {
       display: flex;
       justify-content: center;
@@ -96,79 +126,97 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
       cursor: not-allowed;
       opacity: 0.5;
     }
-    .post-link {
-      text-decoration: none;
-      color: inherit;
-    }
-    .post-item:hover {
-      border-color: #007bff;
-    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostListComponent implements OnInit {
   private readonly getPostsGQL = inject(GetPostsGQL);
+  private readonly navigationService = inject(NavigationService);
+
   protected readonly posts = signal<Partial<Post>[]>([]);
   protected readonly pageInfo = signal<PageInfo | null>(null);
   protected readonly loading = signal(true);
   protected readonly currentPage = signal(1);
-
-  // Signale für die Gesamtanzahl und die Berechnung der Seiten
+  private readonly sort = signal({
+    field: PostSortFields.CreatedAt,
+    direction: SortDirection.Desc,
+  });
   private readonly totalPosts = signal(0);
   protected readonly totalPages = computed(() => Math.ceil(this.totalPosts() / this.postsPerPage));
 
   private readonly postsPerPage = 3;
-  private queryRef!: QueryRef<GetPostsQuery>;
 
   ngOnInit(): void {
-    this.queryRef = this.getPostsGQL.watch({ first: this.postsPerPage });
+    // Initialer Ladevorgang
+    void this.fetchPosts({
+      first: this.postsPerPage,
+      sorting: [this.sort()],
+    });
 
-    this.queryRef.valueChanges.subscribe((result: ApolloQueryResult<GetPostsQuery>) => {
-      const { data, loading } = result;
-      this.loading.set(loading);
-      if (!loading && data?.posts) {
-        this.posts.set(data.posts.edges.map((edge: PostEdge) => edge.node));
-        this.pageInfo.set(data.posts.pageInfo);
-        this.totalPosts.set(data.posts.totalCount); // Speichern der Gesamtanzahl
+    this.navigationService.homeClicked$.subscribe(() => {
+      if (this.currentPage() !== 1) {
+        this.currentPage.set(1);
+        void this.fetchPosts({
+          first: this.postsPerPage,
+          sorting: [this.sort()],
+        });
       }
     });
   }
 
-  async nextPage(): Promise<void> {
-    const pi = this.pageInfo();
-    if (this.loading() || !this.queryRef || !pi?.hasNextPage) {
-      return;
-    }
-
+  private async fetchPosts(variables: GetPostsQueryVariables): Promise<void> {
+    this.loading.set(true);
     try {
-      await this.queryRef.refetch({
-        first: this.postsPerPage,
-        after: pi.endCursor,
-        last: undefined,
-        before: undefined,
-      });
-      this.currentPage.update((p) => p + 1);
+      const result = await firstValueFrom(
+        this.getPostsGQL.fetch(variables, { fetchPolicy: 'network-only' }),
+      );
+      if (result.data?.posts) {
+        this.posts.set(result.data.posts.edges.map((edge: PostEdge) => edge.node));
+        this.pageInfo.set(result.data.posts.pageInfo);
+        this.totalPosts.set(result.data.posts.totalCount);
+      }
     } catch (error) {
-      console.error('Failed to fetch next page:', error);
+      console.error('Failed to fetch posts:', error);
+      // Optional: Fehlermeldung im UI anzeigen
+    } finally {
+      this.loading.set(false);
     }
   }
 
-  async previousPage(): Promise<void> {
-    const pi = this.pageInfo();
-    if (this.loading() || !this.queryRef || !pi?.hasPreviousPage) {
-      return;
-    }
+  onSortChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    const [field, direction] = select.value.split('-') as [PostSortFields, SortDirection];
 
-    try {
-      await this.queryRef.refetch({
-        last: this.postsPerPage,
-        before: pi.startCursor,
-        first: undefined,
-        after: undefined,
-      });
-      this.currentPage.update((p) => p - 1);
-    } catch (error) {
-      console.error('Failed to fetch previous page:', error);
-    }
+    this.sort.set({ field, direction });
+    this.currentPage.set(1);
+
+    void this.fetchPosts({
+      first: this.postsPerPage,
+      sorting: [this.sort()],
+    });
+  }
+
+  nextPage(): void {
+    const pi = this.pageInfo();
+    if (this.loading() || !pi?.hasNextPage) return;
+
+    this.currentPage.update((p) => p + 1);
+    void this.fetchPosts({
+      first: this.postsPerPage,
+      after: pi.endCursor,
+      sorting: [this.sort()],
+    });
+  }
+
+  previousPage(): void {
+    const pi = this.pageInfo();
+    if (this.loading() || !pi?.hasPreviousPage) return;
+
+    this.currentPage.update((p) => p - 1);
+    void this.fetchPosts({
+      last: this.postsPerPage,
+      before: pi.startCursor,
+      sorting: [this.sort()],
+    });
   }
 }
