@@ -7,6 +7,9 @@ class PostEntity extends BaseEntity {
   title: string;
 
   @Prop({ required: true })
+  teaser: string;
+
+  @Prop({ required: true })
   content: string;
 }
 

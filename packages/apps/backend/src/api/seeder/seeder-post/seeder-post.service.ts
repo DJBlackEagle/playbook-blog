@@ -26,16 +26,22 @@ export class SeederPostService {
     const postsToSeed = [
       {
         title: 'The Rise of AI in Modern Software Development',
+        teaser:
+          'Artificial intelligence is transforming how we build and deploy software. Get the lowdown on the new tools for automation, analysis, and optimization.',
         content:
           'Artificial intelligence is rapidly transforming how we build and deploy software, offering new tools for automation, analysis, and optimization.',
       },
       {
         title: "GraphQL vs. REST: A Developer's Dilemma",
+        teaser:
+          'Deciding between GraphQL and REST for your API can be tricky. This post breaks down the pros and cons of each to help you make the right choice for your project.',
         content:
           'Choosing between GraphQL and REST for your API can be challenging. This post explores the pros and cons of each approach.',
       },
       {
         title: 'NestJS: Building Scalable and Maintainable Backends',
+        teaser:
+          'Thinking about building your next backend application? NestJS offers a powerful and scalable architecture that can help you get the job done right.',
         content:
           'NestJS, a progressive Node.js framework, provides a robust architecture for developing efficient and scalable server-side applications.',
       },

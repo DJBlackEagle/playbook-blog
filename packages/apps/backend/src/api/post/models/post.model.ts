@@ -18,6 +18,10 @@ export class Post extends BaseModel {
   @FilterableField()
   title: string;
 
+  @Field({ description: 'Teaser of the post' })
+  @FilterableField()
+  teaser: string;
+
   @Field({ description: 'Content of the post' })
   @FilterableField()
   content: string;

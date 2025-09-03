@@ -11,6 +11,12 @@ export class CreatePostInput extends PartialType(BaseCreateInput) {
   @MaxLength(100)
   title!: string;
 
+  @Field({ description: 'The teaser of the post.' })
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(10)
+  teaser!: string;
+
   @Field({ description: 'The content of the post.' })
   @IsNotEmpty()
   @IsString()
