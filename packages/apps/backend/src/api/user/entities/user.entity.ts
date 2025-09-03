@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import { ConfigService } from '@nestjs/config';
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { SchemaTypes, Types } from 'mongoose';
+import { Query, SchemaTypes, Types } from 'mongoose';
 import { BaseEntity } from '../../../base';
 import { EncryptionService } from '../../../modules/encryption/encryption.service';
 
@@ -49,6 +49,21 @@ class UserEntity extends BaseEntity {
 }
 
 const UserEntitySchema = SchemaFactory.createForClass(UserEntity);
+
+UserEntitySchema.pre('find', function (this: Query<any, any>): void {
+  const sort = this.getOptions().sort as
+    | Record<string, 1 | -1 | 'asc' | 'desc' | 'ascending' | 'descending'>
+    | undefined;
+
+  if (sort && Object.keys(sort).length > 0) {
+    if (!sort._id) {
+      this.sort({ ...sort, username: 1 });
+    }
+  } else {
+    this.sort({ username: 1 });
+  }
+});
+
 UserEntitySchema.pre('save', async function (next): Promise<void> {
   if (!this.isModified('password')) return next();
 

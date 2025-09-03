@@ -1,5 +1,11 @@
 import { Field, InputType, PartialType } from '@nestjs/graphql';
-import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 import { BaseCreateInput } from '../../../base';
 
 @InputType({ description: 'Input for creating a post' })
@@ -22,4 +28,9 @@ export class CreatePostInput extends PartialType(BaseCreateInput) {
   @IsString()
   @MinLength(10)
   content!: string;
+
+  @Field(() => [String], { description: 'The sources of the post.' })
+  @IsOptional()
+  @IsString({ each: true })
+  sources!: string[];
 }
