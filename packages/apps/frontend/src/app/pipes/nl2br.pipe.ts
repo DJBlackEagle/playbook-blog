@@ -10,6 +10,6 @@ export class Nl2brPipe implements PipeTransform {
       return '';
     }
 
-    return value.replace(/\n\n/g, '<br /><br />').replace(/\n/g, '<br /><br />');
+    return value.replace(/\n\n/g, '<br /><br />').replace(/\n/g, '<br />');
   }
 }
