@@ -175,7 +175,7 @@ Erst Mitte Juni hat Cloudflare zuletzt einen Rekordwert für DDoS-Angriffe gemel
 Zuvor hat es Mitte April 2025 die bis dahin größte Attacke mit 6,5 TBit/s gegeben, wie Cloudflare im Threat-Report des ersten Quartals anmerkte. Dafür kamen 4,8 Milliarden Pakete pro Sekunde seitens der Täter zum Einsatz.`,
       },
       {
-        tile: 'Brutaler Absturz der VMware Explore',
+        title: 'Brutaler Absturz der VMware Explore',
         sources: [
           'https://www.heise.de/news/Brutaler-Absturz-der-VMware-Explore-10627791.html',
         ],
