@@ -32,5 +32,5 @@ export class CreatePostInput extends PartialType(BaseCreateInput) {
   @Field(() => [String], { description: 'The sources of the post.' })
   @IsOptional()
   @IsString({ each: true })
-  sources!: string[];
+  sources?: string[];
 }

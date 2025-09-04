@@ -47,7 +47,7 @@ export class SeederPostService {
       },
       {
         title:
-          'Festkörperbatterien: BASF und chinesischer Partner erreichen Durchbruch ',
+          'Festkörperbatterien: BASF und chinesischer Partner erreichen Durchbruch',
         sources: [
           'https://www.heise.de/news/BASF-und-chinesischer-Partner-erreichen-Durchbruch-bei-Festkoerperbatterien-10629173.html',
           'https://t3n.de/news/basf-festkoerperbatterien-1705203/',
