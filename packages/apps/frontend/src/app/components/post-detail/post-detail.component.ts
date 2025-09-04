@@ -15,7 +15,6 @@ import { Nl2brPipe } from '../../pipes/nl2br.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostDetailComponent {
-  // Die Klassenlogik bleibt unverändert
   private readonly route = inject(ActivatedRoute);
   private readonly getPostByIdGQL = inject(GetPostByIdGQL);
 

@@ -8,7 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { firstValueFrom } from 'rxjs'; // Wichtig für die neue Logik
+import { firstValueFrom } from 'rxjs';
 import {
   GetPostsGQL,
   GetPostsQuery,
@@ -48,7 +48,6 @@ export class PostListComponent implements OnInit {
   private readonly postsPerPage = 3;
 
   ngOnInit(): void {
-    // Initialer Ladevorgang
     void this.fetchPosts({
       first: this.postsPerPage,
       sorting: [this.sort()],
@@ -78,7 +77,7 @@ export class PostListComponent implements OnInit {
       }
     } catch (error) {
       console.error('Failed to fetch posts:', error);
-      // Optional: Fehlermeldung im UI anzeigen
+      // Optional: Show error message in the UI
     } finally {
       this.loading.set(false);
     }
