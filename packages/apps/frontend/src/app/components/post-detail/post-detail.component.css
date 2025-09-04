@@ -16,26 +16,25 @@ h1 {
 }
 
 .teaser {
-  background-color: #f0f8ff; /* Ein sehr helles Blau */
-  border-left: 5px solid #007bff; /* Blauer Akzentstreifen */
+  background-color: #f0f8ff;
+  border-left: 5px solid #007bff;
   padding: 1.2rem 1.5rem;
-  margin: 2rem 0; /* Mehr Abstand oben und unten */
-  font-size: 1.15rem; /* Etwas größere Schrift */
+  margin: 2rem 0;
+  font-size: 1.15rem;
   line-height: 1.6;
-  font-style: italic; /* Kursiv wie gewünscht */
-  color: #333; /* Dunklerer Text für bessere Lesbarkeit */
-  border-radius: 4px; /* Leichte Rundung der Ecken */
+  font-style: italic;
+  color: #333;
+  border-radius: 4px;
 }
 
 .teaser p {
-  /* Den Absatz im Teaser direkt ansprechen, um Standard-Margins zu entfernen */
   margin: 0;
 }
 
 .post-content {
   line-height: 1.7;
   font-size: 1.1rem;
-  margin-top: 2rem; /* Abstand zum Teaser */
+  margin-top: 2rem;
 }
 
 .sources-section {
