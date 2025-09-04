@@ -45,160 +45,316 @@ export class SeederPostService {
         content:
           'NestJS, a progressive Node.js framework, provides a robust architecture for developing efficient and scalable server-side applications.',
       },
+
+      {
+        title: "It wasn't a dream. His room, a proper human room",
+        teaser:
+          "And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.",
+        content: `And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.`,
+      },
+
+      {
+        title: "And it's a funny sort of business to be sitting",
+        teaser:
+          "How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was. Doing business like this",
+        content: `I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
+
+It can all go to Hell!" He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+He slid back into his former position. "Getting up early all the time", he thought, "it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought.
+
+It can all go to Hell!" He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
+
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
+
+He slid back into his former position. "Getting up early all the time", he thought, "it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+It can all go to Hell!" He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.`,
+      },
+
+      {
+        title: 'He must have tried it a hundred times, shut his',
+        teaser:
+          "He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always",
+        content: `He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
+
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.`,
+      },
+
+      {
+        title: "And it's a funny sort of business to be sitting up there at",
+        teaser:
+          "Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone",
+        content: `One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
+
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
+
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
+
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.`,
+      },
+
       {
         title:
-          'Festkörperbatterien: BASF und chinesischer Partner erreichen Durchbruch',
-        sources: [
-          'https://www.heise.de/news/BASF-und-chinesischer-Partner-erreichen-Durchbruch-bei-Festkoerperbatterien-10629173.html',
-          'https://t3n.de/news/basf-festkoerperbatterien-1705203/',
-        ],
+          'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed',
         teaser:
-          'Festkörperbatterien für E-Autos rücken näher: BASF und der chinesische Partner Welion haben einen wichtigen Schritt in Richtung Serienproduktion erreicht. ',
-        content: `Festkörperbatterien (Solid-State Batteries), inklusive ihrer halbfesten Varianten, gelten als Schlüsseltechnologie für die nächste Generation von Batterien für E-Autos oder E-Bikes sowie Speicherlösungen. Sie versprechen mehr Sicherheit, eine höhere Energiedichte und kürzere Ladedauer als herkömmliche Lithium-Ionen-Batterien.
-BASF liefert Kathodenmaterialien für Feststoffbatterien
+          "How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position.",
+        content: `And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
 
-Dem Joint-Venture BASF Shanshan Battery Materials (BSBM) ist in Zusammenarbeit mit dem chinesischen Hersteller Beijing Welion New Energy Technology jetzt ein Durchbruch bei der Entwicklung von Semi-Festkörperbatterien gelungen, wie BASF mitteilt. Demnach seien die ersten Chargen seriengefertigter Kathodenmaterialien (CAM) für halbfeste Festkörperbatterien erfolgreich ausgeliefert worden.
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
 
-Konkret geht es dabei um ein neu entwickeltes Hoch-Nickel-NCM-Kathodenmaterial mit einer speziellen Kompositbeschichtung. Dadurch sollen die Schnittstellenprobleme zwischen den Kathodenmaterialien und Festelektrolyt angegangen werden.
-Mehr Energiedichte und längere Lebensdauer
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
 
-Das neue Material erhöht laut BASF zum einen die Energiedichte durch eine höhere Kapazität und einen geringeren Widerstand. Zugleich sollen auch die Zyklenstabilität und Lebensdauer gesteigert werden, indem Nebenreaktionen an der CAM-Elektrolyt-Grenzfläche unterdrückt werden.
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
 
-Die Auslieferung der ersten Charge der neuen Technologie soll die Kommerzialisierung von Festkörperbatterien vorantreiben. Sprich: Schon bald werden erste Produkte mit den neuen Kathodenmaterialien in Serie gefertigt werden – und das, wie BASF betont, nur ein Jahr nach dem Projektstart im August 2024.
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
 
-BSBM-CEO Desmond Long spricht daher von einem "Meilenstein für unser Batteriematerialgeschäft". Zugleich stelle die Entwicklung "einen bedeutenden Fortschritt im Bereich Festkörperbatterien" dar. Welion wird die Kathodenmaterialien von BASF eigenen Angaben zufolge in der nächsten Generation halbfester Festkörperbatterien einsetzen.
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
 
-Welion gilt als Pionier im Bereich Festkörperbatterie-Entwicklung. Die Produkte des Herstellers kommen in Elektroautos, Speichersystemen sowie Drohnen oder Elektrowerkzeugen zum Einsatz. Schon mit den Semi-Solid-State-Batteriezellen von Welion ausgerüstet sind etwa die E-Autos ET7 und EL6 von Nio. Hier sollen sie für Reichweiten von bis zu 1.000 Kilometern sorgen.
-Reine Festkörperbatterien noch nicht in Sicht
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
 
-Während sogenannte halbfeste Festkörperbatterien, die noch einen geringen Anteil an Flüssigkeit haben, schon in Serie produziert und eingesetzt werden, sind reine Festkörperbatterien noch nicht in Sicht. Hier gibt es aktuell lediglich Prototypen, um die Vorteile der Technologie zu präsentieren.`,
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
+
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
+
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.`,
       },
+
       {
-        title: '30 Jahre eBay: Alles begann mit einem defekten Laserpointer ',
-        sources: [
-          'https://www.heise.de/hintergrund/30-Jahre-eBay-Von-der-Verkaufsseite-zum-weltweiten-Riesenmarktplatz-10629942.html',
-        ],
+        title: 'Doing business like this takes much more effort than doing',
         teaser:
-          '30 Jahre sind für Internetunternehmen ein stolzes Alter. Mit eBay wurde seit 1995 das Ersteigern und Verkaufen im Netz zur Selbstverständlichkeit. ',
-        content: `Es gibt kaum jemanden, dem beim Wort "Maggi" nicht sofort die braune, gelb etikettierte Würzflasche einfällt. Ähnlich ist es mit eBay und seinem vierfarbigen Logo: Seit Jahrzehnten steht es für Onlineauktionen schlechthin, obwohl das Unternehmen sich alle Mühe gibt, dieses Klischee aufzuweichen. Manche typischen eBay-Begriffe wie "Geheimer Mindestpreis", "Turbolister" oder "Auktionssniper" haben sich im Lauf der Jahre in den allgemeinen Alltagswortschatz geschlichen.
+          'It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather.',
+        content: `He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
 
-iele bekannte Marken haben eine Gründungsanekdote, die möglichst knuffig-sympathisch wirkt. Darüber, wie viel historische Wahrheit drinsteckt, zankt sich die Forschung.
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
 
-Das heute überragend große und an der Börse mit fast 30 Milliarden Euro bewertete Unternehmen eBay bildet da keine Ausnahme: Gründer Pierre Omidyar, so heißt es, habe zunächst für seine Frau eine Sammlertauschbörse schaffen wollen, über die sie mit anderen Fans von PEZ-Figuren Kontakt aufnehmen könnte. eBay sei dann die Folge des enorm wachsenden Bedarfs nach Plattformen solcher Art gewesen.
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
 
-Triebfeder Programmierfaszination
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
 
-Gesichert ist, dass Pierre Omidyar 1967 als Sohn aus dem Iran stammender Eltern in Paris geboren wurde. Als er sechs Jahre alt war, zog die Familie in die amerikanische Bundeshauptstadt Washington, D.C. Er studierte Informatik, schloss 1988 mit dem Rang eines Bachelor of Science ab und arbeitete danach als Entwickler. Omidyar und einige Freunde betrieben ein Unternehmen, das zunächst Ink Development, dann eShop hieß, und verkauften dieses an Microsoft. Anfang der Neunzigerjahre betrieb der seit seiner Jugend von Programmierung faszinierte Mann eine eigene Website namens "Echo Bay Technology Group", unter deren Dach er als Experiment eine kleine Online-Auktionsplattform namens Auction Web einrichtete.
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
 
-Dort bot Omidyar am 3. September 1995 probehalber einen defekten Laserpointer an. Einige Tage später erhielt ein Käufer den Zuschlag für knapp 15 US-Dollar. Sicherheitshalber wurde er gefragt, ob ihm klar sei, dass er ein nicht funktionsfähiges Gerät ersteigert habe. Der Käufer, passenderweise ein Sammler defekter Laserpointer, hatte kein Problem damit: Die erste Verkaufstransaktion ging über die Bühne.
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
 
-Und so war vor genau 30 Jahren in San José, Kalifornien, der Startschuss für die Online-Verkaufs- und Auktionsplattform gefallen, die zwei Jahre später eBay hieß. Die Domain eBay.com war für Omidyar zunächst eigentlich nicht die erste Wahl gewesen. Als Heimat für seine Projekte hätte er gern "EchoBay.com" gehabt, doch der Domainname war bereits vergeben. Also wurde es eBay.com.
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
 
-Nach kurzer Zeit verdrängte die Auktionsplattform alle anderen Projekte von seiner Website. Er lud Freunde und Bekannte ein, ebenfalls Waren dort anzubieten. Die Gelegenheit sprach sich schnell herum. Schon nach wenigen Monaten soll Omidyar durch Gebühren und Provisionen für Verkäufe mehr verdient haben als in seinem Hauptberuf als Softwareentwickler. Bereits 1996 verzeichnete eBay 40.000 registrierte Teilnehmer, 1997 liefen 200.000 Einzelauktionen pro Monat über die Plattform. Immer stärker zeigte sich, dass nicht jeder Käufer und Verkäufer nur ehrliche Absichten hatte. Es kam zu Konflikten. Als Reaktion führte eBay ein System zur gegenseitigen Bewertung von Teilnehmern ein, das vom Konzept her noch heute besteht.
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
 
-Im selben Jahr fand über die Plattform der einmillionste Artikel einen neuen Besitzer – es handelte sich um eine kleine Figur des Sesamstraße-Charakters Big Bird, der in Deutschland Bibo heißt. 1998 machte der Börsengang seines Unternehmens Omidyar zum Milliardär. Der Ausgabepreis für eine Aktie betrug am 24. September 1998 18 US-Dollar. Heute ist eine eBay-Aktie rund 90 US-Dollar wert. Da inzwischen aber vier Aktiensplits stattgefunden haben, würde eine 1998 erworbene Aktie heute das 24-Fache ihres damaligen Wertes repräsentieren, also über 2100 Dollar. Als CEO und Präsidentin des Unternehmens stieg Meg Whitman ein. Sie bekleidete bis 2008 den CEO-Posten und war Mitglied des Board of Directors bei eBay. 2010 kandidierte sie für das Gouverneursamt des US-Bundesstaats Kalifornien. 2011 erklomm sie den Chefsessel von Hewlett-Packard. Bei eBay löste John Donahoe sie 2008 als CEO ab. Er hatte die Position bis 2015 inne. Der aktuelle Unternehmenschef, Jamie Iannone, ist seit 2020 dabei.
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
 
-Aus dem Nachahmer wird der deutsche Zweig
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
 
-Der Erfolg von Omidyars Idee ließ bald Nachahmer auf den Plan treten. In Berlin startete eine sechsköpfige Unternehmergruppe Anfang 1999 die Plattform Alando.de, die nach dem gleichen Konzept arbeitete wie eBay, auch Aussehen und Handhabung der Website waren stark daran angelehnt. Zu den Gründern gehörten die Brüder Marc, Oliver und Alexander Samwer, die später noch vielfach als Gründer beziehungsweise Investoren im Zusammenhang mit klangvollen Unternehmen der Technikwelt von sich reden machten: Jamba, Rocket Internet und Zalando. Der deutsche eBay-Klon bot Verkäufern Gelegenheit, ihre Waren kostenlos einzustellen, und setzte sich schnell als führende deutsche Online-Auktionswebsite durch.
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
 
-Als Omidyar auf Alando aufmerksam wurde, ging er nicht etwa juristisch gegen das Plagiat seiner Plattform vor, sondern kaufte das Unternehmen für 50 Millionen US-Dollar gerade mal ein halbes Jahr nach dessen Gründung und machte daraus den deutschen eBay-Zweig. Auch noch im Jahr 1999 expandierte Omidyars Unternehmen international weiter: Zweige entstanden in Australien und dem Vereinigten Königreich. Unterdessen stieg die weltweite Mitgliederzahl auf über 10 Millionen.
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
 
-Neuerungen Schlag auf Schlag
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
 
-Zu Beginn des neuen Jahrtausends führte eBay vieles ein, was seitdem das Kaufen und Verkaufen auf der Plattform prägt: Die Sofort-Kaufen-Funktion brachte zunächst in den USA, dann international Angebote zum Festpreis ins Programm. Die eBay-Betreiber sind seit Jahren bestrebt, das Sofortkaufgeschäft immer stärker in den Vordergrund zu stellen. Daher charakterisieren sie das Unternehmen offiziell stets als "Marktplatz", nicht als Auktionsplattform.
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
 
-Mit "eBay Motors" kam eine besonders gestaltete Sparte zur Plattform hinzu, die auch eine eigene Gebührenstruktur bekam. Sie diente zum Handel mit Fahrzeugen und Zubehör. In Deutschland und einigen europäischen Nachbarländern hatte sich mobile.de als übersichtliche und vielfältig durchsuchbare Handelsplattform etabliert, auf der man ähnlich wie bei klassischen Kleinanzeigen Fahrzeuge zum Festpreis oder auf Verhandlungsbasis einstellte. Im April 2004 übernahm eBay mobile.de.
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
 
-Mit "eBay Shops" können Verkäufer seit 2001 ihre Angebote auf der Plattform in durchsuchbaren virtuellen Läden bündeln. 2002 übernahm eBay den im Jahr 2000 aus Unternehmen der libertären Tech-Milliardäre Peter Thiel und Elon Musk entstandenen Zahlungsdienstleister PayPal für 1,5 Milliarden US-Dollar. In den folgenden Jahren integrierte eBay die Zahlungsabwicklung über PayPal sehr stark in den Online-Marktplatz. Im Juli 2015 wurde PayPal jedoch als eigenständiges börsennotiertes Unternehmen wieder ausgegliedert. Ab 2018 fuhr eBay dann die Zusammenarbeit mit PayPal zurück und wollte den Zahlungsabwickler eigentlich ab 2023 von eBay-Geschäften ausschließen. Dennoch ist es auch heute noch möglich, als eBay-Nutzer über PayPal zu bezahlen beziehungsweise die Bezahlung von Käufern zu empfangen.
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
 
-Aufmerksamkeit durch Kuriositäten
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
 
-Immer wieder sind eBay-Geschäfte in den Schlagzeilen der allgemeinen Presse aufgetaucht – auch als das Internet noch als ein Revier von besonders technikaffinen Eingeweihten galt. Es wurde aber zunehmend Mode, auch bei Leuten, die sich nicht gerade zur Netzgemeinde zählten, sich für besonders kuriose oder kostenträchtige eBay-Transaktionen zu interessieren. Die Plattformbetreiber förderten das nach Kräften, denn ihnen war daran gelegen, stets im Gespräch zu bleiben. Aufsehen erregte etwa 2006 der Verkauf einer von Frank Mulder designten Riesenyacht über eBay für 168 Millionen Dollar.
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
 
-Das Ende des ersten Jahrzehnts im neuen Millennium markierte den Beginn der bald gewaltig anwachsenden Smartphonewelle: eBay-Teilnehmer nutzten den Marktplatz normalerweise vom Webbrowser eines PC aus; auch eine mobil nutzbare Websiteversion gab es bereits. Die erste eBay-App fürs iPhone kam 2008 zu einem Zeitpunkt, der einen Umbruch für die alltägliche Netznutzung bedeutete: Das Internet ist seit jenen Tagen mehr und mehr mobil geworden. In öffentlichen Verkehrsmitteln, an Familienesstischen und in Schulen beugten sich in zunehmendem Maße eBay-Teilnehmer über ihre Smartphones, um wischender- und tippenderweise Gebote zu setzen oder Waren einzustellen.
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
 
-Bereits im März 2005 hatte eBay in Deutschland die Tochterplattform kijiji gestartet, die wie klassische Inseratenblätter lokale Waren- und Dienstleistungsangebote ohne Auktionsoption verzeichnete. 2009 wurde daraus "eBay Kleinanzeigen". Da ein Inserat dort deutlich günstiger war als das Einstellen eines Angebots bei eBay selbst, fanden nicht zuletzt Anbieter weniger hochwertiger Gebrauchtartikel dort eine willkommene Nische. 2020 verkaufte eBay seinen gesamten Kleinanzeigensektor, zu dem auch mobile.de gehörte, für 9,2 Milliarden US-Dollar an die norwegische Onlineplattformgruppe Adevinta. Das frühere "eBay Kleinanzeigen" heißt nun nur noch "Kleinanzeigen".
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
 
-Aufreger
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
 
-Immer wieder fanden Höchstmarken und andere Neuigkeiten rund um eBay den Weg ins allgemeine Stadt- oder Dorfgespräch: Staunend nahm man etwa 2011 zur Kenntnis, dass ein deutscher eBay-Händler namens "dynamic-auction" als erstes Mitglied in Europa eine Million Bewertungspunkte erreicht hatte. Gesprächsstoff lieferten auch Rechtsstreitigkeiten um eBay-Geschäfte, die Zivilgerichte in wachsendem Maß zu beschäftigen begannen. Mancher hatte bis dahin kaum etwas vom Unterschied zwischen Garantien und gesetzlicher Gewährleistung gehört. Die Frage, wer dafür haftet, wenn ersteigerte Ware nicht wohlbehalten ankommt, musste ebenso ausgestritten werden wie manche mutmaßliche oder tatsächliche arglistige Täuschung auf Seiten von Handelspartnern.
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
 
-Das wohl spektakulärste Urteil in einem eBay-Fall sprach 2014 der Bundesgerichtshof (BGH): Bei der sogenannten Passat-Entscheidung (Az. VIII ZR 42/14) ging es darum, dass ein Verkäufer die Auktion eines Autos vorzeitig abgebrochen hatte, weil er befürchtete, dass sich bis zum Ablauf nicht genügend Bieter für zufriedenstellende Gebote finden würden. Er verkaufte dann den Wagen anderweitig. Um Bieter zu locken und zugleich auch Auktionsentgelte zu sparen, hatte der Verkäufer den Wagen für ein Mindestgebot von 1 Euro bei eBay eingestellt. Als er die Auktion abbrach, lag bereits ein Gebot über 1 Euro vor. Als der Bieter das Auto für diesen Preis verlangte, erfuhr er, dass es nicht mehr bereitstand und der Verkäufer auch der Meinung war, es sei kein bindender Kaufvertrag zustande gekommen.
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
 
-Die Sache ging durch drei Instanzen; der BGH machte klar, dass bei eBay mit dem Einstellen und dem letzten Höchstgebot doch ein wirksamer Kaufvertrag geschlossen worden war. Die allgemeinen Geschäftsbedingungen der Plattform dienten als Basis, um den Vorgang des Vertragsschlusses zu bestimmen. Das Ende vom Lied: Der Verkäufer musste dem Bieter einen Schadenersatz in Höhe von 5.249 Euro zahlen, was dem geschätzten Wagenwert abzüglich des zu zahlenden Euros entsprach. Seitdem wissen auch Nichtfachleute, wie riskant es sein kann, die Bedingungen von Onlineauktionen nicht ernst zu nehmen.
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
 
-Der Rest ist, wie man so schön sagt, Geschichte. eBay ist auch heute ein hochprofitables Unternehmen, nur 2017 und 2022 ist es in die Verlustzone geraten. So attraktiv, glitzernd und cool wie die Plattform noch vor einigen Jahren erschien, wirkt sie heute allerdings für viele nicht mehr. Chinesische Versandriesen wie Aliexpress und Temu haben gerade bei der Zielgruppe Smartphone-affiner Schnäppchenjäger etwas geschafft, was alle über die Jahre aufgekommenen und untergegangenen Mini-Konkurrenzauktionswebsites nicht vermochten: eBay hat seine jahrelang lieb gewonnene Position als weltweit wichtigster Online-Marktplatz eingebüßt. So ätzte denn etwa das Magazin "Absatzwirtschaft" bereits vor fünf Jahren, die Plattform gehöre als E-Commerce-Pionier zur "alten Garde", dümple aber im Schatten von Amazon und chinesischen Anbietern vor sich hin. Auch habe eBay bereits 2020 nicht mehr zur Spitzenklasse der Tech-Firmen gezählt.
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
 
-Das hat die Plattform indes nicht daran gehindert, allen Unkenrufen zum Trotz auch ihr 30. Jubiläum zu begehen, und das nicht gerade als Sanierungsfall. In diesem Sinne: Gratulation! – nicht etwa dafür, keine Fehler gemacht zu haben (es gab viele), auch nicht dafür, alle Kunden glücklich gemacht zu haben (es gibt viel berechtigte Kritik), sondern dafür, eine ganz eigene, ganz unverwechselbare Form des Kaufens und Verkaufens in die Welt gebracht zu haben, die heute auch diejenigen als selbstverständlich empfinden, die eBay nicht mögen. (psz)`,
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
+
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.`,
       },
+
+      {
+        title: 'Doing business like this takes much',
+        teaser:
+          'It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer.',
+        content: `One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
+
+I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
+
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.`,
+      },
+
       {
         title:
-          'Google muss Suchdaten mit Konkurrenz teilen, darf Chrome und Android behalten ',
-        sources: [
-          'https://www.heise.de/news/Google-muss-Suchdaten-mit-Konkurrenz-teilen-darf-Chrome-und-Android-behalten-10629784.html',
-        ],
+          'Doing business like this takes much more effort than doing your own business',
         teaser:
-          'Im Monopolprozess wegen Googles Suchmaschinengeschäft hat der Richter ein Urteil gefällt. Der Datenkonzern entgeht der Aufspaltung, muss aber offener werden. ',
-        content: `Dass Googles Suchmaschinen-Geschäfte illegal sind, hatte ein US-Bundesgericht im Kartellrechtsverfahren gegen den Datenkonzern bereits vor rund einem Jahr entschieden. Jetzt hat der Richter die für Google daraus entstandenen Sanktionen verkündet. Demnach wird der Konzern nicht aufgespalten und darf Produkte wie den Chrome-Webbrowser sowie das Android-Betriebssystem behalten. Google wird aber dazu verpflichtet, Suchdaten und Suchergebnisse mit "qualifizierten Wettbewerbern" zu teilen.
+          "Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them. I ought to just try that",
+        content: `It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
 
-Damit ist das US-Gericht in Washington, DC, nur zum Teil den Forderungen der Kläger gefolgt. Das US-Justizministerium und eine Reihe von US-Bundesstaaten hatten etwa verlangt, dass Google Chrome verkaufen soll. Google sei ein Monopolist und nutze seine marktbeherrschende Stellung aus, sodass zumindest das Browsergeschäft abgespalten werden soll, hieß es in dem bereits Anfang 2021 noch unter dem damaligen US-Präsidenten Joe Biden angestrengten Verfahren (Az. 1:20-cv-03010-APM).
-Richter verlangt Offenheit und Mäßigung von Google
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
 
-Dem ist US-Richter Amit P. Mehta aber nicht nachgekommen, wie die New York Times berichtet. Zwar hatte er letztes Jahr noch erklärt: "Google ist ein Monopolist und hat auch wie einer gehandelt, um sein Monopol aufrechtzuerhalten." Doch jetzt schlägt er versöhnliche Töne an und schreibt: "Die Kläger haben sich mit der Forderung nach einer Zwangsveräußerung dieser Schlüsselaktiva überfordert, obwohl Google diese nicht zur Durchsetzung illegaler Beschränkungen genutzt hat."
+It can all go to Hell! He felt a slight itch up on his belly; pushed himself slowly up on his back towards the headboard so that he could lift his head better; found where the itch was, and saw that it was covered with lots of little white spots which he didn't know what to make of; and when he tried to feel the place with one of his legs he drew it quickly back because as soon as he touched it he was overcome by a cold shudder.
 
-Allerdings kommt Google bei Weitem nicht ungeschoren davon. Der Richter verbietet dem Datenkonzern das Abschließen von Exklusivverträgen für die Google-Suche, Chrome, den Google-Assistenten und die Gemini-App. Einer der Vorwürfe war, dass Google 26 Milliarden US-Dollar allein im Jahr 2021 dafür gezahlt hat, nicht zuletzt an Apple, dass Chrome und die Google-Suche auf Endgeräten vorinstalliert werden. Das sei der fast vierfache Betrag der gesamten sonstigen Kosten der Suchmaschine, so der Richter.
-
-Allerdings darf Google weiterhin Hersteller dafür bezahlen, Suchmaschine und Webbrowser auf den Geräten zu installieren und diese zu priorisieren, allerdings nur noch in beschränktem Maße. "Anders als in einem typischen Fall, in dem es die Aufgabe des Gerichts ist, einen Streit auf der Grundlage historischer Fakten zu lösen, wird das Gericht hier aufgefordert, in eine Kristallkugel zu schauen und in die Zukunft zu blicken", schreibt Mehta laut Thewrap. "Nicht gerade die Stärke eines Richters."
-Google wehrt sich wohl trotzdem, auch im Monopolprozess wegen Werbung
-
-Google dürfte trotz der Zugeständnisse hinsichtlich Chrome und Android Rechtsmittel einlegen, um ein milderes Urteil zu erwirken. Damit dürfte sich das Verfahren noch über Jahre hinziehen, sodass sich die Marktsituation angesichts der technologischen Entwicklung weiter ändern kann. Schon jetzt heißt es, dass KI-Suchmaschinen das Internet verändern, denn immer mehr Menschen nutzen Chatbots Künstlicher Intelligenz statt der klassischen Suchmaschine für ihre Fragen. Googles Marktanteile könnten sich deshalb massiv ändern in den nächsten Jahren.
-
-Gleichzeitig wird demnächst ein weiteres Urteil zuungunsten des Datenkonzerns erwartet, denn im April hatte ein anderes US-Gericht ein illegales Monopol bei Google festgestellt. In dem Verfahren ging es um Technologien zum Platzieren von Online-Werbeanzeigen. Im September soll die Anhörung zu den Rechtsmitteln fortgesetzt werden, eine entsprechende Entscheidung steht noch aus.`,
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.`,
       },
+
       {
-        title: 'Überlastungsattacke erreicht 11,5 TBit pro Sekunde ',
-        sources: [
-          'https://www.heise.de/news/Ueberlastungsattacke-erreicht-11-5-TBit-pro-Sekunde-10630141.html',
-        ],
+        title: 'He slid back into his former position. Getting up early all',
         teaser:
-          'Cloudflare meldet einen neuen Rekord bei abgewehrten Überlastungsattacken (DDoS). Ein Angriff am Montag erreichte 11,5 TBit pro Sekunde. ',
-        content: `Der letzte rekordverdächtige Überlastungsangriff ist noch gar nicht so lange her, da vermeldet Cloudflare schon den nächsten beobachteten Spitzenwert. Am Montag erreichte ein Distributed-Denial-of-Service-Angriff (DDoS) in der Spitze eine Last von 11,5 Terabit pro Sekunde. Das entspricht umgerechnet mehr als 1,4 Terabyte je Sekunde oder dem Inhalt von 184 randvollen DVDs.
+          'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it',
+        content: `He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
 
-Das hat Cloudflare am Montagabend auf der Platform X mitgeteilt. "Cloudflares Abwehrmechanismen haben Überstunden geschoben. Über die vergangenen Wochen haben wir autonom hunderte hochvolumige DDoS-Attacken blockiert", schreibt das Unternehmen dort. "Die Größten erreichten Spitzenwerte von 11,5 Tbps". Dabei sendeten die Angreifer 5,1 Milliarden Pakete pro Sekunde (Bpps). Bei letzterer handelte es sich demnach um eine UDP-Flood-Attacke, die ihren Ausgangspunkt hauptsächlich in der Google-Cloud hatte. Die Zeitspanne, die der Höchstlast-Angriff einnahm, war etwa 35 Sekunden lang, schreibt Cloudflare weiter.
-Details noch unklar
+He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before. Oh, God, he thought, what a strenuous career it is that I've chosen! Travelling day in and day out.
 
-Weitere Details bleiben derzeit unklar, etwa, wer Ziel der Angriffe war und ist. Cloudflare hat jedoch eine vollständige Übersicht in einem "kommenden Bericht" angekündigt. Darin dürften dann auch das konkrete Datenvolumen der Attacke und ähnliche Details zu finden sein.
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
 
-Erst Mitte Juni hat Cloudflare zuletzt einen Rekordwert für DDoS-Angriffe gemeldet. Dort sprach das IT-Unternehmen von dem "'größten jemals registrierten' Denial-of-Service-Angriff (DDoS) mit bislang kaum für möglich gehaltenen 7,3 Terabit pro Sekunde (TBit/s)", den es Mitte Mai dieses Jahres blockiert habe. In 45 Sekunden kam dabei ein Datenvolumen von 37,5 Terabyte zusammen.
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
 
-Zuvor hat es Mitte April 2025 die bis dahin größte Attacke mit 6,5 TBit/s gegeben, wie Cloudflare im Threat-Report des ersten Quartals anmerkte. Dafür kamen 4,8 Milliarden Pakete pro Sekunde seitens der Täter zum Einsatz.`,
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.`,
       },
+
       {
-        title: 'Brutaler Absturz der VMware Explore',
-        sources: [
-          'https://www.heise.de/news/Brutaler-Absturz-der-VMware-Explore-10627791.html',
-        ],
+        title: 'He slid back into his former position. Getting up',
         teaser:
-          'Auf weniger als ein Viertel ist die Teilnehmerzahl der VMware Explore eingebrochen. Doch Broadcom hält an seinem Kurs fest.',
-        content: `Auf seiner Hausmesse VMware Explore, die nach der Einstellung des europäischen Ablegers in diesem Jahr nun ausschließlich in den USA stattfindet, hat Broadcom seine Strategie weiter konkretisiert und Produkte rund um seine VMware Cloud Foundation getaufte Plattform angekündigt. VCF erschien erst vor Kurzem in Version 9.
+          'It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him',
+        content: `And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
 
-Selten zuvor in der Geschichte von VMware hat die Strategie des Herstellers die Kundenbasis und Community so sehr gespalten, wie seit der bei Kunden doch eher ungeliebten Übernahme durch den Chip-Riesen Broadcom. Verfechter der neuen Strategie und Partner, die ausschließlich auf die Produkte von VMware setzen, sehen es durchweg positiv: Broadcoms CEO Hock Tan hätte Ordnung in das Chaos mit tausenden von bestellbaren Produkten gebracht. Aus dem bisherigen VMware-Produktzoo rund um ESXi, vCenter, NSX, vSAN, Aria Automation und Operations und einigen mehr wurde die voll integrierte VCF-Plattform geschaffen und im Partner-Ökosystem richtig aufgeräumt.
+He slid back into his former position. Getting up early all the time, he thought, it makes you stupid. You've got to get enough sleep. Other travelling salesmen live a life of luxury. For instance, whenever I go back to the guest house during the morning to copy out the contract, these gentlemen are always still sitting there eating their breakfasts.
 
-"Partnern, die unser Ökosystem verstopft haben, wurde die Autorisierung entzogen", erklärte Laura Falko, verantwortlich für das globale Partnerprogramm von Broadcom, gegenüber europäischen Journalisten die immer noch laufenden Änderungen im Partnerprogramm. Und natürlich wird der Börsenkurs von Broadcom gefeiert, der sich seit der Übernahme von VMware vor zwei Jahren äußerst positiv entwickelt hat. Aus der Perspektive der Aktionäre macht Hock Tan also alles richtig.
-Entsetzte Sponsoren
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
 
-Die andere Hälfte beklagt den wenig wertschätzenden Umgang mit Kunden, Mitarbeitern und Partnern, die teils über 25 Jahre lang geholfen haben, die Erfolgsgeschichte von VMware mitzugestalten und zu ermöglichen. Hier verursacht der doch recht harsche Umgang mit (inzwischen häufig ehemaligen) Mitarbeitern, Partnern und Kunden ein gehöriges Maß an Unmut.
+One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. What's happened to me? he thought.
 
-Die rückläufige Begeisterung bei Anwendern und den unfreiwillig weniger werdenden Partnern konnte man an der Teilnehmerzahl ablesen, die einen Negativrekord darstellt: Je nach Quelle waren zwischen 2500 und 5000 Personen im weitläufigen Konferenzzentrum des Venetian-Hotels in Las Vegas. Das Ergebnis war verwaiste Gänge, teilweise weit unterhalb der Raumkapazität besetzte Breakout Sessions und gähnende Leere im Ausstellungsbereich.
+Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.`,
+      },
 
-Und das, obwohl Sponsoren wie Microsoft, Google Cloud oder AWS für viel Geld die Hausmesse des konkurrierend-kooperienden Herstellers in Hoffnung auf qualifizierte Kundenkontakten mit einer kräftigen Finanzspritze unterstützt hatten. Diese zeigten sich im Gespräch mit der iX entsetzt über die wenigen Kundengespräche. Andere langjährige und auf früheren Hausmessen sehr aktive Partner waren überhaupt nicht vertreten – auf X musste sich Veeam bereits die Kritik gefallen lassen, VMware hätte den Backup-Spezialisten erst groß gemacht und jetzt zahle Veeam es VMware mit Undankbarkeit heim und würde nicht mal als Sponsor auftreten oder sich zu VCF 9 äußern.
+      {
+        title: 'It showed a lady',
+        teaser:
+          "It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it",
+        content: `I ought to just try that with my boss; I'd get kicked out on the spot. But who knows, maybe that would be the best thing for me. If I didn't have my parents to think about I'd have given in my notice a long time ago, I'd have gone up to the boss and told him just what I think, tell him everything I would, let him know just what I feel. He'd fall right off his desk!
 
-Auch bei Kunden war die Stimmung eher verhalten: Wenige ganz große Kunden können sich mit dem quasi-Zwang, auf VCF gehen zu müssen, durchaus anfreunden – aber auch sie suchen nach Alternativen, nachdem Broadcom durch die schlecht kommunizierten Preiserhöhungen und als unfair empfundenen Änderungen der Spielregeln nicht mehr in jedem Kundenhaus als zuverlässiger und fairer Geschäftspartner wahrgenommen wird. Ein Teilnehmer aus einem mittelgroßen US-amerikanischen Unternehmen brachte es im Gespräch mit iX am Rande einer Session auf den Punkt: "Wir zahlen jetzt bei VCF für viel Software, die wir nicht wirklich nutzen."
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
 
-Auch die Hyperscaler AWS, Google Cloud und Microsoft zeigten sich auf und nach der Messe wenig erfreut über Broadcoms Gebaren. Zahlten die drei großen Cloud Anbieter doch als Diamant-Sponsoren der Hausmesse den Löwenanteil des Ausstellersponsorings – alle anderen Partner- und Herstellerstände waren deutlich kleiner und günstiger –, so mussten sie sich bereits in den ersten fünf Minuten der Keynote des ersten Tages vorhalten lassen, dass VCF doch ohnehin viel besser und günstiger als die Angebote der Hyperscaler sei. Zumal hinter vorgehaltener Hand auf der Messe zu erfahren war, dass gleich am Freitag nach Abschluss der VMware Explore eine weitere Änderung anstünde, die den Hyperscalern nicht gefallen würde – und die kam dann auch prompt.
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
 
-Im Blogbeitrag auf der Seite von VMware kündigt Abhay Kumar, Global Head of Managed Services der VCF Abteilung von Broadcom an, dass mit dem Start von Broadcoms neuem Fiskaljahr im November 2025 die Hyperscaler keine Lizenzen für VCF mehr den Kunden direkt bereitstellen dürfen, sondern diese ausschließlich über Broadcom bezogen werden müssen. Die Begründung: Das sei ja schließlich einfacher und besser für die Kunden und entspräche den Kundenwünschen, die dadurch noch mehr Kontrolle hätten, den Austragungsort ihrer Private-Cloud-Umgebungen zu bestimmen. Jedoch waren die Lizenzen vorher bereits portabel. Wenig überraschend führt diese Ankündigung nicht zu Begeisterungsstürmen bei den Hyperscalern. Aus Broadcoms Sicht ist das aber nur konsequent – sie werden nun nicht besser behandelt als Mitarbeiter, Partner und Kunden.`,
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
+
+How about if I sleep a little bit longer and forget all this nonsense, he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.
+
+And it's a funny sort of business to be sitting up there at your desk, talking down at your subordinates from up there, especially when you have to go right up close because the boss is hard of hearing. Well, there's still some hope; once I've got the money together to pay off my parents' debt to him - another five or six years I suppose - that's definitely what I'll do.
+
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.
+
+It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
+
+It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad.`,
       },
     ];
 
