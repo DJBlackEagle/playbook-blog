@@ -20,8 +20,11 @@ export class PostDetailComponent {
 
   private readonly postResult = toSignal(
     this.route.paramMap.pipe(
-      map((params) => params.get('id')!),
-      switchMap((id) => this.getPostByIdGQL.watch({ id }).valueChanges),
+      map((params) => params.get('id')),
+      switchMap((id) => {
+        if (!id) throw new Error('Post ID is missing in route parameters');
+        return this.getPostByIdGQL.watch({ id }).valueChanges;
+      }),
     ),
   );
 
