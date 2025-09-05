@@ -15,6 +15,7 @@ export class AuthService {
   private readonly meGQL = inject(MeGQL);
   private readonly router = inject(Router);
   private readonly apollo = inject(Apollo);
+  private readonly notificationService = inject(NotificationService);
 
   readonly isAuthenticated: WritableSignal<boolean> = signal<boolean>(false);
   readonly currentUser: WritableSignal<Partial<User> | null> = signal<Partial<User> | null>(null);
@@ -47,7 +48,7 @@ export class AuthService {
       await this.router.navigate(['/']);
     }
   }
-  private readonly notificationService = inject(NotificationService);
+
   /**
    * Performs the logout mutation, removes the token, and resets the app state.
    */
