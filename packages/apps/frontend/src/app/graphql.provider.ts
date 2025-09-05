@@ -2,7 +2,6 @@ import { ApplicationConfig } from '@angular/core';
 import { ApolloClientOptions, createHttpLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { Apollo, APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLink } from 'apollo-angular/http';
 import { AUTH_TOKEN_KEY } from './constants/auth.constants';
 
 const uri = 'http://localhost:3000/graphql';
@@ -31,6 +30,5 @@ export const graphqlProvider: ApplicationConfig['providers'] = [
   {
     provide: APOLLO_OPTIONS,
     useFactory: apolloOptionsFactory,
-    deps: [HttpLink],
   },
 ];
