@@ -25,7 +25,6 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
 
 @Component({
   selector: 'app-post-list',
-  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css'],
@@ -103,8 +102,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   nextPage(): void {
-    const pi = this.pageInfo();
-    if (this.loading() || !pi?.hasNextPage) return;
+    const pi: PageInfo | null = this.pageInfo();
+    if (this.loading() || !pi?.hasNextPage || typeof pi.endCursor !== 'string') return;
 
     this.currentPage.update((p) => p + 1);
     void this.fetchPosts({
@@ -115,8 +114,8 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   previousPage(): void {
-    const pi = this.pageInfo();
-    if (this.loading() || !pi?.hasPreviousPage) return;
+    const pi: PageInfo | null = this.pageInfo();
+    if (this.loading() || !pi?.hasPreviousPage || typeof pi.startCursor !== 'string') return;
 
     this.currentPage.update((p) => p - 1);
     void this.fetchPosts({

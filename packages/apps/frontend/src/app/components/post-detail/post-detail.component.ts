@@ -9,7 +9,6 @@ import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-post-detail',
-  standalone: true,
   imports: [CommonModule, RouterLink, Nl2brPipe, SafeHtmlPipe],
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.css'],

@@ -14,5 +14,16 @@
       </svg>
       <span>Home</span>
     </a>
+    
+    <div class="auth-section">
+      @if (authService.isAuthenticated()) {
+        @if (authService.currentUser(); as user) {
+          <span class="welcome-message">Welcome, {{ user.username }}</span>
+        }
+        <button (click)="onLogout()" class="nav-link">Logout</button>
+      } @else {
+        <a routerLink="/login" class="nav-link">Login</a>
+      }
+    </div>
   </nav>
 </header>
