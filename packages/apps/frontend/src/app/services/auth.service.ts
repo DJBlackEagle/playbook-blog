@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { firstValueFrom, tap } from 'rxjs';
 import { AUTH_TOKEN_KEY } from '../constants/auth.constants';
 import { LoginGQL, LogoutGQL, MeGQL, User } from '../generated/graphql';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export class AuthService {
   private readonly meGQL = inject(MeGQL);
   private readonly router = inject(Router);
   private readonly apollo = inject(Apollo);
+  private readonly notificationService = inject(NotificationService);
 
   readonly isAuthenticated: WritableSignal<boolean> = signal<boolean>(false);
   readonly currentUser: WritableSignal<Partial<User> | null> = signal<Partial<User> | null>(null);
@@ -60,7 +62,8 @@ export class AuthService {
       this.isAuthenticated.set(false);
       this.currentUser.set(null);
       await this.apollo.client.resetStore();
-      await this.router.navigate(['/login']);
+      await this.router.navigate(['/']);
+      this.notificationService.show('You have been logged out.');
     }
   }
 
