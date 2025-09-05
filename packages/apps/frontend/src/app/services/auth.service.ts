@@ -46,6 +46,7 @@ export class AuthService {
     if (result.data?.login.accessToken) {
       await this.apollo.client.resetStore();
       await this.router.navigate(['/']);
+      this.notificationService.show('Login successful!');
     }
   }
 
