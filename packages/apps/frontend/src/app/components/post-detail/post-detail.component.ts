@@ -5,11 +5,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { GetPostByIdGQL } from '../../generated/graphql';
 import { Nl2brPipe } from '../../pipes/nl2br.pipe';
+import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-post-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, Nl2brPipe],
+  imports: [CommonModule, RouterLink, Nl2brPipe, SafeHtmlPipe],
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,

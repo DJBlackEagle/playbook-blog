@@ -20,7 +20,7 @@
         </p>
       </div>
 
-      <p class="post-content" [innerHTML]="p.content | nl2br"></p>
+      <p class="post-content" [innerHTML]="p.content | nl2br | safeHtml"></p>
 
       @if (p.sources && p.sources.length > 0) {
         <div class="sources-section">
