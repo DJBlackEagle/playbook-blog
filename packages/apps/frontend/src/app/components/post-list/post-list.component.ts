@@ -4,6 +4,7 @@ import {
   Component,
   computed,
   inject,
+  OnDestroy,
   OnInit,
   signal,
 } from '@angular/core';
@@ -30,7 +31,7 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
   styleUrls: ['./post-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostListComponent implements OnInit {
+export class PostListComponent implements OnInit, OnDestroy {
   private homeClickedSubscription: Subscription | null = null;
   private readonly getPostsGQL = inject(GetPostsGQL);
   private readonly navigationService = inject(NavigationService);
