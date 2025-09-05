@@ -29,7 +29,7 @@ export class LoginComponent {
     password: FormControl<string>;
   }> = this.formBuilder.group({
     identifier: this.formBuilder.control('', {
-      validators: [Validators.required, Validators.email],
+      validators: [Validators.required],
       nonNullable: true,
     }),
     password: this.formBuilder.control('', {

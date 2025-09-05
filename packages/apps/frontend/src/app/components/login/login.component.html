@@ -9,7 +9,7 @@
       }
 
       <div class="form-group">
-        <label for="identifier">Email</label>
+        <label for="identifier">Email / Username</label>
         <input
           id="identifier"
           type="email"
@@ -17,7 +17,7 @@
           formControlName="identifier"
         />
         @if (loginForm.get('identifier')?.invalid && loginForm.get('identifier')?.touched) {
-          <div class="error-message">A valid email is required.</div>
+          <div class="error-message">A valid email or username is required.</div>
         }
       </div>
       <div class="form-group">
