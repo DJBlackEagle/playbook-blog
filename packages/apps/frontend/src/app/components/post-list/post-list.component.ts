@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   computed,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Subscription } from 'rxjs';
 import {
   GetPostsGQL,
   GetPostsQuery,
@@ -31,6 +31,7 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostListComponent implements OnInit {
+  private homeClickedSubscription: Subscription | null = null;
   private readonly getPostsGQL = inject(GetPostsGQL);
   private readonly navigationService = inject(NavigationService);
 
@@ -53,7 +54,7 @@ export class PostListComponent implements OnInit {
       sorting: [this.sort()],
     });
 
-    this.navigationService.homeClicked$.subscribe(() => {
+    this.homeClickedSubscription = this.navigationService.homeClicked$.subscribe(() => {
       if (this.currentPage() !== 1) {
         this.currentPage.set(1);
         void this.fetchPosts({
@@ -62,6 +63,10 @@ export class PostListComponent implements OnInit {
         });
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.homeClickedSubscription?.unsubscribe();
   }
 
   private async fetchPosts(variables: GetPostsQueryVariables): Promise<void> {
