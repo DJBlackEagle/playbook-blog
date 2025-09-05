@@ -8,9 +8,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class SafeHtmlPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {}
 
-  transform(html: string): string {
+  transform(html: string | null | undefined): string {
+    if (!html) return '';
+
     const result = this.sanitizer.sanitize(SecurityContext.HTML, html);
 
-    return result ? result : 'SECURITY BREACH';
+    return result ? result : 'Content could not be sanitized for security reasons.';
   }
 }
