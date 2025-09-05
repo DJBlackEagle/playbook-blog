@@ -11,6 +11,7 @@ export interface Notification {
 })
 export class NotificationService {
   readonly notification: WritableSignal<Notification | null> = signal<Notification | null>(null);
+  private timeoutId: ReturnType<typeof setTimeout> | null = null;
 
   /**
    * Shows a notification message for a few seconds.
@@ -20,9 +21,15 @@ export class NotificationService {
   show(message: string, type: 'success' | 'error' = 'success'): void {
     this.notification.set({ message, type });
 
-    // Hide the notification after 3 seconds
-    setTimeout(() => {
+    // Clear any existing timeout to prevent premature hiding
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+
+    // Hide the notification after the specified duration
+    this.timeoutId = setTimeout(() => {
       this.notification.set(null);
+      this.timeoutId = null;
     }, NOTIFICATION_DURATION);
   }
 }
