@@ -1,6 +1,6 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
+import { NOTIFICATION_DURATION } from '../constants/notification.constants';
 
-// Defines the structure of a notification message
 export interface Notification {
   message: string;
   type: 'success' | 'error';
@@ -10,7 +10,6 @@ export interface Notification {
   providedIn: 'root',
 })
 export class NotificationService {
-  // A signal to hold the current notification state
   readonly notification: WritableSignal<Notification | null> = signal<Notification | null>(null);
 
   /**
@@ -24,6 +23,6 @@ export class NotificationService {
     // Hide the notification after 3 seconds
     setTimeout(() => {
       this.notification.set(null);
-    }, 3000);
+    }, NOTIFICATION_DURATION);
   }
 }
