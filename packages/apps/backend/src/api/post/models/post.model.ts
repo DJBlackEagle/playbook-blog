@@ -18,6 +18,10 @@ export class Post extends BaseModel {
   @FilterableField()
   title: string;
 
+  @Field({ description: 'Teaser of the post' })
+  @FilterableField()
+  teaser: string;
+
   @Field({ description: 'Content of the post' })
   @FilterableField()
   content: string;
@@ -27,4 +31,10 @@ export class Post extends BaseModel {
     description: 'Comments associated with the post',
   })
   comments?: Comment[];
+
+  @Field(() => [String], {
+    nullable: true,
+    description: 'Sources of the post',
+  })
+  sources?: string[];
 }

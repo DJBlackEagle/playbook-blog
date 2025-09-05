@@ -2,7 +2,9 @@ import { Field, GraphQLISODateTime, ID, ObjectType } from '@nestjs/graphql';
 import { FilterableField, QueryOptions } from '@ptc-org/nestjs-query-graphql';
 
 @ObjectType('BaseModel', { description: 'Base model with common fields' })
-@QueryOptions({ defaultFilter: { deleted: { is: false } } })
+@QueryOptions({
+  defaultFilter: { deleted: { is: false } },
+})
 export class BaseModel {
   @Field(() => ID, { description: 'Unique identifier for the resource' })
   id: string;
@@ -11,12 +13,14 @@ export class BaseModel {
     nullable: true,
     description: 'Timestamp of resource creation',
   })
+  @FilterableField({ description: 'Timestamp of resource creation' })
   createdAt: Date;
 
   @Field(() => Date, {
     nullable: true,
     description: 'Timestamp of last update to the resource',
   })
+  @FilterableField({ description: 'Timestamp of last update to the resource' })
   updatedAt: Date;
 
   @Field(() => GraphQLISODateTime, {

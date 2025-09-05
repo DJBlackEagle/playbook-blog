@@ -1,0 +1,41 @@
+<div class="post-container">
+  <h2>Latest Posts</h2>
+
+  <div class="sort-controls">
+    <label for="sort-select">Sort by:</label>
+    <select id="sort-select" (change)="onSortChange($event)">
+      <option value="createdAt-DESC">Newest First</option>
+      <option value="createdAt-ASC">Oldest First</option>
+      <option value="title-ASC">Title (A-Z)</option>
+      <option value="title-DESC">Title (Z-A)</option>
+    </select>
+  </div>
+
+  @if (loading()) {
+    <p>Loading posts...</p>
+  }
+
+  <ul class="post-list">
+    @for (post of posts(); track post.id) {
+      <a [routerLink]="['/posts', post.id]" class="post-link">
+        <li class="post-item">
+          <h3>{{ post.title }}</h3>
+          <p class="teaser">
+            <em>{{ post.teaser }}</em>
+          </p>
+          <small class="post-date">{{ post.createdAt | date: 'medium' }}</small>
+        </li>
+      </a>
+    }
+  </ul>
+
+  <div class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="!pageInfo()?.hasPreviousPage || loading()">
+      Previous
+    </button>
+    <span>Page {{ currentPage() }} / {{ totalPages() }}</span>
+    <button (click)="nextPage()" [disabled]="!pageInfo()?.hasNextPage || loading()">
+      Next
+    </button>
+  </div>
+</div>
