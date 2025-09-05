@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { firstValueFrom, tap } from 'rxjs';
 import { AUTH_TOKEN_KEY } from '../constants/auth.constants';
 import { LoginGQL, LogoutGQL, MeGQL, User } from '../generated/graphql';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +47,7 @@ export class AuthService {
       await this.router.navigate(['/']);
     }
   }
-
+  private readonly notificationService = inject(NotificationService);
   /**
    * Performs the logout mutation, removes the token, and resets the app state.
    */
@@ -60,7 +61,8 @@ export class AuthService {
       this.isAuthenticated.set(false);
       this.currentUser.set(null);
       await this.apollo.client.resetStore();
-      await this.router.navigate(['/login']);
+      await this.router.navigate(['/']);
+      this.notificationService.show('You have been logged out.');
     }
   }
 
