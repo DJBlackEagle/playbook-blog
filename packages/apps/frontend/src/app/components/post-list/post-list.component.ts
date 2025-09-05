@@ -25,7 +25,6 @@ type PostEdge = GetPostsQuery['posts']['edges'][0];
 
 @Component({
   selector: 'app-post-list',
-  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css'],

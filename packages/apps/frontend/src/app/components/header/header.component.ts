@@ -6,7 +6,6 @@ import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
