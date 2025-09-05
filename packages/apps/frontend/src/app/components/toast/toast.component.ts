@@ -4,7 +4,6 @@ import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-toast',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.css'],
