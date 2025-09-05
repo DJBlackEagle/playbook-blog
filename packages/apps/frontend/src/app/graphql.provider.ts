@@ -1,24 +1,28 @@
-import { ApplicationConfig, inject } from '@angular/core';
-import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
-import { relayStylePagination } from '@apollo/client/utilities';
+import { ApplicationConfig } from '@angular/core';
+import { ApolloClientOptions, createHttpLink, InMemoryCache } from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
 import { Apollo, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
+import { AUTH_TOKEN_KEY } from './constants/auth.constants';
 
 const uri = 'http://localhost:3000/graphql';
 
 export function apolloOptionsFactory(): ApolloClientOptions<any> {
-  const httpLink = inject(HttpLink);
-  return {
-    link: httpLink.create({ uri }),
-    cache: new InMemoryCache({
-      typePolicies: {
-        Query: {
-          fields: {
-            posts: relayStylePagination(['sorting']),
-          },
-        },
+  const httpLink = createHttpLink({ uri });
+
+  const authLink = setContext((_, { headers }): { headers: unknown } => {
+    const token = localStorage.getItem(AUTH_TOKEN_KEY);
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
       },
-    }),
+    };
+  });
+
+  return {
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
   };
 }
 
@@ -27,5 +31,6 @@ export const graphqlProvider: ApplicationConfig['providers'] = [
   {
     provide: APOLLO_OPTIONS,
     useFactory: apolloOptionsFactory,
+    deps: [HttpLink],
   },
 ];

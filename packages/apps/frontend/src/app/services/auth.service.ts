@@ -2,6 +2,7 @@ import { Injectable, WritableSignal, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { firstValueFrom, tap } from 'rxjs';
+import { AUTH_TOKEN_KEY } from '../constants/auth.constants';
 import { LoginGQL, LogoutGQL, MeGQL, User } from '../generated/graphql';
 
 @Injectable({
@@ -13,8 +14,6 @@ export class AuthService {
   private readonly meGQL = inject(MeGQL);
   private readonly router = inject(Router);
   private readonly apollo = inject(Apollo);
-
-  private readonly TOKEN_KEY: string = 'accessToken';
 
   readonly isAuthenticated: WritableSignal<boolean> = signal<boolean>(false);
   readonly currentUser: WritableSignal<Partial<User> | null> = signal<Partial<User> | null>(null);
@@ -57,7 +56,7 @@ export class AuthService {
     } catch (error) {
       console.error('Logout mutation failed, proceeding with client-side logout:', error);
     } finally {
-      localStorage.removeItem(this.TOKEN_KEY);
+      localStorage.removeItem(AUTH_TOKEN_KEY);
       this.isAuthenticated.set(false);
       this.currentUser.set(null);
       await this.apollo.client.resetStore();
@@ -70,7 +69,7 @@ export class AuthService {
    * @returns The token or null if not found.
    */
   getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+    return localStorage.getItem(AUTH_TOKEN_KEY);
   }
 
   /**
@@ -78,7 +77,7 @@ export class AuthService {
    * @param token The JWT to store.
    */
   private setToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
+    localStorage.setItem(AUTH_TOKEN_KEY, token);
     this.isAuthenticated.set(true);
   }
 
