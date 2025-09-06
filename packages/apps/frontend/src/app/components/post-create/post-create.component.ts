@@ -81,9 +81,8 @@ export class PostCreateComponent {
 
     try {
       const newPost = await this.postService.createPost(postInput);
-      this.notificationService.show('Post created successfully!');
-      // On success, navigate to the new post's detail page
       await this.router.navigate(['/posts', newPost.id]);
+      this.notificationService.show('Post created successfully!');
     } catch (error) {
       this.errorMessage.set('An error occurred while creating the post. Please try again.');
       console.error('Create post failed:', error);

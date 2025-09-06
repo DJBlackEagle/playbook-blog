@@ -40,7 +40,7 @@
         placeholder="Write your main content here..."
         formControlName="content"
       ></textarea>
-       @if (postForm.get('content')?.invalid && postForm.get('content')?.touched) {
+      @if (postForm.get('content')?.invalid && postForm.get('content')?.touched) {
         <div class="error-message">Content is required (min. 10 characters).</div>
       }
     </div>
