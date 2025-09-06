@@ -20,17 +20,14 @@ import { PostService } from '../../services/post.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostCreateComponent {
-  // inject services
   private readonly formBuilder = inject(FormBuilder);
   private readonly postService = inject(PostService);
   private readonly router = inject(Router);
   private readonly notificationService = inject(NotificationService);
 
-  // signals for loading and error states
   protected readonly loading = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
 
-  // Define the form group with validators
   protected readonly postForm: FormGroup<{
     title: FormControl<string>;
     teaser: FormControl<string>;
