@@ -59,7 +59,7 @@
     <div class="form-actions">
       <button type="button" class="cancel-button" routerLink="/">Cancel</button>
       <button type="submit" class="submit-button" [disabled]="postForm.invalid || loading()">
-        @if(loading()) {
+        @if (loading()) {
           <span>Publishing...</span>
         } @else {
           <span>Publish Post</span>
