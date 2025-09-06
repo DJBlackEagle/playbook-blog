@@ -52,3 +52,15 @@ export const CREATE_POST = gql`
     }
   }
 `;
+
+export const UPDATE_POST = gql`
+  mutation UpdatePost($input: UpdateOnePostInput!) {
+    updateOnePost(input: $input) {
+      id
+      title
+      teaser
+      content
+      sources
+    }
+  }
+`;

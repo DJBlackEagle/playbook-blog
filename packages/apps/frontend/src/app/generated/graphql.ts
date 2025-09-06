@@ -1282,6 +1282,13 @@ export type CreatePostMutationVariables = Exact<{
 
 export type CreatePostMutation = { __typename?: 'Mutation', createOnePost: { __typename?: 'Post', id: string, title: string } };
 
+export type UpdatePostMutationVariables = Exact<{
+  input: UpdateOnePostInput;
+}>;
+
+
+export type UpdatePostMutation = { __typename?: 'Mutation', updateOnePost: { __typename?: 'Post', id: string, title: string, teaser: string, content: string, sources?: Array<string> | null } };
+
 export const LoginDocument = gql`
     mutation Login($identifier: String!, $password: String!) {
   login(loginInput: {identifier: $identifier, password: $password}) {
@@ -1413,6 +1420,28 @@ export const CreatePostDocument = gql`
   })
   export class CreatePostGQL extends Apollo.Mutation<CreatePostMutation, CreatePostMutationVariables> {
     override document = CreatePostDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const UpdatePostDocument = gql`
+    mutation UpdatePost($input: UpdateOnePostInput!) {
+  updateOnePost(input: $input) {
+    id
+    title
+    teaser
+    content
+    sources
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UpdatePostGQL extends Apollo.Mutation<UpdatePostMutation, UpdatePostMutationVariables> {
+    override document = UpdatePostDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
