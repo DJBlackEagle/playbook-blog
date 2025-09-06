@@ -36,14 +36,23 @@
   gap: 1rem;
 }
 
-.cancel-button, .confirm-button {
+.cancel-button,
+.confirm-button {
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.cancel-button:focus,
+.confirm-button:focus,
+.cancel-button:focus-visible,
+.confirm-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
 }
 
 .cancel-button {
@@ -65,11 +74,23 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
