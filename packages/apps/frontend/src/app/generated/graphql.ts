@@ -1266,14 +1266,14 @@ export type GetPostsQueryVariables = Exact<{
 }>;
 
 
-export type GetPostsQuery = { __typename?: 'Query', posts: { __typename?: 'PostConnection', totalCount: number, edges: Array<{ __typename?: 'PostEdge', node: { __typename?: 'Post', id: string, title: string, teaser: string, createdAt?: any | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage?: boolean | null, hasPreviousPage?: boolean | null, startCursor?: any | null, endCursor?: any | null } } };
+export type GetPostsQuery = { __typename?: 'Query', posts: { __typename?: 'PostConnection', totalCount: number, edges: Array<{ __typename?: 'PostEdge', node: { __typename?: 'Post', id: string, title: string, teaser: string, createdAt?: any | null, updatedAt?: any | null } }>, pageInfo: { __typename?: 'PageInfo', hasNextPage?: boolean | null, hasPreviousPage?: boolean | null, startCursor?: any | null, endCursor?: any | null } } };
 
 export type GetPostByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null } };
+export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, updatedAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null } };
 
 export type CreatePostMutationVariables = Exact<{
   input: CreateOnePostInput;
@@ -1368,6 +1368,7 @@ export const GetPostsDocument = gql`
         title
         teaser
         createdAt
+        updatedAt
       }
     }
     pageInfo {
@@ -1395,6 +1396,7 @@ export const GetPostByIdDocument = gql`
   post(id: $id) {
     id
     createdAt
+    updatedAt
     title
     teaser
     content

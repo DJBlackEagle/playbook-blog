@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { firstValueFrom, Subscription } from 'rxjs';
+import { hasPostBeenUpdated } from '../../../helper/post.helper';
 import {
   GetPostsGQL,
   GetPostsQuery,
@@ -123,5 +124,9 @@ export class PostListComponent implements OnInit, OnDestroy {
       before: pi.startCursor,
       sorting: [this.sort()],
     });
+  }
+
+  protected hasBeenUpdated(post: Partial<Post>): boolean {
+    return hasPostBeenUpdated(post);
   }
 }

@@ -38,6 +38,11 @@ export class LoginComponent {
     }),
   });
 
+  constructor() {
+    // For demo purposes, pre-fill the form with default credentials.
+    this.loginForm.setValue({ identifier: 'user', password: 'user123' });
+  }
+
   /**
    * Handles the form submission by calling the AuthService.
    */

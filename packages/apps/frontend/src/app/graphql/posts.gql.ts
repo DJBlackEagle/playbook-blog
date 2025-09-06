@@ -19,6 +19,7 @@ export const GET_POSTS = gql`
           title
           teaser
           createdAt
+          updatedAt
         }
       }
       pageInfo {
@@ -36,6 +37,7 @@ export const GET_POST_BY_ID = gql`
     post(id: $id) {
       id
       createdAt
+      updatedAt
       title
       teaser
       content

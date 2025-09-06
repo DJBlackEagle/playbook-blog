@@ -32,9 +32,24 @@
   margin-bottom: 1rem;
 }
 
+.date-info {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
 .post-date {
   color: #666;
   font-style: italic;
+  font-size: 0.8rem;
+}
+
+.updated-indicator {
+  font-weight: bold;
+  font-style: normal;
+  color: #007bff;
 }
 
 .post-link {
