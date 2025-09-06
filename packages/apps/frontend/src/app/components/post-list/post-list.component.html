@@ -23,7 +23,12 @@
           <p class="teaser">
             <em>{{ post.teaser }}</em>
           </p>
-          <small class="post-date">{{ post.createdAt | date: 'medium' }}</small>
+          <div class="date-info">
+            <small class="post-date">Published on {{ post.createdAt | date: 'mediumDate' }}</small>
+            @if (post.updatedAt && (post.updatedAt | date:'short') !== (post.createdAt | date:'short')) {
+              <small class="post-date"><span class="updated-indicator">Updated</span> on {{ post.updatedAt | date: 'mediumDate' }}</small>
+            }
+          </div>
         </li>
       </a>
     }

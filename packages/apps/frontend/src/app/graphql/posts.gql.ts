@@ -19,6 +19,7 @@ export const GET_POSTS = gql`
           title
           teaser
           createdAt
+          updatedAt
         }
       }
       pageInfo {
