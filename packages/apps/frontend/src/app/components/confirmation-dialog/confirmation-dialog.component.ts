@@ -5,7 +5,7 @@ import {
   effect,
   ElementRef,
   inject,
-  ViewChild,
+  viewChild,
 } from '@angular/core';
 import { ConfirmationDialogService } from '../../services/confirmation-dialog.service';
 
@@ -18,14 +18,13 @@ import { ConfirmationDialogService } from '../../services/confirmation-dialog.se
 })
 export class ConfirmationDialogComponent {
   readonly dialogService = inject(ConfirmationDialogService);
-
-  @ViewChild('cancelButton') cancelButton?: ElementRef<HTMLButtonElement>;
+  private readonly cancelButton = viewChild<ElementRef<HTMLButtonElement>>('cancelButton');
 
   constructor() {
     effect(() => {
       if (this.dialogService.state().visible) {
         setTimeout(() => {
-          this.cancelButton?.nativeElement.focus();
+          this.cancelButton()?.nativeElement.focus();
         }, 0);
       }
     });
