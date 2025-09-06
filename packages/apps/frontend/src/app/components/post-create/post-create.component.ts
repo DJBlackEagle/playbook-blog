@@ -71,12 +71,7 @@ export class PostCreateComponent {
       teaser: formValue.teaser,
       content: formValue.content,
       // Split sources string into an array, trim whitespace, and filter out empty strings
-      sources: formValue.sources
-        ? formValue.sources
-            .split(',')
-            .map((s: string) => s.trim())
-            .filter(Boolean)
-        : [],
+      sources: this.processSources(formValue.sources),
     };
 
     try {
@@ -89,5 +84,14 @@ export class PostCreateComponent {
     } finally {
       this.loading.set(false);
     }
+  }
+
+  private processSources(sources: string | null): string[] {
+    if (!sources) return [];
+
+    return sources
+      .split(',')
+      .map((s: string) => s.trim())
+      .filter(Boolean);
   }
 }
