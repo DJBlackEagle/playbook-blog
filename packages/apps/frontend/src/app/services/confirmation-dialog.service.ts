@@ -42,7 +42,11 @@ export class ConfirmationDialogService implements OnDestroy {
    */
   open(message: string): Promise<boolean> {
     if (this.pendingResolve) {
-      return Promise.reject(new Error('A confirmation dialog is already open.'));
+      return Promise.reject(
+        new Error(
+          'Cannot open confirmation dialog: another dialog is already open. Please close the existing dialog first.',
+        ),
+      );
     }
     this.state.set({ message, visible: true });
     return new Promise<boolean>((resolve) => {
