@@ -124,4 +124,8 @@ export class PostListComponent implements OnInit, OnDestroy {
       sorting: [this.sort()],
     });
   }
+
+  protected isUpdated(post: Partial<Post>): boolean {
+    return !!post.updatedAt && post.updatedAt !== post.createdAt;
+  }
 }
