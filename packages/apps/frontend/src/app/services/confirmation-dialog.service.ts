@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 interface DialogState {
   message: string;
@@ -12,6 +12,7 @@ interface DialogState {
 export class ConfirmationDialogService {
   readonly state = signal<DialogState>({ message: '', visible: false });
   private readonly choice$ = new Subject<boolean>();
+  private readonly destroy$ = new Subject<void>();
   private pendingResolve: ((value: boolean) => void) | null = null;
 
   /**
@@ -28,12 +29,12 @@ export class ConfirmationDialogService {
       this.pendingResolve = (confirmed: boolean) => {
         this.state.set({ message: '', visible: false });
         this.pendingResolve = null;
+        this.destroy$.next();
         resolve(confirmed);
       };
-      const sub = this.choice$.subscribe((confirmed) => {
+      this.choice$.pipe(takeUntil(this.destroy$)).subscribe((confirmed) => {
         if (this.pendingResolve) {
           this.pendingResolve(confirmed);
-          sub.unsubscribe();
         }
       });
     });
