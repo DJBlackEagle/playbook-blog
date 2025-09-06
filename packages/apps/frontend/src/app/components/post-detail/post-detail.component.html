@@ -22,7 +22,7 @@
       <div class="post-meta">
         <span>Published on {{ p.createdAt | date:'longDate' }}</span>
         @if (p.updatedAt && (p.updatedAt | date:'short') !== (p.createdAt | date:'short')) {
-          <span class="updated-date">Last updated on {{ p.updatedAt | date:'longDate' }}</span>
+          <span class="updated-date">Last updated on {{ p.updatedAt | date:'longDate' }} {{ p.updatedAt | date:'shortTime' }}</span>
         }
       </div>
 

@@ -26,7 +26,7 @@
           <div class="date-info">
             <small class="post-date">Published on {{ post.createdAt | date: 'mediumDate' }}</small>
             @if (post.updatedAt && (post.updatedAt | date:'short') !== (post.createdAt | date:'short')) {
-              <small class="post-date"><span class="updated-indicator">Updated</span> on {{ post.updatedAt | date: 'mediumDate' }}</small>
+              <small class="post-date"><span class="updated-indicator">Updated</span> on {{ post.updatedAt | date: 'medium' }}</small>
             }
           </div>
         </li>
