@@ -14,12 +14,8 @@ export class ConfirmationDialogService implements OnDestroy {
 
   /**
    * Lifecycle hook that is called when the service is destroyed.
-   * Cleans up any pending promise resolutions, completes internal observables,
-   * and releases resources to prevent memory leaks.
-   *
-   * - Resolves any pending confirmation dialog with `false` if unresolved.
-   * - Emits and completes the `destroy$` subject to notify subscribers.
-   * - Completes the `choice$` subject to clean up observers.
+   * If there is a pending promise resolution (e.g., from a confirmation dialog),
+   * it resolves the promise with `false` to indicate cancellation and cleans up the reference.
    */
   ngOnDestroy(): void {
     if (this.pendingResolve) {
