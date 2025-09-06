@@ -23,9 +23,9 @@ export class ConfirmationDialogComponent {
   constructor() {
     effect(() => {
       if (this.dialogService.state().visible) {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
           this.cancelButton()?.nativeElement.focus();
-        }, 0);
+        });
       }
     });
   }
