@@ -3,6 +3,7 @@ import { firstValueFrom } from 'rxjs';
 import {
   CreatePostGQL,
   CreatePostInput,
+  DeletePostGQL,
   Post,
   UpdatePostGQL,
   UpdatePostInput,
@@ -14,6 +15,7 @@ import {
 export class PostService {
   private readonly createPostGQL = inject(CreatePostGQL);
   private readonly updatePostGQL = inject(UpdatePostGQL);
+  private readonly deletePostGQL = inject(DeletePostGQL);
 
   /**
    * Creates a new post by executing the CreatePost mutation.
@@ -48,5 +50,17 @@ export class PostService {
       throw new Error('Failed to update post.');
     }
     return result.data.updateOnePost;
+  }
+
+  /**
+   * Deletes a post by its ID.
+   * @param id The ID of the post to delete.
+   * @returns A promise that resolves when the post is deleted.
+   */
+  async deletePost(id: string): Promise<void> {
+    const result = await firstValueFrom(this.deletePostGQL.mutate({ id }));
+    if (!result.data?.deleteOnePost) {
+      throw new Error('Failed to delete post.');
+    }
   }
 }
