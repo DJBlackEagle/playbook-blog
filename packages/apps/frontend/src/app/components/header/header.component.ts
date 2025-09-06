@@ -13,7 +13,7 @@ import { NavigationService } from '../../services/navigation.service';
 })
 export class HeaderComponent {
   private readonly navigationService = inject(NavigationService);
-  readonly authService = inject(AuthService);
+  protected readonly authService = inject(AuthService);
 
   /**
    * Handles the home link click.
