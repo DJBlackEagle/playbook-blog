@@ -1,5 +1,8 @@
 <div class="post-detail-container">
   <a routerLink="/" class="back-link">← Back to all posts</a>
+  @if (authService.isAuthenticated()) {
+    <a [routerLink]="['/posts', post()?.id, 'edit']" class="edit-button">Edit Post</a>
+  }
 
   @if (status() === 'loading') {
     <p>Loading post...</p>

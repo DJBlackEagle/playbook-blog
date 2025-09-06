@@ -6,6 +6,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { GetPostByIdGQL } from '../../generated/graphql';
 import { Nl2brPipe } from '../../pipes/nl2br.pipe';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -17,6 +18,7 @@ import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 export class PostDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly getPostByIdGQL = inject(GetPostByIdGQL);
+  protected readonly authService = inject(AuthService);
 
   private readonly postResult = toSignal(
     this.route.paramMap.pipe(

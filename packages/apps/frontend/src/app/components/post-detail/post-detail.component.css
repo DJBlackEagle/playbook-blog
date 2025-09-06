@@ -59,7 +59,7 @@ h1 {
 
 .back-link {
   display: inline-block;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   color: #007bff;
   text-decoration: none;
 }
@@ -70,4 +70,27 @@ h1 {
 
 .error {
   color: red;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.edit-button {
+  display: inline-block;
+  background-color: #17a2b8;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  margin-left: 1rem;
+}
+
+.edit-button:hover {
+  background-color: #138496;
 }

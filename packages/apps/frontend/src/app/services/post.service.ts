@@ -1,12 +1,19 @@
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { CreatePostGQL, CreatePostInput, Post } from '../generated/graphql';
+import {
+  CreatePostGQL,
+  CreatePostInput,
+  Post,
+  UpdatePostGQL,
+  UpdatePostInput,
+} from '../generated/graphql';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
   private readonly createPostGQL = inject(CreatePostGQL);
+  private readonly updatePostGQL = inject(UpdatePostGQL);
 
   /**
    * Creates a new post by executing the CreatePost mutation.
@@ -23,5 +30,23 @@ export class PostService {
       throw new Error('Failed to create post.');
     }
     return result.data.createOnePost;
+  }
+
+  /**
+   * Updates an existing post.
+   * @param id The ID of the post to update.
+   * @param updateInput The data to update.
+   * @returns A promise that resolves to the updated post.
+   */
+  async updatePost(id: string, updateInput: UpdatePostInput): Promise<Partial<Post>> {
+    const result = await firstValueFrom(
+      this.updatePostGQL.mutate({
+        input: { id, update: updateInput },
+      }),
+    );
+    if (!result.data?.updateOnePost) {
+      throw new Error('Failed to update post.');
+    }
+    return result.data.updateOnePost;
   }
 }
