@@ -1273,7 +1273,7 @@ export type GetPostByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null } };
+export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, updatedAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null } };
 
 export type CreatePostMutationVariables = Exact<{
   input: CreateOnePostInput;
@@ -1395,6 +1395,7 @@ export const GetPostByIdDocument = gql`
   post(id: $id) {
     id
     createdAt
+    updatedAt
     title
     teaser
     content

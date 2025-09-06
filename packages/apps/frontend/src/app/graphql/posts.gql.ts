@@ -36,6 +36,7 @@ export const GET_POST_BY_ID = gql`
     post(id: $id) {
       id
       createdAt
+      updatedAt
       title
       teaser
       content

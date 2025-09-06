@@ -18,7 +18,13 @@
   @if (post(); as p) {
     <article>
       <h1>{{ p.title }}</h1>
-      <p class="post-meta">Published on {{ p.createdAt | date: 'longDate' }}</p>
+      
+      <div class="post-meta">
+        <span>Published on {{ p.createdAt | date:'longDate' }}</span>
+        @if (p.updatedAt && (p.updatedAt | date:'short') !== (p.createdAt | date:'short')) {
+          <span class="updated-date">Last updated on {{ p.updatedAt | date:'longDate' }}</span>
+        }
+      </div>
 
       <div class="teaser">
         <p>
