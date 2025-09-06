@@ -7,6 +7,7 @@ import { GetPostByIdGQL } from '../../generated/graphql';
 import { Nl2brPipe } from '../../pipes/nl2br.pipe';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { AuthService } from '../../services/auth.service';
+import { ConfirmationDialogService } from '../../services/confirmation-dialog.service';
 import { NotificationService } from '../../services/notification.service';
 import { PostService } from '../../services/post.service';
 
@@ -22,6 +23,7 @@ export class PostDetailComponent {
   private readonly getPostByIdGQL = inject(GetPostByIdGQL);
   private readonly postService = inject(PostService);
   private readonly notificationService = inject(NotificationService);
+  private readonly confirmationDialogService = inject(ConfirmationDialogService);
   private readonly router = inject(Router);
   protected readonly authService = inject(AuthService);
 
@@ -50,15 +52,15 @@ export class PostDetailComponent {
     const currentPost = this.post();
     if (!currentPost) return;
 
-    const confirmed = window.confirm(
+    const confirmed = await this.confirmationDialogService.open(
       `Are you sure you want to delete the post "${currentPost.title}"? This action cannot be undone.`,
     );
 
     if (confirmed) {
       try {
         await this.postService.deletePost(currentPost.id);
-        this.notificationService.show('Post deleted successfully!');
         await this.router.navigate(['/']);
+        this.notificationService.show('Post deleted successfully!');
       } catch (error) {
         this.notificationService.show('Failed to delete the post.', 'error');
         console.error('Delete post failed:', error);
