@@ -1275,6 +1275,13 @@ export type GetPostByIdQueryVariables = Exact<{
 
 export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null } };
 
+export type CreatePostMutationVariables = Exact<{
+  input: CreateOnePostInput;
+}>;
+
+
+export type CreatePostMutation = { __typename?: 'Mutation', createOnePost: { __typename?: 'Post', id: string, title: string } };
+
 export const LoginDocument = gql`
     mutation Login($identifier: String!, $password: String!) {
   login(loginInput: {identifier: $identifier, password: $password}) {
@@ -1387,6 +1394,25 @@ export const GetPostByIdDocument = gql`
   })
   export class GetPostByIdGQL extends Apollo.Query<GetPostByIdQuery, GetPostByIdQueryVariables> {
     override document = GetPostByIdDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const CreatePostDocument = gql`
+    mutation CreatePost($input: CreateOnePostInput!) {
+  createOnePost(input: $input) {
+    id
+    title
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CreatePostGQL extends Apollo.Mutation<CreatePostMutation, CreatePostMutationVariables> {
+    override document = CreatePostDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
