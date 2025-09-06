@@ -17,6 +17,8 @@
     
     <div class="auth-section">
       @if (authService.isAuthenticated()) {
+        <a routerLink="/posts/create" class="nav-link create-link">Create Post</a>
+        
         @if (authService.currentUser(); as user) {
           <span class="welcome-message">Welcome, {{ user.username }}</span>
         }

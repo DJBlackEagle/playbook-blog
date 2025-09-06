@@ -1,0 +1,70 @@
+<div class="form-container">
+  <form class="post-form" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <h2>Create New Post</h2>
+
+    @if (errorMessage()) {
+      <div class="error-message general-error">{{ errorMessage() }}</div>
+    }
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        placeholder="A catchy title for your post"
+        formControlName="title"
+      />
+      @if (postForm.get('title')?.invalid && postForm.get('title')?.touched) {
+        <div class="error-message">Title is required (3-100 characters).</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="teaser">Teaser</label>
+      <textarea
+        id="teaser"
+        rows="3"
+        placeholder="A short, engaging teaser"
+        formControlName="teaser"
+      ></textarea>
+      @if (postForm.get('teaser')?.invalid && postForm.get('teaser')?.touched) {
+        <div class="error-message">Teaser is required (min. 10 characters).</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea
+        id="content"
+        rows="10"
+        placeholder="Write your main content here..."
+        formControlName="content"
+      ></textarea>
+      @if (postForm.get('content')?.invalid && postForm.get('content')?.touched) {
+        <div class="error-message">Content is required (min. 10 characters).</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="sources">Sources (optional)</label>
+      <input
+        id="sources"
+        type="text"
+        placeholder="e.g., https://example.com, https://another.com"
+        formControlName="sources"
+      />
+      <small>Separate multiple sources with a comma.</small>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="cancel-button" routerLink="/">Cancel</button>
+      <button type="submit" class="submit-button" [disabled]="postForm.invalid || loading()">
+        @if (loading()) {
+          <span>Publishing...</span>
+        } @else {
+          <span>Publish Post</span>
+        }
+      </button>
+    </div>
+  </form>
+</div>

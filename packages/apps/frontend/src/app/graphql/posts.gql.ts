@@ -43,3 +43,12 @@ export const GET_POST_BY_ID = gql`
     }
   }
 `;
+
+export const CREATE_POST = gql`
+  mutation CreatePost($input: CreateOnePostInput!) {
+    createOnePost(input: $input) {
+      id
+      title
+    }
+  }
+`;
