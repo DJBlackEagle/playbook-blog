@@ -68,7 +68,7 @@ export class PostDetailComponent {
     }
   }
 
-  protected isPostUpdated(post: Partial<Post>): boolean {
+  protected hasBeenUpdated(post: Partial<Post>): boolean {
     return !!post.updatedAt && post.updatedAt !== post.createdAt;
   }
 }

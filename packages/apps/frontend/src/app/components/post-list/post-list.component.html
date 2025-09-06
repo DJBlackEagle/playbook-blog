@@ -25,7 +25,7 @@
           </p>
           <div class="date-info">
             <small class="post-date">Published on {{ post.createdAt | date: 'mediumDate' }}</small>
-            @if (isUpdated(post)) {
+            @if (hasBeenUpdated(post)) {
               <small class="post-date"><span class="updated-indicator">Updated</span> on {{ post.updatedAt | date: 'medium' }}</small>
             }
           </div>

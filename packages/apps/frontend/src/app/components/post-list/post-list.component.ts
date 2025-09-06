@@ -125,7 +125,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     });
   }
 
-  protected isUpdated(post: Partial<Post>): boolean {
+  protected hasBeenUpdated(post: Partial<Post>): boolean {
     return !!post.updatedAt && post.updatedAt !== post.createdAt;
   }
 }
