@@ -94,3 +94,28 @@ h1 {
 .edit-button:hover {
   background-color: #138496;
 }
+
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.delete-button {
+  display: inline-block;
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}

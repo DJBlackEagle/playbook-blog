@@ -1289,6 +1289,13 @@ export type UpdatePostMutationVariables = Exact<{
 
 export type UpdatePostMutation = { __typename?: 'Mutation', updateOnePost: { __typename?: 'Post', id: string, title: string, teaser: string, content: string, sources?: Array<string> | null } };
 
+export type DeletePostMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeletePostMutation = { __typename?: 'Mutation', deleteOnePost: { __typename?: 'PostDeleteResponse', id?: string | null } };
+
 export const LoginDocument = gql`
     mutation Login($identifier: String!, $password: String!) {
   login(loginInput: {identifier: $identifier, password: $password}) {
@@ -1442,6 +1449,24 @@ export const UpdatePostDocument = gql`
   })
   export class UpdatePostGQL extends Apollo.Mutation<UpdatePostMutation, UpdatePostMutationVariables> {
     override document = UpdatePostDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const DeletePostDocument = gql`
+    mutation DeletePost($id: ID!) {
+  deleteOnePost(input: {id: $id}) {
+    id
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class DeletePostGQL extends Apollo.Mutation<DeletePostMutation, DeletePostMutationVariables> {
+    override document = DeletePostDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
