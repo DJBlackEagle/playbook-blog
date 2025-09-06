@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
-import { GetPostByIdGQL } from '../../generated/graphql';
+import { GetPostByIdGQL, Post } from '../../generated/graphql';
 import { Nl2brPipe } from '../../pipes/nl2br.pipe';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { AuthService } from '../../services/auth.service';
@@ -66,5 +66,9 @@ export class PostDetailComponent {
         console.error('Delete post failed:', error);
       }
     }
+  }
+
+  protected isPostUpdated(post: Partial<Post>): boolean {
+    return !!post.updatedAt && post.updatedAt !== post.createdAt;
   }
 }
