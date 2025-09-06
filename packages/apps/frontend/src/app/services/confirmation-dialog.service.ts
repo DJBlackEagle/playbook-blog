@@ -1,5 +1,4 @@
 import { Injectable, OnDestroy, signal } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
 
 interface DialogState {
   message: string;
@@ -11,8 +10,6 @@ interface DialogState {
 })
 export class ConfirmationDialogService implements OnDestroy {
   readonly state = signal<DialogState>({ message: '', visible: false });
-  private readonly choice$ = new Subject<boolean>();
-  private readonly destroy$ = new Subject<void>();
   private pendingResolve: ((value: boolean) => void) | null = null;
 
   /**
@@ -29,10 +26,6 @@ export class ConfirmationDialogService implements OnDestroy {
       this.pendingResolve(false);
       this.pendingResolve = null;
     }
-
-    this.destroy$.next();
-    this.destroy$.complete();
-    this.choice$.complete();
   }
 
   /**
@@ -53,14 +46,8 @@ export class ConfirmationDialogService implements OnDestroy {
       this.pendingResolve = (confirmed: boolean) => {
         this.state.set({ message: '', visible: false });
         this.pendingResolve = null;
-        this.destroy$.next();
         resolve(confirmed);
       };
-      this.choice$.pipe(takeUntil(this.destroy$)).subscribe((confirmed) => {
-        if (this.pendingResolve) {
-          this.pendingResolve(confirmed);
-        }
-      });
     });
   }
 
@@ -68,13 +55,13 @@ export class ConfirmationDialogService implements OnDestroy {
    * Called when the user clicks the "Confirm" button.
    */
   confirm(): void {
-    this.choice$.next(true);
+    this.pendingResolve?.(true);
   }
 
   /**
    * Called when the user clicks the "Cancel" button.
    */
   cancel(): void {
-    this.choice$.next(false);
+    this.pendingResolve?.(false);
   }
 }
