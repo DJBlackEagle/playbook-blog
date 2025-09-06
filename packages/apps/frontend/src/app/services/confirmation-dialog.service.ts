@@ -12,6 +12,7 @@ interface DialogState {
 export class ConfirmationDialogService {
   readonly state = signal<DialogState>({ message: '', visible: false });
   private readonly choice$ = new Subject<boolean>();
+  private pendingResolve: ((value: boolean) => void) | null = null;
 
   /**
    * Opens the confirmation dialog with a specific message.
@@ -19,12 +20,21 @@ export class ConfirmationDialogService {
    * @returns A promise that resolves with `true` if the user confirms, and `false` otherwise.
    */
   open(message: string): Promise<boolean> {
+    if (this.pendingResolve) {
+      return Promise.reject(new Error('A confirmation dialog is already open.'));
+    }
     this.state.set({ message, visible: true });
-    return new Promise((resolve) => {
-      const sub = this.choice$.subscribe((confirmed) => {
+    return new Promise<boolean>((resolve) => {
+      this.pendingResolve = (confirmed: boolean) => {
         this.state.set({ message: '', visible: false });
-        sub.unsubscribe();
+        this.pendingResolve = null;
         resolve(confirmed);
+      };
+      const sub = this.choice$.subscribe((confirmed) => {
+        if (this.pendingResolve) {
+          this.pendingResolve(confirmed);
+          sub.unsubscribe();
+        }
       });
     });
   }
