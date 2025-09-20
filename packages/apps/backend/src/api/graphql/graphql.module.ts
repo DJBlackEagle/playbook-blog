@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppInfoModule } from './app-info/app-info.module';
+import { RoleModule } from './roles/role.module';
 import { SeederModule } from './seeder/seeder.module';
 
 /**
@@ -13,6 +14,6 @@ import { SeederModule } from './seeder/seeder.module';
  * imports: [GraphqlModule]
  */
 @Module({
-  imports: [AppInfoModule, SeederModule],
+  imports: [AppInfoModule, SeederModule, RoleModule],
 })
 export class GraphqlModule {}

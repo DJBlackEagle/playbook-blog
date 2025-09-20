@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { SeederInput } from './inputs/seeder.input';
 import { Seeder } from './models/sedder.model';
+import { SeederRoleService } from './seeder-role/seeder-role.service';
 
 /**
  * Service for handling seeding operations.
@@ -12,7 +13,7 @@ export class SeederService {
   /**
    * Constructs the SeederService.
    */
-  constructor() {}
+  constructor(private readonly seederRoleService: SeederRoleService) {}
 
   /**
    * Seeds initial data and returns metadata about the operation.
@@ -24,6 +25,8 @@ export class SeederService {
     const data: Seeder = new Seeder();
     data.startedAt = new Date();
     data.nodeEnv = process.env.NODE_ENV;
+
+    if (seederInput.seedRoles) data.role = await this.seederRoleService.seed();
 
     data.completedAt = new Date();
 
