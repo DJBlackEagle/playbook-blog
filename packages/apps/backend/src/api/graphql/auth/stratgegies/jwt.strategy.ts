@@ -7,14 +7,32 @@ import { CONFIG } from '../../../../shared';
 import { User } from '../../user/models/user.model';
 import { UserService } from '../../user/user.service';
 
+/**
+ * Interface representing the structure of a JWT payload.
+ */
 export interface JwtPayload {
+  /** The user ID (subject). */
   sub: string;
+  /** The unique token identifier. */
   token_id: string;
+  /** The username associated with the token. */
   username: string;
 }
 
+/**
+ * Passport JWT strategy for validating and authenticating users in GraphQL context.
+ *
+ * Uses configuration values for secret, issuer, and audience. Validates the JWT payload,
+ * checks user existence and login status, and transforms the user entity for use in resolvers.
+ */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
+  /**
+   * Constructs the JwtStrategy with configuration and user service dependencies.
+   *
+   * @param configService - Service for accessing environment/config values.
+   * @param users - Service for user entity operations.
+   */
   constructor(
     private readonly configService: ConfigService,
     private readonly users: UserService,
@@ -37,6 +55,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
+  /**
+   * Validates the JWT payload and returns the authenticated user.
+   *
+   * @param payload - The decoded JWT payload.
+   * @returns The authenticated user model.
+   * @throws UnauthorizedException if the user does not exist or is not logged in.
+   */
   async validate(payload: JwtPayload): Promise<User> {
     const user = await this.users.findById(payload.sub);
     if (!user) throw new UnauthorizedException();

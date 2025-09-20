@@ -4,11 +4,22 @@ import { Query, SchemaTypes, Types } from 'mongoose';
 import { BaseEntity } from '../../../../shared';
 import { PostEntityModel } from '../../post/entities/post.entity';
 
+/**
+ * Mongoose entity representing a comment document.
+ *
+ * Contains the comment content and a reference to the associated post.
+ */
 @Schema({ timestamps: true })
 class CommentEntity extends BaseEntity {
+  /**
+   * Content of the comment.
+   */
   @Prop({ required: true })
   content: string;
 
+  /**
+   * Reference to the associated post (ObjectId).
+   */
   @Prop({
     type: SchemaTypes.ObjectId,
     ref: PostEntityModel.name,
@@ -33,6 +44,9 @@ CommentEntitySchema.pre('find', function (this: Query<any, any>): void {
   }
 });
 
+/**
+ * Mongoose model definition for the Comment entity.
+ */
 const CommentEntityModel: ModelDefinition = {
   name: 'Comment',
   schema: CommentEntitySchema,

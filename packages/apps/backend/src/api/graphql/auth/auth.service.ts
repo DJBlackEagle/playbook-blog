@@ -13,10 +13,23 @@ import { Login } from './models/login.model';
 import { Logout } from './models/logout.model';
 import { JwtPayload } from './stratgegies/jwt.strategy';
 
+/**
+ * Service for handling authentication logic, including login, logout, and token refresh.
+ *
+ * Integrates with user, JWT, and encryption services to manage authentication flows.
+ */
 @Injectable()
 export class AuthService {
   private readonly logger: Logger = new Logger(AuthService.name);
 
+  /**
+   * Constructs the AuthService.
+   *
+   * @param userService - Service for user entity operations.
+   * @param jwtService - Service for JWT operations.
+   * @param configService - Service for accessing configuration values.
+   * @param encryptionService - Service for password and token encryption/verification.
+   */
   constructor(
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
@@ -24,6 +37,12 @@ export class AuthService {
     private readonly encryptionService: EncryptionService,
   ) {}
 
+  /**
+   * Signs and returns a JWT access token for the given payload.
+   *
+   * @param payload - The JWT payload to sign.
+   * @returns {Promise<string>} The signed JWT access token.
+   */
   private async signAccessToken(payload: JwtPayload): Promise<string> {
     this.logger.debug('signAccessToken called');
 
@@ -47,6 +66,12 @@ export class AuthService {
     });
   }
 
+  /**
+   * Signs and returns a JWT refresh token for the given payload.
+   *
+   * @param payload - The JWT payload to sign.
+   * @returns {Promise<string>} The signed JWT refresh token.
+   */
   private async signRefreshToken(payload: JwtPayload): Promise<string> {
     this.logger.debug('signRefreshToken called');
 
@@ -70,6 +95,15 @@ export class AuthService {
     });
   }
 
+  /**
+   * Issues a new access/refresh token pair for the given user.
+   *
+   * Hashes and stores the refresh token for the user.
+   *
+   * @param user - The user entity for whom to issue tokens.
+   * @returns {Promise<Login>} The login response containing tokens and user info.
+   * @throws Error if the refresh token hash cannot be set.
+   */
   private async issueTokenPair(user: UserEntity): Promise<Login> {
     this.logger.debug('issueTokenPair called');
 
@@ -97,6 +131,13 @@ export class AuthService {
     };
   }
 
+  /**
+   * Authenticates a user and issues a new access/refresh token pair.
+   *
+   * @param loginInput - The login credentials (identifier and password).
+   * @returns {Promise<Login>} The login response containing tokens and user info.
+   * @throws UnauthorizedException if credentials are invalid.
+   */
   async login(loginInput: LoginInput): Promise<Login> {
     this.logger.debug('login called');
 
@@ -116,6 +157,12 @@ export class AuthService {
     return response;
   }
 
+  /**
+   * Logs out a user by unsetting their refresh token.
+   *
+   * @param userId - The user's unique identifier.
+   * @returns {Promise<Logout>} The logout response indicating success or failure.
+   */
   async logout(userId: string): Promise<Logout> {
     this.logger.debug('logout called');
 
@@ -126,6 +173,13 @@ export class AuthService {
     return { success: true };
   }
 
+  /**
+   * Refreshes the access and refresh tokens using a valid refresh token.
+   *
+   * @param refreshTokenInput - The input containing the refresh token.
+   * @returns {Promise<Login>} The new login response with refreshed tokens.
+   * @throws UnauthorizedException if the refresh token is invalid or user not found.
+   */
   async refreshToken(refreshTokenInput: RefreshTokenInput): Promise<Login> {
     this.logger.debug('refreshToken called');
 

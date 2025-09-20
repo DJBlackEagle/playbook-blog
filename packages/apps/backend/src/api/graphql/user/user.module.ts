@@ -16,6 +16,12 @@ const nestjsQueryMongooseModule = NestjsQueryMongooseModule.forFeature([
   },
 ]);
 
+/**
+ * NestJS module for user management and GraphQL integration.
+ *
+ * Registers the user entity, service, and GraphQL resolvers for CRUD operations.
+ * Integrates with Mongoose and encryption modules for persistence and security.
+ */
 @Module({
   imports: [
     nestjsQueryMongooseModule,

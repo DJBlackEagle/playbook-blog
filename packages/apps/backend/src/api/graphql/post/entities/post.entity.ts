@@ -3,17 +3,34 @@ import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Query } from 'mongoose';
 import { BaseEntity } from '../../../../shared';
 
+/**
+ * Mongoose entity representing a blog post document.
+ *
+ * Contains title, teaser, content, and sources for a post.
+ */
 @Schema({ timestamps: true })
 class PostEntity extends BaseEntity {
+  /**
+   * Unique title of the post.
+   */
   @Prop({ unique: true, required: true })
   title: string;
 
+  /**
+   * Short teaser or summary of the post.
+   */
   @Prop({ required: true })
   teaser: string;
 
+  /**
+   * Main content of the post.
+   */
   @Prop({ required: true })
   content: string;
 
+  /**
+   * List of source URLs or references for the post.
+   */
   @Prop({ type: [String], default: [] })
   sources: string[];
 }
@@ -43,6 +60,9 @@ PostEntitySchema.virtual('comments', {
 PostEntitySchema.set('toJSON', { virtuals: true });
 PostEntitySchema.set('toObject', { virtuals: true });
 
+/**
+ * Mongoose model definition for the Post entity.
+ */
 const PostEntityModel: ModelDefinition = {
   name: 'Post',
   schema: PostEntitySchema,

@@ -8,6 +8,11 @@ import { Expose } from 'class-transformer';
 import { BaseModel } from '../../../../shared';
 import { Role } from '../../roles/models/role.model';
 
+/**
+ * GraphQL model representing a user.
+ *
+ * Contains user identity, contact, last login, and role information.
+ */
 @ObjectType('User', { description: 'User model' })
 @QueryOptions({ defaultFilter: { deleted: { is: false } } })
 @Relation('role', () => Role, {
@@ -17,16 +22,25 @@ import { Role } from '../../roles/models/role.model';
   remove: { enabled: true },
 })
 export class User extends BaseModel {
+  /**
+   * Username of the user.
+   */
   @Field({ description: 'Username of the user' })
   @FilterableField()
   @Expose()
   username: string;
 
+  /**
+   * Email address of the user.
+   */
   @Field({ description: 'Email address of the user' })
   @FilterableField()
   @Expose()
   email: string;
 
+  /**
+   * Timestamp of the user's last login.
+   */
   @Field(() => GraphQLISODateTime, {
     nullable: true,
     description: "Timestamp of the user's last login",
@@ -34,6 +48,9 @@ export class User extends BaseModel {
   @Expose()
   lastLogin?: Date;
 
+  /**
+   * Role of the user.
+   */
   @Field(() => Role, { nullable: true, description: 'Role of the user' })
   @Expose()
   role?: Role;

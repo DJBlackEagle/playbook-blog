@@ -9,6 +9,11 @@ import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './stratgegies/jwt.strategy';
 
+/**
+ * NestJS module for authentication and authorization.
+ *
+ * Registers authentication services, resolvers, strategies, and integrates with user and encryption modules.
+ */
 @Module({
   imports: [
     ConfigModule,

@@ -1,3 +1,9 @@
+/**
+ * Application configuration constants.
+ *
+ * Contains environment variable names and their default values for various
+ * application settings such as host, JWT, Argon2, and password pepper.
+ */
 const CONFIG = {
   HOST: {
     NAME: 'HOST',

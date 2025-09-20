@@ -8,6 +8,16 @@ import { Query, SchemaTypes, Types } from 'mongoose';
 import { EncryptionService } from '../../../../modules/encryption';
 import { BaseEntity } from '../../../../shared';
 
+/**
+ * Middleware function to hash the password field during update operations.
+ *
+ * This function checks if a password is present in the update payload (directly, in `$set`, or in `$setOnInsert`).
+ * If a password is found, it hashes the password using the `EncryptionService` before the update is applied.
+ * The hashed password replaces the plain text password in the update object.
+ *
+ * @param next - Callback to proceed to the next middleware or operation.
+ * @returns A promise that resolves when the password has been hashed and the update can proceed.
+ */
 async function hashOnUpdate(this: any, next: () => void): Promise<void> {
   const update = this.getUpdate() || {};
   const pwd =
@@ -23,26 +33,52 @@ async function hashOnUpdate(this: any, next: () => void): Promise<void> {
   next();
 }
 
+/**
+ * Mongoose entity representing a user document.
+ *
+ * Contains authentication, contact, and role information for a user.
+ */
 @Schema({ timestamps: true })
 class UserEntity extends BaseEntity {
+  /**
+   * Unique username for the user.
+   */
   @Prop({ unique: true, required: true })
   username: string;
 
+  /**
+   * Unique email address for the user.
+   */
   @Prop({ unique: true, required: true })
   email: string;
 
+  /**
+   * Hashed password for the user.
+   */
   @Prop({ required: true })
   password: string;
 
+  /**
+   * Timestamp of the user's last login.
+   */
   @Prop()
   lastLogin: Date;
 
+  /**
+   * Token identifier for session or JWT tracking.
+   */
   @Prop()
   tokenIdentifier: string;
 
+  /**
+   * Hashed refresh token for the user.
+   */
   @Prop()
   refreshTokenHash: string;
 
+  /**
+   * Reference to the user's role (ObjectId).
+   */
   @Prop({ type: SchemaTypes.ObjectId, ref: 'Role', required: false })
   role: Types.ObjectId;
 }
@@ -75,6 +111,9 @@ UserEntitySchema.pre('findOneAndUpdate', hashOnUpdate);
 UserEntitySchema.pre('updateOne', hashOnUpdate);
 UserEntitySchema.pre('updateMany', hashOnUpdate);
 
+/**
+ * Mongoose model definition for the User entity.
+ */
 const UserEntityModel: ModelDefinition = {
   name: 'User',
   schema: UserEntitySchema,

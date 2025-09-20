@@ -6,8 +6,19 @@ import { Comment } from '../../comment/models/comment.model';
 import { PostEntity } from '../../post/entities/post.entity';
 import { SeederComment } from './seeder-comment.model';
 
+/**
+ * Service for seeding the database with example comments for posts.
+ *
+ * Handles deletion of existing comments and creation of new ones for demo or test purposes.
+ */
 @Injectable()
 export class SeederCommentService {
+  /**
+   * Constructs the SeederCommentService.
+   *
+   * @param commentService - Query service for comment entities.
+   * @param postService - Query service for post entities.
+   */
   constructor(
     @InjectQueryService(CommentEntity)
     private commentService: QueryService<CommentEntity>,
@@ -15,6 +26,13 @@ export class SeederCommentService {
     private postService: QueryService<PostEntity>,
   ) {}
 
+  /**
+   * Seeds the database with example comments for specific posts.
+   *
+   * Deletes all existing comments, then creates new ones for demo posts.
+   *
+   * @returns {Promise<SeederComment>} The result of the seeding operation, including status and errors.
+   */
   async seed(): Promise<SeederComment> {
     const data: SeederComment = new SeederComment();
     data.startedAt = new Date();
