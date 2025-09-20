@@ -41,6 +41,25 @@ Instructions for generating high-quality Angular applications with TypeScript, u
 - Keep templates clean and logic in component classes or services
 - Use Angular directives and pipes for reusable functionality
 
+#### JSDoc Placement with Decorators (Best Practice)
+
+When documenting Angular classes (such as components, services, or directives) with JSDoc, always place the JSDoc comment above the decorators and the class. This ensures that documentation tools and IDEs correctly associate the comment with the class.
+
+**Example:**
+
+```typescript
+/**
+ * This component displays user information.
+ */
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+})
+export class UserComponent { ... }
+```
+
+Placing the JSDoc above the decorator is the recommended and most widely accepted approach.
+
 ### Styling
 
 - Use Angular's component-level CSS encapsulation (default: ViewEncapsulation.Emulated)

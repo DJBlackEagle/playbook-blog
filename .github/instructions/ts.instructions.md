@@ -33,6 +33,82 @@ applyTo: '**/*.ts'
 - Document parameters, return values, and exceptions.
 - Document complex logic and decisions with comments
 
+### JSDoc Placement with Decorators (Best Practice)
+
+When documenting any decorated element, always place the JSDoc comment above the decorator and the element. This ensures that documentation tools and IDEs correctly associate the comment with the decorated element.
+
+**Examples:**
+
+// Class
+
+```typescript
+/**
+ * This class does something important.
+ */
+@SomeDecorator()
+export class MyClass { ... }
+```
+
+// Method
+
+```typescript
+class MyClass {
+	/**
+	 * This method performs an action.
+	 */
+	@Log()
+	doSomething(): void { ... }
+}
+```
+
+// Property
+
+```typescript
+class MyClass {
+  /**
+   * This property is injected.
+   */
+  @Inject()
+  private service: SomeService;
+}
+```
+
+// Accessor (getter)
+
+```typescript
+class MyClass {
+  private _value: number;
+
+  /**
+   * Gets the value.
+   */
+  @Log()
+  get value(): number {
+    return this._value;
+  }
+}
+```
+
+// Parameter (constructor or method)
+
+```typescript
+class MyClass {
+  constructor(
+    /** The user service to inject. */
+    @Inject() private userService: UserService,
+  ) {}
+
+  doSomething(
+    /** The ID of the user. */
+    @Param('id') id: string,
+  ) {
+    /* ... */
+  }
+}
+```
+
+Placing the JSDoc above the decorator is the recommended and most widely accepted approach for all decorated elements (class, method, property, accessor, parameter).
+
 ## Testing
 
 - Write unit tests for all functions, classes, components, services, and pipes.

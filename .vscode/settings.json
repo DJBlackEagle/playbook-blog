@@ -13,6 +13,7 @@
   "files.encoding": "utf8",
   "files.eol": "\n",
   "git.allowNoVerifyCommit": false,
+  "chat.promptFiles": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     { "file": ".github/prompts/conventional-commit-message.prompt.md" }
   ],
