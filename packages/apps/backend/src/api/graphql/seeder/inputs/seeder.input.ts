@@ -3,13 +3,14 @@ import { Field, InputType } from '@nestjs/graphql';
 /**
  * GraphQL input type for seeding data in the application database.
  *
- * Provides boolean flags to control which data sets (roles, users) should be seeded.
+ * Provides boolean flags to control which data sets (roles, users, posts) should be seeded.
  * Extend this input to add more seeding options as needed for future features.
  *
  * @example
  * {
  *   seedRoles: true,
- *   seedUsers: false
+ *   seedUsers: false,
+ *   seedPosts: true
  * }
  */
 @InputType({ description: 'Input for seeding data' })
@@ -37,4 +38,16 @@ export class SeederInput {
     defaultValue: false,
   })
   seedUsers?: boolean;
+
+  /**
+   * If true, post data will be seeded into the database.
+   * Defaults to false if not provided.
+   * @example true
+   */
+  @Field(() => Boolean, {
+    description: 'Flag to seed posts',
+    nullable: true,
+    defaultValue: false,
+  })
+  seedPosts?: boolean;
 }

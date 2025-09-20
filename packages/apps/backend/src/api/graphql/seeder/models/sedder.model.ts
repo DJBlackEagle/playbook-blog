@@ -1,11 +1,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { SeederPost } from '../seeder-post/seeder-post.model';
 import { SeederRole } from '../seeder-role/seeder-role.model';
 import { SeederUser } from '../seeder-user/seeder-user.model';
 
 /**
  * GraphQL object type representing the result and metadata of a seeding operation.
  *
- * Contains timestamps, environment, and details about seeded roles, users.
+ * Contains timestamps, environment, and details about seeded roles, users, and posts.
  * Extend this model to include additional seeding result information as needed.
  *
  * @example
@@ -14,7 +15,8 @@ import { SeederUser } from '../seeder-user/seeder-user.model';
  *   completedAt: new Date('2025-09-17T10:00:10Z'),
  *   nodeEnv: 'development',
  *   role: { ... },
- *   user: { ... }
+ *   user: { ... },
+ *   post: { ... }
  * }
  */
 @ObjectType({ description: 'Seeder model for managing seeding operations' })
@@ -69,4 +71,15 @@ export class Seeder {
     nullable: true,
   })
   user?: SeederUser;
+
+  /**
+   * Post information associated with the seeding operation.
+   * Contains details about the post that was seeded. Optional.
+   * @example { title: 'Welcome', content: 'Hello world!' }
+   */
+  @Field(() => SeederPost, {
+    description: 'Post information for the seeding operation',
+    nullable: true,
+  })
+  post?: SeederPost;
 }
