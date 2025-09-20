@@ -55,6 +55,25 @@ RoleEntitySchema.pre('find', function (this: Query<any, any>): void {
 });
 
 /**
+ * Virtual field to populate users associated with this role.
+ *
+ * This sets up a virtual relationship for Mongoose population, allowing you to retrieve all users
+ * that reference this role via the 'role' field in the User model.
+ *
+ * @see https://mongoosejs.com/docs/populate.html#populate-virtuals
+ * @property {Object} users - The users that have this role assigned.
+ * @virtual
+ */
+RoleEntitySchema.virtual('users', {
+  ref: 'User',
+  localField: '_id',
+  foreignField: 'role',
+});
+
+RoleEntitySchema.set('toJSON', { virtuals: true });
+RoleEntitySchema.set('toObject', { virtuals: true });
+
+/**
  * Mongoose model definition for the Role entity.
  */
 const RoleEntityModel: ModelDefinition = {

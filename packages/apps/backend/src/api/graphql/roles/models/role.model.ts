@@ -1,6 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { QueryOptions } from '@ptc-org/nestjs-query-graphql';
+import { CursorConnection, QueryOptions } from '@ptc-org/nestjs-query-graphql';
 import { BaseModel } from '../../../../shared';
+import { User } from '../../user/models/user.model';
 
 /**
  * Role GraphQL model.
@@ -11,6 +12,10 @@ import { BaseModel } from '../../../../shared';
  */
 @ObjectType('Role', { description: 'Role model' })
 @QueryOptions({ defaultFilter: { deleted: { is: false } } })
+@CursorConnection('users', () => User, {
+  description: 'Users associated with the role',
+  nullable: true,
+})
 export class Role extends BaseModel {
   /**
    * Name of the role.
@@ -29,4 +34,10 @@ export class Role extends BaseModel {
    */
   @Field({ description: 'Indicates if the role is a system role' })
   isSystemRole: boolean;
+
+  @Field(() => [User], {
+    nullable: true,
+    description: 'Users associated with this role',
+  })
+  users?: User[];
 }
