@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppInfoModule } from './app-info/app-info.module';
+import { AuthModule } from './auth/auth.module';
 import { CommentModule } from './comment/comment.module';
 import { PostModule } from './post/post.module';
 import { RoleModule } from './roles/role.module';
@@ -24,6 +25,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     PostModule,
     CommentModule,
+    AuthModule,
   ],
 })
 export class GraphqlModule {}

@@ -6,6 +6,7 @@ import { UserEntity, UserEntityModel } from './entities/user.entity';
 import { CreateUserInput } from './inputs/create-user.input';
 import { UpdateUserInput } from './inputs/update-user.input';
 import { User } from './models/user.model';
+import { UserService } from './user.service';
 
 const nestjsQueryMongooseModule = NestjsQueryMongooseModule.forFeature([
   {
@@ -24,6 +25,7 @@ const nestjsQueryMongooseModule = NestjsQueryMongooseModule.forFeature([
         {
           DTOClass: User,
           EntityClass: UserEntity,
+          Service: UserService,
           create: {
             CreateDTOClass: CreateUserInput,
           },
@@ -38,6 +40,7 @@ const nestjsQueryMongooseModule = NestjsQueryMongooseModule.forFeature([
       ],
     }),
   ],
-  exports: [nestjsQueryMongooseModule],
+  providers: [UserService],
+  exports: [nestjsQueryMongooseModule, UserService],
 })
 export class UserModule {}
