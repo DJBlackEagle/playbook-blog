@@ -34,6 +34,15 @@ PostEntitySchema.pre('find', function (this: Query<any, any>): void {
   }
 });
 
+PostEntitySchema.virtual('comments', {
+  ref: 'Comment',
+  localField: '_id',
+  foreignField: 'post',
+});
+
+PostEntitySchema.set('toJSON', { virtuals: true });
+PostEntitySchema.set('toObject', { virtuals: true });
+
 const PostEntityModel: ModelDefinition = {
   name: 'Post',
   schema: PostEntitySchema,

@@ -1,5 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SeederInput } from './inputs/seeder.input';
+import { SeederComment } from './seeder-comment/seeder-comment.model';
+import { SeederCommentService } from './seeder-comment/seeder-comment.service';
 import { SeederPost } from './seeder-post/seeder-post.model';
 import { SeederPostService } from './seeder-post/seeder-post.service';
 import { SeederRole } from './seeder-role/seeder-role.model';
@@ -13,6 +15,7 @@ describe('SeederService', () => {
   let seederRoleService: SeederRoleService;
   let seederUserService: SeederUserService;
   let seederPostService: SeederPostService;
+  let seederCommentService: SeederCommentService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -36,6 +39,12 @@ describe('SeederService', () => {
             seed: jest.fn(),
           },
         },
+        {
+          provide: SeederCommentService,
+          useValue: {
+            seed: jest.fn(),
+          },
+        },
       ],
     }).compile();
 
@@ -43,6 +52,8 @@ describe('SeederService', () => {
     seederRoleService = module.get<SeederRoleService>(SeederRoleService);
     seederUserService = module.get<SeederUserService>(SeederUserService);
     seederPostService = module.get<SeederPostService>(SeederPostService);
+    seederCommentService =
+      module.get<SeederCommentService>(SeederCommentService);
   });
 
   it('should be defined', () => {
@@ -135,6 +146,32 @@ describe('SeederService', () => {
 
       expect(spy).not.toHaveBeenCalled();
       expect(result.post).toBeUndefined();
+    });
+
+    it('should call seederCommentService.seed if seedComments is true', async () => {
+      const input: SeederInput = { seedComments: true } as SeederInput;
+      const commentResult: SeederComment = {
+        startedAt: new Date(),
+        completedAt: new Date(),
+        success: true,
+        comments: [],
+      };
+      const spy = jest
+        .spyOn(seederCommentService, 'seed')
+        .mockResolvedValue(commentResult);
+      const result = await service.seedData(input);
+
+      expect(spy).toHaveBeenCalled();
+      expect(result.comment).toBe(commentResult);
+    });
+
+    it('should not call seederCommentService.seed if seedComments is false', async () => {
+      const input: SeederInput = { seedComments: false } as SeederInput;
+      const spy = jest.spyOn(seederCommentService, 'seed');
+      const result = await service.seedData(input);
+
+      expect(spy).not.toHaveBeenCalled();
+      expect(result.comment).toBeUndefined();
     });
   });
 });

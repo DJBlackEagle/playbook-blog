@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { SeederComment } from '../seeder-comment/seeder-comment.model';
 import { SeederPost } from '../seeder-post/seeder-post.model';
 import { SeederRole } from '../seeder-role/seeder-role.model';
 import { SeederUser } from '../seeder-user/seeder-user.model';
@@ -16,7 +17,8 @@ import { SeederUser } from '../seeder-user/seeder-user.model';
  *   nodeEnv: 'development',
  *   role: { ... },
  *   user: { ... },
- *   post: { ... }
+ *   post: { ... },
+ *   comment: { ... }
  * }
  */
 @ObjectType({ description: 'Seeder model for managing seeding operations' })
@@ -82,4 +84,15 @@ export class Seeder {
     nullable: true,
   })
   post?: SeederPost;
+
+  /**
+   * Comment information associated with the seeding operation.
+   * Contains details about the comment(s) that were seeded. Optional.
+   * @example { comments: [ { content: 'Nice post!' } ] }
+   */
+  @Field(() => SeederComment, {
+    description: 'Comment information for the seeding operation',
+    nullable: true,
+  })
+  comment?: SeederComment;
 }

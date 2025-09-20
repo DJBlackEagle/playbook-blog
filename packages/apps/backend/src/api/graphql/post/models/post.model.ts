@@ -1,6 +1,11 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { FilterableField, QueryOptions } from '@ptc-org/nestjs-query-graphql';
+import {
+  CursorConnection,
+  FilterableField,
+  QueryOptions,
+} from '@ptc-org/nestjs-query-graphql';
 import { BaseModel } from '../../../../shared';
+import { Comment } from '../../comment/models/comment.model';
 
 /**
  * GraphQL model representing a blog post.
@@ -18,6 +23,10 @@ import { BaseModel } from '../../../../shared';
  */
 @ObjectType('Post', { description: 'Post model' })
 @QueryOptions({ defaultFilter: { deleted: { is: false } } })
+@CursorConnection('comments', () => Comment, {
+  description: 'Comments associated with the post',
+  nullable: true,
+})
 export class Post extends BaseModel {
   /**
    * Title of the post.
@@ -52,4 +61,15 @@ export class Post extends BaseModel {
     description: 'Sources of the post',
   })
   sources?: string[];
+
+  /**
+   * Comments associated with the post.
+   * Optional. This is a cursor connection for efficient pagination.
+   * @example [ { author: 'Jane', content: 'Great post!' } ]
+   */
+  @Field(() => [Comment], {
+    nullable: true,
+    description: 'Comments associated with the post',
+  })
+  comments?: Comment[];
 }

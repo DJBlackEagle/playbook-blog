@@ -50,4 +50,16 @@ export class SeederInput {
     defaultValue: false,
   })
   seedPosts?: boolean;
+
+  /**
+   * If true, comment data will be seeded into the database.
+   * Defaults to false if not provided.
+   * @example true
+   */
+  @Field(() => Boolean, {
+    description: 'Flag to seed comments',
+    nullable: true,
+    defaultValue: false,
+  })
+  seedComments?: boolean;
 }
