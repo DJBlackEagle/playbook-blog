@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryMongooseModule } from '@ptc-org/nestjs-query-mongoose';
+import { GqlAuthGuard } from '../../../common/guards';
 import { RoleEntity, RoleEntityModel } from './entities/role.entity';
 import { CreateRoleInput } from './inputs/create-role.input';
 import { UpdateRoleInput } from './inputs/update-role.input';
@@ -33,6 +34,7 @@ const nestjsQueryMongooseModule = NestjsQueryMongooseModule.forFeature([
         {
           DTOClass: Role,
           EntityClass: RoleEntity,
+          guards: [GqlAuthGuard],
           create: {
             CreateDTOClass: CreateRoleInput,
           },
