@@ -37,6 +37,20 @@ describe('EncryptionService', () => {
       expect(hash.length).toBeGreaterThan(0);
     });
 
+    it('should hash without pepper (empty string)', async () => {
+      jest
+        .spyOn(configService, 'get')
+        .mockImplementation(<T>(key: string, defaultValue: T) => {
+          if (key === 'PASSWORD_PEPPER') {
+            return '' as T;
+          }
+          return defaultValue;
+        });
+      service = new EncryptionService(configService);
+      const hash = await service.hash('password');
+      expect(typeof hash).toBe('string');
+    });
+
     it('should throw BadRequestException for empty value', async () => {
       await expect(service.hash('')).rejects.toThrow(BadRequestException);
     });
@@ -77,6 +91,21 @@ describe('EncryptionService', () => {
       const value = 'password';
       const hash = await service.hash(value);
 
+      await expect(service.verify(value, hash)).resolves.toBe(true);
+    });
+
+    it('should verify without pepper (empty string)', async () => {
+      jest
+        .spyOn(configService, 'get')
+        .mockImplementation(<T>(key: string, defaultValue: T) => {
+          if (key === 'PASSWORD_PEPPER') {
+            return '' as T;
+          }
+          return defaultValue;
+        });
+      service = new EncryptionService(configService);
+      const value = 'password';
+      const hash = await service.hash(value);
       await expect(service.verify(value, hash)).resolves.toBe(true);
     });
 
@@ -137,6 +166,11 @@ describe('EncryptionService', () => {
       expect(pwd).toHaveLength(16);
     });
 
+    it('should generate a password of minimum allowed length (8)', () => {
+      const pwd = service.generateTemporaryPassword(8);
+      expect(pwd).toHaveLength(8);
+    });
+
     it('should throw BadRequestException for length < 8', () => {
       expect(() => service.generateTemporaryPassword(7)).toThrow(
         BadRequestException,
@@ -163,6 +197,11 @@ describe('EncryptionService', () => {
       const token = service.generateUniqueToken(32);
 
       expect(token.length).toBeGreaterThanOrEqual(43);
+    });
+
+    it('should generate a token with custom byte length', () => {
+      const token = service.generateUniqueToken(64);
+      expect(token.length).toBeGreaterThanOrEqual(86); // 64 bytes base64url is at least 86 chars
     });
 
     it('should generate unique tokens', () => {
