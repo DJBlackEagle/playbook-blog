@@ -33,6 +33,7 @@
     "@nestjs/mongoose": "^11.0.3",
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/schedule": "^6.0.1",
     "@ptc-org/nestjs-query-core": "^9.1.0",
     "@ptc-org/nestjs-query-graphql": "^9.1.0",
     "@ptc-org/nestjs-query-mongoose": "^9.1.0",
