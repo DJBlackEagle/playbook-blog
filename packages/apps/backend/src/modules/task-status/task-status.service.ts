@@ -34,8 +34,6 @@ export class TaskStatusService {
    * @param jobName - The name of the job to initialize.
    */
   initializeTask(jobName: string) {
-    this.logger.verbose('initializeTask called');
-
     if (!this.tasks.has(jobName)) {
       this.tasks.set(jobName, {
         state: TaskState.UNKNOWN,
@@ -85,8 +83,6 @@ export class TaskStatusService {
    * @returns The task information or undefined if not found.
    */
   getTask(jobName: string): ITaskInfo | undefined {
-    this.logger.verbose('getTask called');
-
     const taskState = this.tasks.get(jobName);
 
     const conJob = this.schedulerRegistry.getCronJob(jobName);
@@ -114,8 +110,6 @@ export class TaskStatusService {
    * @returns An array of task information objects.
    */
   getAllTasks(): ITaskInfo[] {
-    this.logger.verbose('getAllTasks called');
-
     const tasks: ITaskInfo[] = [];
 
     this.schedulerRegistry.getCronJobs().forEach((item) => {

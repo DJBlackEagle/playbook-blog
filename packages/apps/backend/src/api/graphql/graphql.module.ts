@@ -1,5 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppInfoModule } from './app-info/app-info.module';
+import { AuthModule } from './auth/auth.module';
+import { CommentModule } from './comment/comment.module';
+import { PostModule } from './post/post.module';
+import { RoleModule } from './roles/role.module';
+import { SeederModule } from './seeder/seeder.module';
 import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
 
@@ -16,12 +21,12 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [
     AppInfoModule,
-    // SeederModule,
-    // RoleModule,
+    SeederModule,
+    RoleModule,
     UserModule,
-    // PostModule,
-    // CommentModule,
-    // AuthModule,
+    PostModule,
+    CommentModule,
+    AuthModule,
     TaskModule,
   ],
 })

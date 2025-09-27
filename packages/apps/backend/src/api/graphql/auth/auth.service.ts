@@ -44,8 +44,6 @@ export class AuthService {
    * @returns {Promise<string>} The signed JWT access token.
    */
   private async signAccessToken(payload: JwtPayload): Promise<string> {
-    this.logger.debug('signAccessToken called');
-
     return this.jwtService.signAsync(payload, {
       secret: this.configService.get<string>(
         CONFIG.JWT_SECRET.NAME,
@@ -73,8 +71,6 @@ export class AuthService {
    * @returns {Promise<string>} The signed JWT refresh token.
    */
   private async signRefreshToken(payload: JwtPayload): Promise<string> {
-    this.logger.debug('signRefreshToken called');
-
     return this.jwtService.signAsync(payload, {
       secret: this.configService.get<string>(
         CONFIG.JWT_REFRESH_SECRET.NAME,
@@ -105,8 +101,6 @@ export class AuthService {
    * @throws Error if the refresh token hash cannot be set.
    */
   private async issueTokenPair(user: UserEntity): Promise<Login> {
-    this.logger.debug('issueTokenPair called');
-
     const payload: JwtPayload = {
       sub: `${user.id}`,
       username: user.username,
@@ -139,8 +133,6 @@ export class AuthService {
    * @throws UnauthorizedException if credentials are invalid.
    */
   async login(loginInput: LoginInput): Promise<Login> {
-    this.logger.debug('login called');
-
     const user = await this.userService.findByIdentifier(loginInput.identifier);
     if (!user) throw new UnauthorizedException('Invalid credentials');
 
@@ -164,8 +156,6 @@ export class AuthService {
    * @returns {Promise<Logout>} The logout response indicating success or failure.
    */
   async logout(userId: string): Promise<Logout> {
-    this.logger.debug('logout called');
-
     if (!(await this.userService.unSetRefreshToken(userId))) {
       return { success: false };
     }
@@ -181,8 +171,6 @@ export class AuthService {
    * @throws UnauthorizedException if the refresh token is invalid or user not found.
    */
   async refreshToken(refreshTokenInput: RefreshTokenInput): Promise<Login> {
-    this.logger.debug('refreshToken called');
-
     const payload = await this.jwtService
       .verifyAsync<JwtPayload>(refreshTokenInput.refreshToken, {
         secret: this.configService.get<string>(

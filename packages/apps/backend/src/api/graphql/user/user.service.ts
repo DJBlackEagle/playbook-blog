@@ -1,4 +1,3 @@
-import { Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { QueryService } from '@ptc-org/nestjs-query-core';
 import { MongooseQueryService } from '@ptc-org/nestjs-query-mongoose';
@@ -14,8 +13,6 @@ import { UserEntity, UserEntityModel } from './entities/user.entity';
  */
 @QueryService(UserEntity)
 export class UserService extends MongooseQueryService<UserEntity> {
-  private readonly logger: Logger = new Logger(UserService.name);
-
   /**
    * Constructs the UserService.
    *
@@ -36,8 +33,6 @@ export class UserService extends MongooseQueryService<UserEntity> {
    * @returns The found user entity or null if not found.
    */
   async findByIdentifier(identifier: string): Promise<UserEntity | null> {
-    this.logger.debug('findByIdentifier called');
-
     const [user] = await this.query({
       filter: {
         or: [{ username: { eq: identifier } }, { email: { eq: identifier } }],
@@ -56,8 +51,6 @@ export class UserService extends MongooseQueryService<UserEntity> {
    * @returns True if the password is valid, false otherwise.
    */
   async verifyPassword(userId: string, rawPassword: string): Promise<boolean> {
-    this.logger.debug('verifyPassword called');
-
     const user = await this.getById(userId);
     if (!user) return false;
 
@@ -75,8 +68,6 @@ export class UserService extends MongooseQueryService<UserEntity> {
     userId: string,
     refreshTokenHash: string,
   ): Promise<UserEntity | null> {
-    this.logger.debug('setRefreshToken called');
-
     return this.updateOne(userId, { refreshTokenHash });
   }
 
@@ -87,8 +78,6 @@ export class UserService extends MongooseQueryService<UserEntity> {
    * @returns The updated user entity or null if not found.
    */
   async unSetRefreshToken(userId: string): Promise<UserEntity | null> {
-    this.logger.debug('unSetRefreshToken called');
-
     await this.Model.updateOne(
       { _id: userId },
       { $unset: { refreshTokenHash: 1 } },
@@ -104,8 +93,6 @@ export class UserService extends MongooseQueryService<UserEntity> {
    * @returns True if the user is logged in, false otherwise.
    */
   async isLoggedIn(userId: string): Promise<boolean> {
-    this.logger.debug('isLoggedIn called');
-
     const user = await this.getById(userId);
     if (!user) return false;
 
@@ -119,8 +106,6 @@ export class UserService extends MongooseQueryService<UserEntity> {
    * @returns The updated user entity or null if not found.
    */
   async setLastLogin(userId: string): Promise<UserEntity | null> {
-    this.logger.debug('setLastLogin called');
-
     return this.updateOne(userId, { lastLogin: new Date() });
   }
 }

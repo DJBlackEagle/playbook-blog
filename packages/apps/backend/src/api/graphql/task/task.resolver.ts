@@ -1,4 +1,3 @@
-import { Logger } from '@nestjs/common';
 import { Query, Resolver } from '@nestjs/graphql';
 import { TaskInfo } from './models/task-info.model';
 import { TaskService } from './task.service';
@@ -11,11 +10,6 @@ import { TaskService } from './task.service';
  */
 @Resolver()
 export class TaskResolver {
-  /**
-   * Logger instance for TaskResolver events and debugging.
-   */
-  private readonly logger: Logger = new Logger(TaskResolver.name);
-
   /**
    * Creates a new TaskResolver.
    *

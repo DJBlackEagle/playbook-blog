@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { TaskStatusService } from '../../../modules/task-status/task-status.service';
 import { TaskInfo } from './models/task-info.model';
 
@@ -12,11 +12,6 @@ import { TaskInfo } from './models/task-info.model';
 @Injectable()
 export class TaskService {
   /**
-   * Logger instance for TaskService events and debugging.
-   */
-  private readonly logger: Logger = new Logger(TaskService.name);
-
-  /**
    * Creates a new TaskService.
    *
    * @param taskStatusService - The service for managing scheduled task status.
@@ -24,7 +19,6 @@ export class TaskService {
   constructor(private readonly taskStatusService: TaskStatusService) {}
 
   getTasks(): TaskInfo[] {
-    this.logger.debug('getAvailableJobs called');
     const jobs = this.taskStatusService.getAllTasks();
     const taskInfos: TaskInfo[] = [];
 

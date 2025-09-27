@@ -74,8 +74,6 @@ export class EncryptionService {
    * @throws InternalServerErrorException If hashing fails due to an internal error.
    */
   async hash(rawValue: string): Promise<string> {
-    this.logger.debug('hash called');
-
     if (!rawValue || rawValue.length < 1) {
       throw new BadRequestException('Value is required');
     }
@@ -109,8 +107,6 @@ export class EncryptionService {
     rawValue: string = '',
     hashedValue: string = '',
   ): Promise<boolean> {
-    this.logger.debug('verify called');
-
     if (!rawValue || !hashedValue) {
       throw new BadRequestException('Value and hash are required');
     }
@@ -136,8 +132,6 @@ export class EncryptionService {
    * @throws {BadRequestException} If the specified length is less than 8.
    */
   generateTemporaryPassword(length: number = 12): string {
-    this.logger.debug('generateTemporaryPassword called');
-
     if (length < 8) {
       throw new BadRequestException('Password length too short');
     }
@@ -170,8 +164,6 @@ export class EncryptionService {
    * @returns A unique, URL-safe base64 encoded token string.
    */
   generateUniqueToken(bytes: number = 32): string {
-    this.logger.debug('generateUniqueToken called');
-
     return randomBytes(bytes).toString('base64url');
   }
 }
