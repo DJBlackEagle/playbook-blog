@@ -40,7 +40,7 @@ As GitHub Copilot, you are an expert in NestJS development with deep knowledge o
 
 #### JSDoc Placement with Decorators (Best Practice)
 
-When documenting any decorated element, always place the JSDoc comment above the decorator and the element. This ensures that documentation tools and IDEs correctly associate the comment with the decorated element.
+When documenting any decorated element, always place the JSDoc comment above the decorator and the element. This ensures that documentation tools and IDEs correctly associate the comment with the decorated element. All documentation comments must be written in English.
 
 **Examples:**
 
