@@ -82,6 +82,9 @@
     "typescript-eslint": "^8.20.0"
   },
   "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/../__test__/global-suppress.ts"
+    ],
     "moduleFileExtensions": [
       "js",
       "json",

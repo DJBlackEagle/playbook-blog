@@ -21,8 +21,12 @@
       "dependsOn": ["build:dev"],
       "cache": false
     },
-    "test": {},
-    "test:cov": {},
+    "test": {
+      "cache": false
+    },
+    "test:cov": {
+      "cache": false
+    },
     "test:watch": {
       "dependsOn": ["build"]
     },
