@@ -4,12 +4,10 @@ import {
   InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import * as argon2 from 'argon2';
 import { randomBytes, randomInt } from 'crypto';
-import { CONFIG } from '../../shared';
+import { EnvironmentConfigService } from '../../config/environment-config/environment-config.service';
 
-@Injectable()
 /**
  * Service providing cryptographic utilities such as password hashing, verification,
  * secure temporary password generation, and unique token creation.
@@ -27,6 +25,7 @@ import { CONFIG } from '../../shared';
  * const token = encryptionService.generateUniqueToken();
  * ```
  */
+@Injectable()
 export class EncryptionService {
   private readonly logger = new Logger(EncryptionService.name);
   private readonly argonTime: number;
@@ -37,7 +36,7 @@ export class EncryptionService {
   /**
    * Initializes the EncryptionService with configuration values for Argon2 hashing parameters and password pepper.
    *
-   * @param configService - The configuration service used to retrieve environment variables.
+   * @param environmentConfigService - The configuration service used to retrieve environment variables.
    *
    * @remarks
    * - `argonTime`: Number of iterations for Argon2 (default: 3).
@@ -45,23 +44,12 @@ export class EncryptionService {
    * - `argonParallelism`: Degree of parallelism for Argon2 (default: 1).
    * - `pepper`: Additional secret value appended to passwords before hashing (default: empty string).
    */
-  constructor(private configService: ConfigService) {
-    this.argonTime = this.configService.get<number>(
-      CONFIG.ARGON2_TIME.NAME,
-      CONFIG.ARGON2_TIME.DEFAULT_VALUE,
-    );
-    this.argonMemory = this.configService.get<number>(
-      CONFIG.ARGON2_MEMORY.NAME,
-      CONFIG.ARGON2_MEMORY.DEFAULT_VALUE,
-    );
-    this.argonParallelism = this.configService.get<number>(
-      CONFIG.ARGON2_PARALLELISM.NAME,
-      CONFIG.ARGON2_PARALLELISM.DEFAULT_VALUE,
-    );
-    this.pepper = this.configService.get<string>(
-      CONFIG.PASSWORD_PEPPER.NAME,
-      CONFIG.PASSWORD_PEPPER.DEFAULT_VALUE,
-    );
+  constructor(private environmentConfigService: EnvironmentConfigService) {
+    this.argonTime = this.environmentConfigService.encryption.argon2.time();
+    this.argonMemory = this.environmentConfigService.encryption.argon2.memory();
+    this.argonParallelism =
+      this.environmentConfigService.encryption.argon2.parallelism();
+    this.pepper = this.environmentConfigService.encryption.pepper();
   }
 
   /**

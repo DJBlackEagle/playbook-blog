@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { EnvironmentConfigModule } from '../../config/environment-config/environment-config.module';
 import { EncryptionService } from './encryption.service';
 
 /**
@@ -7,12 +7,12 @@ import { EncryptionService } from './encryption.service';
  *
  * Provides encryption and decryption services across the application.
  *
- * - Imports: ConfigModule for accessing environment-based configuration.
+ * - Imports: EnvironmentConfigModule for accessing environment-based configuration.
  * - Providers: EncryptionService, which contains encryption logic.
  * - Exports: EncryptionService, making it available for injection in other modules.
  */
 @Module({
-  imports: [ConfigModule],
+  imports: [EnvironmentConfigModule],
   providers: [EncryptionService],
   exports: [EncryptionService],
 })

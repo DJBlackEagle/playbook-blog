@@ -1,9 +1,8 @@
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { plainToClass } from 'class-transformer';
+import { EnvironmentConfigService } from '../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../modules/encryption';
-import { CONFIG } from '../../../shared';
 import { UserEntity } from '../user/entities/user.entity';
 import { User } from '../user/models/user.model';
 import { UserService } from '../user/user.service';
@@ -27,13 +26,13 @@ export class AuthService {
    *
    * @param userService - Service for user entity operations.
    * @param jwtService - Service for JWT operations.
-   * @param configService - Service for accessing configuration values.
+   * @param environmentConfigService - Service for accessing configuration values.
    * @param encryptionService - Service for password and token encryption/verification.
    */
   constructor(
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
-    private readonly configService: ConfigService,
+    private readonly environmentConfigService: EnvironmentConfigService,
     private readonly encryptionService: EncryptionService,
   ) {}
 
@@ -45,22 +44,10 @@ export class AuthService {
    */
   private async signAccessToken(payload: JwtPayload): Promise<string> {
     return this.jwtService.signAsync(payload, {
-      secret: this.configService.get<string>(
-        CONFIG.JWT_SECRET.NAME,
-        CONFIG.JWT_SECRET.DEFAULT_VALUE,
-      ),
-      expiresIn: this.configService.get<string>(
-        CONFIG.JWT_EXPIRES_IN.NAME,
-        CONFIG.JWT_EXPIRES_IN.DEFAULT_VALUE,
-      ),
-      issuer: this.configService.get<string>(
-        CONFIG.JWT_ISSUER.NAME,
-        CONFIG.JWT_ISSUER.DEFAULT_VALUE,
-      ),
-      audience: this.configService.get<string>(
-        CONFIG.HOST.NAME,
-        CONFIG.HOST.DEFAULT_VALUE,
-      ),
+      secret: this.environmentConfigService.jwt.token.secret(),
+      expiresIn: this.environmentConfigService.jwt.token.expiresIn(),
+      issuer: this.environmentConfigService.jwt.issuer(),
+      audience: this.environmentConfigService.jwt.audience(),
     });
   }
 
@@ -72,22 +59,10 @@ export class AuthService {
    */
   private async signRefreshToken(payload: JwtPayload): Promise<string> {
     return this.jwtService.signAsync(payload, {
-      secret: this.configService.get<string>(
-        CONFIG.JWT_REFRESH_SECRET.NAME,
-        CONFIG.JWT_REFRESH_SECRET.DEFAULT_VALUE,
-      ),
-      expiresIn: this.configService.get<string>(
-        CONFIG.JWT_REFRESH_EXPIRES_IN.NAME,
-        CONFIG.JWT_REFRESH_EXPIRES_IN.DEFAULT_VALUE,
-      ),
-      issuer: this.configService.get<string>(
-        CONFIG.JWT_ISSUER.NAME,
-        CONFIG.JWT_ISSUER.DEFAULT_VALUE,
-      ),
-      audience: this.configService.get<string>(
-        CONFIG.HOST.NAME,
-        CONFIG.HOST.DEFAULT_VALUE,
-      ),
+      secret: this.environmentConfigService.jwt.refresh.secret(),
+      expiresIn: this.environmentConfigService.jwt.refresh.expiresIn(),
+      issuer: this.environmentConfigService.jwt.issuer(),
+      audience: this.environmentConfigService.jwt.audience(),
     });
   }
 
@@ -173,10 +148,7 @@ export class AuthService {
   async refreshToken(refreshTokenInput: RefreshTokenInput): Promise<Login> {
     const payload = await this.jwtService
       .verifyAsync<JwtPayload>(refreshTokenInput.refreshToken, {
-        secret: this.configService.get<string>(
-          CONFIG.JWT_REFRESH_SECRET.NAME,
-          CONFIG.JWT_REFRESH_SECRET.DEFAULT_VALUE,
-        ),
+        secret: this.environmentConfigService.jwt.refresh.secret(),
       })
       .catch(() => {
         throw new UnauthorizedException();

@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+import { EnvironmentConfigModule } from '../../../config/environment-config/environment-config.module';
+import { EnvironmentConfigService } from '../../../config/environment-config/environment-config.service';
 import { EncryptionModule } from '../../../modules/encryption';
-import { CONFIG } from '../../../shared';
 import { UserModule } from '../user/user.module';
 import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
@@ -16,23 +16,17 @@ import { JwtStrategy } from './stratgegies/jwt.strategy';
  */
 @Module({
   imports: [
-    ConfigModule,
+    EnvironmentConfigModule,
     EncryptionModule,
     UserModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>(
-          CONFIG.JWT_SECRET.NAME,
-          CONFIG.JWT_SECRET.DEFAULT_VALUE,
-        ),
+      imports: [EnvironmentConfigModule],
+      inject: [EnvironmentConfigService],
+      useFactory: (configService: EnvironmentConfigService) => ({
+        secret: configService.jwt.token.secret(),
         signOptions: {
-          expiresIn: configService.get<string>(
-            CONFIG.JWT_EXPIRES_IN.NAME,
-            CONFIG.JWT_EXPIRES_IN.DEFAULT_VALUE,
-          ),
+          expiresIn: configService.jwt.token.expiresIn(),
         },
       }),
     }),

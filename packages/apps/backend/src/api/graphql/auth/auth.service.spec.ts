@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
+import { EnvironmentConfigService } from '../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../modules/encryption';
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
@@ -21,9 +21,31 @@ const mockJwtService = {
   signAsync: jest.fn(),
   verifyAsync: jest.fn(),
 };
-const mockConfigService = {
-  get: jest.fn(),
-};
+class MockEnvironmentConfigService {
+  database = {
+    url: jest.fn(() => 'mock-db-url'),
+  };
+  encryption = {
+    argon2: {
+      time: jest.fn(() => 1),
+      memory: jest.fn(() => 1),
+      parallelism: jest.fn(() => 1),
+    },
+    pepper: jest.fn(() => 'pepper'),
+  };
+  jwt = {
+    issuer: jest.fn(() => 'issuer'),
+    audience: jest.fn(() => 'audience'),
+    token: {
+      secret: jest.fn(() => 'token-secret'),
+      expiresIn: jest.fn(() => '1h'),
+    },
+    refresh: {
+      secret: jest.fn(() => 'refresh-secret'),
+      expiresIn: jest.fn(() => '7h'),
+    },
+  };
+}
 const mockEncryptionService = {
   hash: jest.fn(),
   verify: jest.fn(),
@@ -34,7 +56,7 @@ describe('AuthService', () => {
     it('should sign access token', async () => {
       const payload = { sub: '1', username: 'test', token_id: '' };
       mockJwtService.signAsync.mockResolvedValue('signed-access');
-      mockConfigService.get.mockReturnValue('value');
+
       const result = await (service as any).signAccessToken(payload);
       expect(result).toBe('signed-access');
       expect(mockJwtService.signAsync).toHaveBeenCalledWith(
@@ -46,7 +68,7 @@ describe('AuthService', () => {
     it('should sign refresh token', async () => {
       const payload = { sub: '1', username: 'test', token_id: '' };
       mockJwtService.signAsync.mockResolvedValue('signed-refresh');
-      mockConfigService.get.mockReturnValue('value');
+
       const result = await (service as any).signRefreshToken(payload);
       expect(result).toBe('signed-refresh');
       expect(mockJwtService.signAsync).toHaveBeenCalledWith(
@@ -103,7 +125,10 @@ describe('AuthService', () => {
         AuthService,
         { provide: UserService, useValue: mockUserService },
         { provide: JwtService, useValue: mockJwtService },
-        { provide: ConfigService, useValue: mockConfigService },
+        {
+          provide: EnvironmentConfigService,
+          useValue: new MockEnvironmentConfigService(),
+        },
         { provide: EncryptionService, useValue: mockEncryptionService },
       ],
     }).compile();

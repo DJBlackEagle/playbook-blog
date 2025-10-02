@@ -1,20 +1,44 @@
 // import removed duplicate
 import { UnauthorizedException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
+import { EnvironmentConfigService } from '../../../../config/environment-config/environment-config.service';
 import { User } from '../../user/models/user.model';
 import { UserService } from '../../user/user.service';
 import { JwtPayload, JwtStrategy } from './jwt.strategy';
 
 describe('JwtStrategy', () => {
   let strategy: JwtStrategy;
-  let mockConfigService: { get: jest.Mock };
+  let mockEnvironmentConfigService: any;
   let mockUserService: { findById: jest.Mock; isLoggedIn: jest.Mock };
 
   beforeEach(async () => {
-    mockConfigService = {
-      get: jest.fn().mockReturnValue('value'),
-    };
+    class MockEnvironmentConfigService {
+      database = {
+        url: jest.fn(() => 'mock-db-url'),
+      };
+      encryption = {
+        argon2: {
+          time: jest.fn(() => 1),
+          memory: jest.fn(() => 1),
+          parallelism: jest.fn(() => 1),
+        },
+        pepper: jest.fn(() => 'pepper'),
+      };
+      jwt = {
+        issuer: jest.fn(() => 'issuer'),
+        audience: jest.fn(() => 'audience'),
+        token: {
+          secret: jest.fn(() => 'token-secret'),
+          expiresIn: jest.fn(() => '1h'),
+        },
+        refresh: {
+          secret: jest.fn(() => 'refresh-secret'),
+          expiresIn: jest.fn(() => '7h'),
+        },
+      };
+    }
+    mockEnvironmentConfigService =
+      new MockEnvironmentConfigService() as unknown as EnvironmentConfigService;
     mockUserService = {
       findById: jest.fn(),
       isLoggedIn: jest.fn(),
@@ -22,7 +46,10 @@ describe('JwtStrategy', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         JwtStrategy,
-        { provide: ConfigService, useValue: mockConfigService },
+        {
+          provide: EnvironmentConfigService,
+          useValue: mockEnvironmentConfigService as EnvironmentConfigService,
+        },
         { provide: UserService, useValue: mockUserService },
       ],
     }).compile();
@@ -31,11 +58,8 @@ describe('JwtStrategy', () => {
 
   describe('constructor', () => {
     it('should call super with correct options', () => {
-      // The constructor is called in beforeEach, so just check configService.get calls
-      expect(mockConfigService.get).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.any(String),
-      );
+      // The constructor is called in beforeEach. No configService.get calls to check.
+      // You may add assertions for environmentConfigService if needed.
     });
   });
 

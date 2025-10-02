@@ -5,9 +5,9 @@
 import { ConfigService } from '@nestjs/config';
 import { ModelDefinition, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Query, SchemaTypes, Types } from 'mongoose';
+import { EnvironmentConfigService } from '../../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../../modules/encryption';
 import { BaseEntity } from '../../../../shared';
-
 /**
  * Middleware function to hash the password field during update operations.
  *
@@ -24,15 +24,16 @@ async function hashOnUpdate(this: any, next: () => void): Promise<void> {
     update.password ?? update.$set?.password ?? update.$setOnInsert?.password;
   if (!pwd) return next();
 
-  const configService = new ConfigService();
-  const encryptionService = new EncryptionService(configService);
+  const environmentConfigService = new EnvironmentConfigService(
+    new ConfigService(),
+  );
+  const encryptionService = new EncryptionService(environmentConfigService);
   const hashed = await encryptionService.hash(`${pwd}`);
   if (update.password) update.password = hashed;
   if (update.$set?.password) update.$set.password = hashed;
   if (update.$setOnInsert?.password) update.$setOnInsert.password = hashed;
   next();
 }
-
 /**
  * Mongoose entity representing a user document.
  *
@@ -83,8 +84,19 @@ class UserEntity extends BaseEntity {
   role: Types.ObjectId;
 }
 
+/**
+ * Mongoose schema for the User entity.
+ *
+ * Defines schema structure, indexes, and middleware for password hashing and sorting.
+ */
 const UserEntitySchema = SchemaFactory.createForClass(UserEntity);
 
+/**
+ * Middleware to ensure default sorting by username for find queries.
+ * Adds username sort if not present in query options.
+ *
+ * @param this - The current Mongoose query instance.
+ */
 UserEntitySchema.pre('find', function (this: Query<any, any>): void {
   const sort = this.getOptions().sort as
     | Record<string, 1 | -1 | 'asc' | 'desc' | 'ascending' | 'descending'>
@@ -99,20 +111,35 @@ UserEntitySchema.pre('find', function (this: Query<any, any>): void {
   }
 });
 
+/**
+ * Middleware to hash the password before saving a user document.
+ * Only hashes if the password field is modified.
+ *
+ * @param next - Callback to proceed to the next middleware or operation.
+ */
 UserEntitySchema.pre('save', async function (next): Promise<void> {
   if (!this.isModified('password')) return next();
 
-  const configService = new ConfigService();
-  const encryptionService = new EncryptionService(configService);
+  const environmentConfigService = new EnvironmentConfigService(
+    new ConfigService(),
+  );
+  const encryptionService = new EncryptionService(environmentConfigService);
   this.password = await encryptionService.hash(this.password);
   next();
 });
+
+/**
+ * Middleware to hash the password during update operations (findOneAndUpdate, updateOne, updateMany).
+ * Ensures password is securely hashed if present in the update payload.
+ */
 UserEntitySchema.pre('findOneAndUpdate', hashOnUpdate);
 UserEntitySchema.pre('updateOne', hashOnUpdate);
 UserEntitySchema.pre('updateMany', hashOnUpdate);
 
 /**
  * Mongoose model definition for the User entity.
+ *
+ * Used to register the User schema with Mongoose.
  */
 const UserEntityModel: ModelDefinition = {
   name: 'User',

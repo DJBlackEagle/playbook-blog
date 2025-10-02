@@ -1,28 +1,41 @@
 import { BadRequestException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { Test, TestingModule } from '@nestjs/testing';
 import * as argon2 from 'argon2';
 import { EncryptionService } from './encryption.service';
 
+class EnvironmentConfigServiceMock {
+  database = { url: jest.fn().mockReturnValue('mock-db-url') };
+  jwt = {
+    issuer: jest.fn().mockReturnValue('mock-issuer'),
+    audience: jest.fn().mockReturnValue('mock-audience'),
+    token: {
+      secret: jest.fn().mockReturnValue('mock-token-secret'),
+      expiresIn: jest.fn().mockReturnValue('mock-token-expiry'),
+    },
+    refresh: {
+      secret: jest.fn().mockReturnValue('mock-refresh-secret'),
+      expiresIn: jest.fn().mockReturnValue('mock-refresh-expiry'),
+    },
+  };
+  configService = { get: jest.fn().mockReturnValue('mock-config') };
+  encryption = {
+    argon2: {
+      time: jest.fn().mockReturnValue(3),
+      memory: jest.fn().mockReturnValue(65536),
+      parallelism: jest.fn().mockReturnValue(1),
+    },
+    pepper: jest.fn().mockReturnValue(''),
+  };
+}
+
 describe('EncryptionService', () => {
   let service: EncryptionService;
-  let configService: ConfigService;
+  let environmentConfigService: EnvironmentConfigServiceMock;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        EncryptionService,
-        {
-          provide: ConfigService,
-          useValue: {
-            get: jest.fn(<T>(key: string, defaultValue: T) => defaultValue),
-          },
-        },
-      ],
-    }).compile();
-
-    service = module.get<EncryptionService>(EncryptionService);
-    configService = module.get<ConfigService>(ConfigService);
+  beforeEach(() => {
+    environmentConfigService = new EnvironmentConfigServiceMock();
+    service = new EncryptionService(
+      environmentConfigService as unknown as import('../../config/environment-config/environment-config.service').EnvironmentConfigService,
+    );
   });
 
   it('should be defined', () => {
@@ -38,15 +51,10 @@ describe('EncryptionService', () => {
     });
 
     it('should hash without pepper (empty string)', async () => {
-      jest
-        .spyOn(configService, 'get')
-        .mockImplementation(<T>(key: string, defaultValue: T) => {
-          if (key === 'PASSWORD_PEPPER') {
-            return '' as T;
-          }
-          return defaultValue;
-        });
-      service = new EncryptionService(configService);
+      environmentConfigService.encryption.pepper.mockReturnValue('');
+      service = new EncryptionService(
+        environmentConfigService as unknown as import('../../config/environment-config/environment-config.service').EnvironmentConfigService,
+      );
       const hash = await service.hash('password');
       expect(typeof hash).toBe('string');
     });
@@ -56,16 +64,10 @@ describe('EncryptionService', () => {
     });
 
     it('should use pepper if set', async () => {
-      jest
-        .spyOn(configService, 'get')
-        .mockImplementation(<T>(key: string, defaultValue: T) => {
-          if (key === 'PASSWORD_PEPPER') {
-            return 'pepper123' as T;
-          }
-          return defaultValue;
-        });
-
-      service = new EncryptionService(configService);
+      environmentConfigService.encryption.pepper.mockReturnValue('pepper123');
+      service = new EncryptionService(
+        environmentConfigService as unknown as import('../../config/environment-config/environment-config.service').EnvironmentConfigService,
+      );
       const hash = await service.hash('password');
 
       expect(typeof hash).toBe('string');
@@ -95,15 +97,10 @@ describe('EncryptionService', () => {
     });
 
     it('should verify without pepper (empty string)', async () => {
-      jest
-        .spyOn(configService, 'get')
-        .mockImplementation(<T>(key: string, defaultValue: T) => {
-          if (key === 'PASSWORD_PEPPER') {
-            return '' as T;
-          }
-          return defaultValue;
-        });
-      service = new EncryptionService(configService);
+      environmentConfigService.encryption.pepper.mockReturnValue('');
+      service = new EncryptionService(
+        environmentConfigService as unknown as import('../../config/environment-config/environment-config.service').EnvironmentConfigService,
+      );
       const value = 'password';
       const hash = await service.hash(value);
       await expect(service.verify(value, hash)).resolves.toBe(true);
@@ -120,15 +117,10 @@ describe('EncryptionService', () => {
     });
 
     it('should use pepper if set', async () => {
-      jest
-        .spyOn(configService, 'get')
-        .mockImplementation(<T>(key: string, defaultValue: T) => {
-          if (key === 'PASSWORD_PEPPER') {
-            return 'pepper123' as T;
-          }
-          return defaultValue;
-        });
-      service = new EncryptionService(configService);
+      environmentConfigService.encryption.pepper.mockReturnValue('pepper123');
+      service = new EncryptionService(
+        environmentConfigService as unknown as import('../../config/environment-config/environment-config.service').EnvironmentConfigService,
+      );
       const value = 'password';
       const hash = await service.hash(value);
 
