@@ -1,19 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   ApolloServerPluginLandingPageLocalDefault,
   ApolloServerPluginLandingPageProductionDefault,
 } from '@apollo/server/plugin/landingPage/default';
 import { ApolloDriverConfig, ApolloDriverConfigFactory } from '@nestjs/apollo';
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+
+interface OriginalError {
+  statusCode?: number;
+  message?: string;
+  [key: string]: unknown;
+}
 
 /**
  * Service providing GraphQL configuration options.
  */
 @Injectable()
 export class GraphQLConfigService implements ApolloDriverConfigFactory {
-  constructor(private readonly configService: ConfigService) {}
+  constructor() {}
 
   /**
    * Returns GraphQL module configuration.
@@ -36,8 +39,10 @@ export class GraphQLConfigService implements ApolloDriverConfigFactory {
               footer: true,
             }),
       ],
-      formatError: (error, context?: unknown) => {
-        const originalError = error.extensions?.originalError as any;
+      formatError: (error) => {
+        const originalError = error.extensions?.originalError as
+          | OriginalError
+          | undefined;
 
         const extensions = { ...error.extensions }; //
 
