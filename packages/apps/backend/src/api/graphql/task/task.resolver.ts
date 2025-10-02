@@ -1,4 +1,6 @@
+import { UseGuards } from '@nestjs/common';
 import { Query, Resolver } from '@nestjs/graphql';
+import { GqlAuthGuard } from '../../../common/guards';
 import { TaskInfo } from './models/task-info.model';
 import { TaskService } from './task.service';
 
@@ -38,6 +40,7 @@ export class TaskResolver {
     name: 'tasks',
     description: 'Get a list of all scheduled tasks',
   })
+  @UseGuards(GqlAuthGuard)
   getTasks(): TaskInfo[] {
     return this.taskService.getTasks();
   }
