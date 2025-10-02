@@ -1,8 +1,9 @@
 /* istanbul ignore file */
+import 'reflect-metadata';
+
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { useContainer } from 'class-validator';
-import 'reflect-metadata';
 import { AppModule } from './app.module';
 
 /**
