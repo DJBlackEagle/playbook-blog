@@ -17,7 +17,7 @@
     "start:dev": "turbo run start:dev",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "test:cov": "turbo run test:cov",
+    "test:coverage": "turbo run test:coverage",
     "test:watch": "turbo run test:watch",
     "test:e2e": "turbo run test:e2e",
     "docker:up": "docker compose up -d",
