@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { FileResolver } from '../../shared';
+import { EnvironmentConfigService } from './environment-config.service';
 
 /**
  * Module responsible for providing environment-specific configuration settings.
@@ -16,5 +17,7 @@ import { FileResolver } from '../../shared';
       envFilePath: FileResolver.getEnvFile(),
     }),
   ],
+  providers: [EnvironmentConfigService],
+  exports: [EnvironmentConfigService],
 })
 export class EnvironmentConfigModule {}
