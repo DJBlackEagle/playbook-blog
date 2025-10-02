@@ -8,6 +8,7 @@ import { Query, SchemaTypes, Types } from 'mongoose';
 import { EnvironmentConfigService } from '../../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../../modules/encryption';
 import { BaseEntity } from '../../../../shared';
+
 /**
  * Middleware function to hash the password field during update operations.
  *
@@ -34,6 +35,7 @@ async function hashOnUpdate(this: any, next: () => void): Promise<void> {
   if (update.$setOnInsert?.password) update.$setOnInsert.password = hashed;
   next();
 }
+
 /**
  * Mongoose entity representing a user document.
  *
