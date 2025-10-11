@@ -33,6 +33,10 @@ describe('AuthResolver', () => {
     jest.clearAllMocks();
   });
 
+  it('should be defined', () => {
+    expect(resolver).toBeDefined();
+  });
+
   describe('login', () => {
     it('should login and return Login', async () => {
       const input: LoginInput = {

@@ -1,8 +1,10 @@
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { plainToClass } from 'class-transformer';
+import { Types } from 'mongoose';
 import { EnvironmentConfigService } from '../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../modules/encryption';
+import { DateCalc } from '../../../shared';
 import { UserEntity } from '../user/entities/user.entity';
 import { User } from '../user/models/user.model';
 import { UserService } from '../user/user.service';
@@ -79,7 +81,7 @@ export class AuthService {
     const payload: JwtPayload = {
       sub: `${user.id}`,
       username: user.username,
-      token_id: '',
+      token_id: new Types.ObjectId().toHexString(),
     };
 
     const [accessToken, refreshToken] = await Promise.all([
@@ -87,16 +89,37 @@ export class AuthService {
       this.signRefreshToken(payload),
     ]);
 
-    const rtHash = await this.encryptionService.hash(refreshToken);
-    if (!(await this.userService.setRefreshToken(payload.sub, rtHash))) {
-      this.logger.error('Failed to set refresh token hash');
-      throw new Error('Failed to set refresh token hash');
-    }
+    const tokenValidSince = new Date();
+    const tokenValidUntil = DateCalc.add(
+      this.environmentConfigService.jwt.token.expiresIn(),
+      tokenValidSince,
+    );
+    const tokenHash = await this.encryptionService.hash(accessToken);
+    const refreshTokenValidSince = tokenValidSince;
+    const refreshTokenValidUntil = DateCalc.add(
+      this.environmentConfigService.jwt.refresh.expiresIn(),
+      refreshTokenValidSince,
+    );
+    const refreshTokenHash = await this.encryptionService.hash(refreshToken);
+
+    this.logger.debug(`Creating session for userId: ${user.id}`);
+
+    const userCreatedSession = await this.userService.createSession(
+      `${user.id}`,
+      payload.token_id,
+      tokenValidSince,
+      tokenValidUntil,
+      tokenHash,
+      refreshTokenValidSince,
+      refreshTokenValidUntil,
+      refreshTokenHash,
+    );
+    if (!userCreatedSession) throw new Error('Failed to create user session');
 
     return {
       accessToken: accessToken,
       refreshToken: refreshToken,
-      user: plainToClass(User, user.toObject({ virtuals: true })),
+      user: plainToClass(User, userCreatedSession.toObject({ virtuals: true })),
     };
   }
 

@@ -16,6 +16,7 @@ const mockUserService = {
   setRefreshToken: jest.fn(),
   unSetRefreshToken: jest.fn(),
   getById: jest.fn(),
+  createSession: jest.fn(),
 };
 const mockJwtService = {
   signAsync: jest.fn(),
@@ -52,6 +53,29 @@ const mockEncryptionService = {
 };
 
 describe('AuthService', () => {
+  let service: AuthService;
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [
+        AuthService,
+        { provide: UserService, useValue: mockUserService },
+        { provide: JwtService, useValue: mockJwtService },
+        {
+          provide: EnvironmentConfigService,
+          useValue: new MockEnvironmentConfigService(),
+        },
+        { provide: EncryptionService, useValue: mockEncryptionService },
+      ],
+    }).compile();
+    service = module.get<AuthService>(AuthService);
+    jest.clearAllMocks();
+  });
+
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
   describe('private methods', () => {
     it('should sign access token', async () => {
       const payload = { sub: '1', username: 'test', token_id: '' };
@@ -87,7 +111,9 @@ describe('AuthService', () => {
         .mockResolvedValueOnce('access')
         .mockResolvedValueOnce('refresh');
       mockEncryptionService.hash.mockResolvedValue('hashed-refresh');
-      mockUserService.setRefreshToken.mockResolvedValue(true);
+      mockUserService.createSession.mockResolvedValue({
+        toObject: () => ({ virtuals: true }),
+      });
       const result = await (service as any).issueTokenPair(user);
       expect(result).toEqual({
         accessToken: 'access',
@@ -95,13 +121,10 @@ describe('AuthService', () => {
         user: expect.anything(),
       });
       expect(mockEncryptionService.hash).toHaveBeenCalledWith('refresh');
-      expect(mockUserService.setRefreshToken).toHaveBeenCalledWith(
-        '1',
-        'hashed-refresh',
-      );
+      expect(mockUserService.createSession).toHaveBeenCalled();
     });
 
-    it('should throw if setRefreshToken fails in issueTokenPair', async () => {
+    it('should throw if createSession fails in issueTokenPair', async () => {
       const user = {
         id: '1',
         username: 'test',
@@ -111,29 +134,11 @@ describe('AuthService', () => {
         .mockResolvedValueOnce('access')
         .mockResolvedValueOnce('refresh');
       mockEncryptionService.hash.mockResolvedValue('hashed-refresh');
-      mockUserService.setRefreshToken.mockResolvedValue(false);
+      mockUserService.createSession.mockResolvedValue(null);
       await expect((service as any).issueTokenPair(user)).rejects.toThrow(
-        'Failed to set refresh token hash',
+        'Failed to create user session',
       );
     });
-  });
-  let service: AuthService;
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        AuthService,
-        { provide: UserService, useValue: mockUserService },
-        { provide: JwtService, useValue: mockJwtService },
-        {
-          provide: EnvironmentConfigService,
-          useValue: new MockEnvironmentConfigService(),
-        },
-        { provide: EncryptionService, useValue: mockEncryptionService },
-      ],
-    }).compile();
-    service = module.get<AuthService>(AuthService);
-    jest.clearAllMocks();
   });
 
   describe('login', () => {

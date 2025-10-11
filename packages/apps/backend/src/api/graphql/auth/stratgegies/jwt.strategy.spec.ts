@@ -63,6 +63,10 @@ describe('JwtStrategy', () => {
     });
   });
 
+  it('should be defined', () => {
+    expect(strategy).toBeDefined();
+  });
+
   describe('validate', () => {
     const payload: JwtPayload = {
       sub: '1',
@@ -71,15 +75,20 @@ describe('JwtStrategy', () => {
     };
 
     it('should return user if found and logged in', async () => {
-      const userObj = { id: '1', toObject: () => ({ virtuals: true }) };
-      mockUserService.findById.mockResolvedValue(userObj);
-      mockUserService.isLoggedIn.mockResolvedValue(true);
+      const userObj = {
+        id: '1',
+        username: 'user',
+        toObject: () => ({ id: '1', username: 'user' }),
+      };
+      mockUserService.isLoggedIn.mockResolvedValue(userObj);
       const result = await strategy.validate(payload);
       expect(result).toBeInstanceOf(User);
+      expect(result.id).toBe('1');
+      expect(result.username).toBe('user');
     });
 
     it('should throw UnauthorizedException if user not found', async () => {
-      mockUserService.findById.mockResolvedValue(null);
+      mockUserService.isLoggedIn.mockResolvedValue(null);
       await expect(strategy.validate(payload)).rejects.toThrow(
         UnauthorizedException,
       );

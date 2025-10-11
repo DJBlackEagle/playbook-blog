@@ -53,11 +53,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
    * @throws UnauthorizedException if the user does not exist or is not logged in.
    */
   async validate(payload: JwtPayload): Promise<User> {
-    const user = await this.users.findById(payload.sub);
-    if (!user) throw new UnauthorizedException();
-
-    if (!(await this.users.isLoggedIn(payload.sub))) {
-      throw new UnauthorizedException();
+    const user = await this.users.isLoggedIn(payload.sub, payload.token_id);
+    if (!user) {
+      throw new UnauthorizedException('Invalid token or user not logged in');
     }
 
     return plainToClass(User, user.toObject({ virtuals: true }));

@@ -1,8 +1,10 @@
+import { Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { QueryService } from '@ptc-org/nestjs-query-core';
 import { MongooseQueryService } from '@ptc-org/nestjs-query-mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { EncryptionService } from '../../../modules/encryption';
+import { UserSessionEntity } from './entities/user-session.entiy';
 import { UserEntity, UserEntityModel } from './entities/user.entity';
 
 /**
@@ -13,6 +15,8 @@ import { UserEntity, UserEntityModel } from './entities/user.entity';
  */
 @QueryService(UserEntity)
 export class UserService extends MongooseQueryService<UserEntity> {
+  private readonly logger: Logger = new Logger(UserService.name);
+
   /**
    * Constructs the UserService.
    *
@@ -40,7 +44,7 @@ export class UserService extends MongooseQueryService<UserEntity> {
       paging: { limit: 1 },
     });
 
-    return user;
+    return user ?? null;
   }
 
   /**
@@ -87,16 +91,44 @@ export class UserService extends MongooseQueryService<UserEntity> {
   }
 
   /**
-   * Checks if a user is currently logged in (has a refresh token set).
+   * Checks if a user has a valid, non-expired session for a given tokenId.
+   * This method is optimized to perform the check directly in the database.
    *
    * @param userId - The user's unique identifier.
-   * @returns True if the user is logged in, false otherwise.
+   * @param tokenId - The session's token identifier.
+   * @returns The user entity if a valid session is found, otherwise null.
    */
-  async isLoggedIn(userId: string): Promise<boolean> {
-    const user = await this.getById(userId);
-    if (!user) return false;
+  async isLoggedIn(
+    userId: string,
+    tokenId: string,
+  ): Promise<UserEntity | null> {
+    try {
+      const user = await this.Model.findOne({
+        _id: userId,
+        sessions: {
+          $elemMatch: {
+            'authToken.tokenId': new Types.ObjectId(tokenId),
+            'authToken.validUntil': { $gt: new Date() },
+          },
+        },
+      }).exec();
 
-    return !!user.refreshTokenHash;
+      return user;
+    } catch (error) {
+      let errorMessage = 'Unknown error';
+      if (
+        typeof error === 'object' &&
+        error !== null &&
+        'message' in error &&
+        typeof (error as { message?: unknown }).message === 'string'
+      ) {
+        errorMessage = (error as { message: string }).message;
+      }
+      this.logger.error(
+        `Invalid tokenId format or query failed: ${errorMessage}`,
+      );
+      throw error;
+    }
   }
 
   /**
@@ -107,5 +139,67 @@ export class UserService extends MongooseQueryService<UserEntity> {
    */
   async setLastLogin(userId: string): Promise<UserEntity | null> {
     return this.updateOne(userId, { lastLogin: new Date() });
+  }
+
+  /**
+   * Creates a new user session with access and refresh token details.
+   *
+   * Adds a session entry to the user's sessions array, including token validity and hashes.
+   *
+   * @param userId - The user's unique identifier.
+   * @param tokenId - The unique token identifier for the session.
+   * @param tokenValidSince - The date/time when the access token became valid.
+   * @param tokenValidUntil - The date/time when the access token expires.
+   * @param tokenHash - The hashed value of the access token.
+   * @param refreshTokenValidSince - The date/time when the refresh token became valid.
+   * @param refreshTokenValidUntil - The date/time when the refresh token expires.
+   * @param refreshTokenHash - The hashed value of the refresh token.
+   * @returns The updated user entity with the new session, or null if not found or update fails.
+   */
+  async createSession(
+    userId: string,
+    tokenId: string,
+    tokenValidSince: Date,
+    tokenValidUntil: Date,
+    tokenHash: string,
+    refreshTokenValidSince: Date,
+    refreshTokenValidUntil: Date,
+    refreshTokenHash: string,
+  ): Promise<UserEntity | null> {
+    const userSession: UserSessionEntity = {
+      authToken: {
+        tokenId: new Types.ObjectId(tokenId),
+        validSince: tokenValidSince,
+        validUntil: tokenValidUntil,
+        hash: tokenHash,
+      },
+      refreshToken: {
+        tokenId: new Types.ObjectId(tokenId),
+        validSince: refreshTokenValidSince,
+        validUntil: refreshTokenValidUntil,
+        hash: refreshTokenHash,
+      },
+    };
+
+    try {
+      const updatedUser = await this.Model.findOneAndUpdate(
+        { _id: userId },
+        { $push: { sessions: userSession } },
+        { new: true },
+      ).exec();
+
+      if (!updatedUser) {
+        this.logger.warn(
+          `The findOneAndUpdate operation did not return an updated user for ID: ${userId}`,
+        );
+
+        return null;
+      }
+
+      return updatedUser;
+    } catch (error) {
+      this.logger.error('Error during user.updateOne call:', error);
+      return null;
+    }
   }
 }

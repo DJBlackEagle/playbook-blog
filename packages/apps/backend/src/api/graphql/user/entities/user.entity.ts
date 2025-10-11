@@ -8,6 +8,7 @@ import { Query, SchemaTypes, Types } from 'mongoose';
 import { EnvironmentConfigService } from '../../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../../modules/encryption';
 import { BaseEntity } from '../../../../shared';
+import { UserSessionEntity } from './user-session.entiy';
 
 /**
  * Middleware function to hash the password field during update operations.
@@ -37,9 +38,30 @@ async function hashOnUpdate(this: any, next: () => void): Promise<void> {
 }
 
 /**
- * Mongoose entity representing a user document.
+ * Represents the User entity for MongoDB.
  *
- * Contains authentication, contact, and role information for a user.
+ * Contains authentication, contact, session, and role information for a user.
+ *
+ * @property {string} username - Unique username for the user.
+ * @property {string} email - Unique email address for the user.
+ * @property {string} password - Hashed password for the user.
+ * @property {Date} lastLogin - Timestamp of the user's last login.
+ * @property {string} tokenIdentifier - Token identifier for session or JWT tracking.
+ * @property {string} refreshTokenHash - Hashed refresh token for the user.
+ * @property {Types.ObjectId} role - Reference to the user's role.
+ * @property {UserSessionEntity[]} sessions - Array of user session subdocuments.
+ *
+ * @example
+ * const user: UserEntity = {
+ *   username: 'john_doe',
+ *   email: 'john@example.com',
+ *   password: 'hashed_password',
+ *   lastLogin: new Date(),
+ *   tokenIdentifier: 'token123',
+ *   refreshTokenHash: 'refresh_hash',
+ *   role: new Types.ObjectId('role_id'),
+ *   sessions: [ ... ],
+ * };
  */
 @Schema({ timestamps: true })
 class UserEntity extends BaseEntity {
@@ -84,6 +106,14 @@ class UserEntity extends BaseEntity {
    */
   @Prop({ type: SchemaTypes.ObjectId, ref: 'Role', required: false })
   role: Types.ObjectId;
+
+  /**
+   * User session subdocuments containing authentication and refresh tokens.
+   *
+   * Multiple sessions are supported for concurrent logins or devices.
+   */
+  @Prop({ type: [UserSessionEntity], required: false })
+  sessions?: UserSessionEntity[];
 }
 
 /**
