@@ -103,7 +103,13 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "\\.module\\.ts$",
-      "\\.constants\\.ts$"
+      "\\.constants\\.ts$",
+      "\\.entity.ts$",
+      "\\.enum\\.ts$",
+      "\\.dto\\.ts$",
+      "\\.interface\\.ts$",
+      "\\.model\\.ts$",
+      "\\.input\\.ts$"
     ]
   }
 }
