@@ -4,7 +4,7 @@ import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { Model, Types } from 'mongoose';
 import { EncryptionService } from '../../../modules/encryption';
-import { UserSessionEntity } from './entities/user-session.entiy';
+import { UserSessionEntity } from './entities/user-session.entity';
 import { UserEntity, UserEntityModel } from './entities/user.entity';
 import { UserService } from './user.service';
 

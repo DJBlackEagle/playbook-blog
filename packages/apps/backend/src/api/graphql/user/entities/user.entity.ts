@@ -8,7 +8,7 @@ import { Query, SchemaTypes, Types } from 'mongoose';
 import { EnvironmentConfigService } from '../../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../../modules/encryption';
 import { BaseEntity } from '../../../../shared';
-import { UserSessionEntity } from './user-session.entiy';
+import { UserSessionEntity } from './user-session.entity';
 
 /**
  * Middleware function to hash the password field during update operations.

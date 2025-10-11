@@ -4,7 +4,7 @@ import { QueryService } from '@ptc-org/nestjs-query-core';
 import { MongooseQueryService } from '@ptc-org/nestjs-query-mongoose';
 import { Model, Types } from 'mongoose';
 import { EncryptionService } from '../../../modules/encryption';
-import { UserSessionEntity } from './entities/user-session.entiy';
+import { UserSessionEntity } from './entities/user-session.entity';
 import { UserEntity, UserEntityModel } from './entities/user.entity';
 
 /**
