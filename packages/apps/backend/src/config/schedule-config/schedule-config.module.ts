@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
 
 /**
- * NestJS module for configuring and providing GraphQL integration.
+ * NestJS module for configuring and providing scheduling functionality.
  *
- * Sets up Apollo GraphQL with async configuration using GraphQLConfigService.
+ * Sets up the ScheduleModule to enable scheduled tasks within the application.
  */
 @Module({
   imports: [ScheduleModule.forRoot()],
