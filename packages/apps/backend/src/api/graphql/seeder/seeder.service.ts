@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { SeederInput } from './inputs/seeder.input';
-import { Seeder } from './models/sedder.model';
+import { Seeder } from './models/seeder.model';
 import { SeederCommentService } from './seeder-comment/seeder-comment.service';
 import { SeederPostService } from './seeder-post/seeder-post.service';
 import { SeederRoleService } from './seeder-role/seeder-role.service';

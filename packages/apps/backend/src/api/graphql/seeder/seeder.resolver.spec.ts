@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SeederInput } from './inputs/seeder.input';
-import { Seeder } from './models/sedder.model';
+import { Seeder } from './models/seeder.model';
 import { SeederResolver } from './seeder.resolver';
 import { SeederService } from './seeder.service';
 

@@ -1,6 +1,6 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { SeederInput } from './inputs/seeder.input';
-import { Seeder } from './models/sedder.model';
+import { Seeder } from './models/seeder.model';
 import { SeederService } from './seeder.service';
 
 /**
