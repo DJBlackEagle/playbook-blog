@@ -85,7 +85,7 @@ export class DateCalc {
    *   - d: days
    *   - w: weeks
    *   - M: months (calendar months)
-   *   - y: years (365 days per year)
+   *   - y: years (calendar years)
    *
    * @param durations - The duration string or array of strings (e.g., '2h', ['30m', '1d']).
    * @param fromDate - The base date (default: now).
