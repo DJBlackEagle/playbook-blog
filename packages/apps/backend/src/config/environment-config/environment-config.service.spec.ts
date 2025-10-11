@@ -16,6 +16,10 @@ describe('EnvironmentConfigService', () => {
     service = new EnvironmentConfigService(configService);
   });
 
+  it('should be defined', () => {
+    expect(service).toBeDefined();
+  });
+
   describe('database', () => {
     describe('url', () => {
       it('should return url from config', () => {
