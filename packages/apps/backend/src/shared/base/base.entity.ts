@@ -42,5 +42,5 @@ export abstract class BaseEntity extends Document {
    * Should be set when deleted is true.
    */
   @Prop({ type: Date })
-  deletedAt!: Date;
+  deletedAt?: Date;
 }
