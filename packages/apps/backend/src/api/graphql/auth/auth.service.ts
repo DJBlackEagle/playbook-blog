@@ -12,7 +12,7 @@ import { LoginInput } from './inputs/login.input';
 import { RefreshTokenInput } from './inputs/refresh-token.input';
 import { Login } from './models/login.model';
 import { Logout } from './models/logout.model';
-import { JwtPayload } from './stratgegies/jwt.strategy';
+import { JwtPayload } from './strategies/jwt.strategy';
 
 /**
  * Service for handling authentication logic, including login, logout, and token refresh.

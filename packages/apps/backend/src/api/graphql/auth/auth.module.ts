@@ -7,7 +7,7 @@ import { EncryptionModule } from '../../../modules/encryption';
 import { UserModule } from '../user/user.module';
 import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './stratgegies/jwt.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 /**
  * NestJS module for authentication and authorization.
