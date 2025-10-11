@@ -386,7 +386,7 @@ It showed a lady fitted out with a fur hat and fur boa who sat upright, raising 
       const { message } = error as Error;
       console.error('Error creating posts:', error);
       data.success = false;
-      data.error = `Error creating users: ${message || 'Unknown error'}`;
+      data.error = `Error creating posts: ${message || 'Unknown error'}`;
     }
 
     data.completedAt = new Date();
