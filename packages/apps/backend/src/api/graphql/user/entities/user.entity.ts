@@ -1,5 +1,5 @@
 /* istanbul ignore file */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { ConfigService } from '@nestjs/config';
@@ -20,10 +20,19 @@ import { UserSessionEntity } from './user-session.entity';
  * @param next - Callback to proceed to the next middleware or operation.
  * @returns A promise that resolves when the password has been hashed and the update can proceed.
  */
-async function hashOnUpdate(this: any, next: () => void): Promise<void> {
-  const update = this.getUpdate() || {};
+async function hashOnUpdate(
+  this: Query<UserEntity, UserEntity>,
+  next: () => void,
+): Promise<void> {
+  const update = this.getUpdate();
+
+  if (!update || Array.isArray(update)) return next();
+
   const pwd =
-    update.password ?? update.$set?.password ?? update.$setOnInsert?.password;
+    update.$set?.password ??
+    (update as Partial<UserEntity>).password ??
+    update.$setOnInsert?.password;
+
   if (!pwd) return next();
 
   const environmentConfigService = new EnvironmentConfigService(
@@ -31,9 +40,14 @@ async function hashOnUpdate(this: any, next: () => void): Promise<void> {
   );
   const encryptionService = new EncryptionService(environmentConfigService);
   const hashed = await encryptionService.hash(`${pwd}`);
-  if (update.password) update.password = hashed;
+
+  if ((update as Partial<UserEntity>).password) {
+    (update as Partial<UserEntity>).password = hashed;
+  }
+
   if (update.$set?.password) update.$set.password = hashed;
   if (update.$setOnInsert?.password) update.$setOnInsert.password = hashed;
+
   next();
 }
 
