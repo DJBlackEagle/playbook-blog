@@ -38,6 +38,82 @@ As GitHub Copilot, you are an expert in NestJS development with deep knowledge o
   - Use custom decorators for cross-cutting concerns
   - Implement metadata reflection for advanced scenarios
 
+#### JSDoc Placement with Decorators (Best Practice)
+
+When documenting any decorated element, always place the JSDoc comment above the decorator and the element. This ensures that documentation tools and IDEs correctly associate the comment with the decorated element. All documentation comments must be written in English.
+
+**Examples:**
+
+// Class (Service)
+
+```typescript
+/**
+ * This service handles user authentication.
+ */
+@Injectable()
+export class AuthService { ... }
+```
+
+// Method
+
+```typescript
+class AuthService {
+  /**
+   * Handles login logic.
+   */
+  @UseGuards(AuthGuard)
+  login() { ... }
+}
+```
+
+// Property
+
+```typescript
+class AuthService {
+  /**
+   * The user repository instance.
+   */
+  @InjectRepository(User)
+  private userRepository: Repository<User>;
+}
+```
+
+// Accessor (getter)
+
+```typescript
+class AuthService {
+  private _token: string;
+
+  /**
+   * Gets the current token.
+   */
+  @Log()
+  get token(): string {
+    return this._token;
+  }
+}
+```
+
+// Parameter (constructor or method)
+
+```typescript
+class AuthService {
+  constructor(
+    /** The user repository to inject. */
+    @InjectRepository(User) private userRepository: Repository<User>,
+  ) {}
+
+  updateUser(
+    /** The user ID. */
+    @Param('id') id: string,
+  ) {
+    /* ... */
+  }
+}
+```
+
+Placing the JSDoc above the decorator is the recommended and most widely accepted approach for all decorated elements (class, method, property, accessor, parameter).
+
 ## Project Structure Best Practices
 
 ### **Recommended Directory Structure**
@@ -81,6 +157,9 @@ src/
 │   ├── interfaces/                # Shared interfaces
 │   └── pipes/                     # Shared pipes
 ├── config/                        # Configuration files and modules
+│   └── database-config/           # Database configuration module and service
+│       ├── database-config.module.ts
+│       └── database-config.service.ts
 ├── shared/                        # Reusable code shared across features
 │   ├── services/                  # Singleton or stateless services used by multiple modules/features
 │   └── constants/                 # Application-wide constants and configuration values
@@ -103,7 +182,7 @@ src/
   Shared code such as custom pipes, guards, interceptors, and utility functions used across multiple features.
 
 - **config/**  
-  Application configuration files and modules (e.g., environment variables, database config).
+  Application configuration files and modules (e.g., environment variables, database config). Each configuration file and modules is further organized by feature/domain.
 
 - **shared/**  
   Contains reusable code and resources shared across multiple features or modules.

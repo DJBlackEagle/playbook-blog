@@ -22,7 +22,10 @@
       "cache": false
     },
     "test": {
-      "dependsOn": ["build"]
+      "cache": false
+    },
+    "test:coverage": {
+      "cache": false
     },
     "test:watch": {
       "dependsOn": ["build"]

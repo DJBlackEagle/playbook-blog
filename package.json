@@ -17,11 +17,13 @@
     "start:dev": "turbo run start:dev",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
     "test:watch": "turbo run test:watch",
     "test:e2e": "turbo run test:e2e",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "docker:down:clean": "docker compose down --volumes --remove-orphans"
+    "docker:down:clean": "docker compose down --volumes --remove-orphans",
+    "docker:reset": "pnpm docker:down:clean && pnpm docker:up"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
