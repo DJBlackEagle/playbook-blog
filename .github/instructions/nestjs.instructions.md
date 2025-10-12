@@ -1,5 +1,5 @@
 ---
-applyTo: '**/*.ts, **/*.js, **/*.json, **/*.spec.ts, **/*.e2e-spec.ts'
+applyTo: 'packages/apps/backend/**/*.ts, packages/apps/backend/**/*.js, packages/apps/backend/**/*.json, packages/apps/backend/**/*.spec.ts, packages/apps/backend/**/*.e2e-spec.ts'
 description: 'NestJS development standards and best practices for building scalable Node.js server-side applications'
 ---
 
