@@ -102,7 +102,7 @@ export class EnvironmentConfigService {
         EnvironmentConfigVariables.JWT.AUDIENCE.DEFAULT_VALUE,
       ),
 
-    /*
+    /**
      * Token configuration category.
      */
     token: {
@@ -127,7 +127,7 @@ export class EnvironmentConfigService {
         ),
     },
 
-    /*
+    /**
      * Refresh token configuration category.
      */
     refresh: {
