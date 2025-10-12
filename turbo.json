@@ -3,23 +3,25 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"],
+      "outputs": ["dist/**", "./.angular/**"],
       "outputLogs": "full",
       "cache": false
     },
     "build:dev": {
       "dependsOn": ["^build:dev"],
-      "outputs": ["dist/**"],
+      "outputs": ["dist/**", "./.angular/**"],
       "outputLogs": "hash-only"
     },
     "format": {},
     "lint": {},
     "start": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "start:dev": {
       "dependsOn": ["build:dev"],
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "test": {
       "cache": false
