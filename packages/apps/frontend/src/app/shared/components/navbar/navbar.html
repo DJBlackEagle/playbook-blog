@@ -1,0 +1,21 @@
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="/" class="logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">{{ siteName }}</div>
+    </a>
+    <ul class="nav-links">
+      <li *ngFor="let item of menuItems"><a [href]="item.href">{{ item.label }}</a></li>
+    </ul>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li *ngFor="let item of menuItems"><a [href]="item.href">{{ item.label }}</a></li>
+    </ul>
+  </div>
+</nav>

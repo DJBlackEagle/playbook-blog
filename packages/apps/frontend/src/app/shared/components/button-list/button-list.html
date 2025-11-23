@@ -1,0 +1,5 @@
+<div class="cta-buttons">
+  <app-button *ngFor="let button of buttons" [link]="button.link" [isPrimary]="button.isPrimary">
+    {{ button.text }}
+  </app-button>
+</div>

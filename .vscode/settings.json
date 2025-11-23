@@ -46,13 +46,18 @@
   "yaml.format.proseWrap": "preserve",
   "yaml.format.singleQuote": true,
   "yaml.yamlVersion": "1.2",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[dockerfile]": {
     "editor.quickSuggestions": {
       "strings": true
     }
   },
   "[dotenv]": {},
-  "[shellscript]": {},
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -69,6 +74,10 @@
       "other": "off"
     }
   },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[shellscript]": {},
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

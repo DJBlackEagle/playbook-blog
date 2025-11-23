@@ -1,0 +1,14 @@
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  animation: slideInUp 1s ease-out 0.6s both;
+}
+
+@media (max-width: 768px) {
+  .cta-buttons {
+    width: 100%;
+  }
+}
