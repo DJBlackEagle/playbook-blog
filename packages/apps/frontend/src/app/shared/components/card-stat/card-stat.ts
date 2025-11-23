@@ -9,5 +9,5 @@ import { CardStatItem } from './card-stat-item.model';
   styleUrl: './card-stat.scss',
 })
 export class CardStat {
-  @Input() cardStatItems: CardStatItem[] = [];
+  @Input() card: CardStatItem = { label: '', number: 0 };
 }

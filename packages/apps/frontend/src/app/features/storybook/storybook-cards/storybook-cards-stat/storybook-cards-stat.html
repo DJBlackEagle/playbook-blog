@@ -1,12 +1,40 @@
-<div>
-  <app-card-stat [cardStatItems]="cardStatItems01"></app-card-stat>
-</div>
-<div>
-  <app-card-stat [cardStatItems]="cardStatItems02"></app-card-stat>
-</div>
-<div>
-  <app-card-stat [cardStatItems]="cardStatItems03"></app-card-stat>
-</div>
-<div>
-  <app-card-stat [cardStatItems]="cardStatItems04"></app-card-stat>
-</div>
+<section id="card-stat-single">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔹 Single</h1>
+    </div>
+    <app-card-stat [card]="cardItem01"></app-card-stat>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-stat" [isPrimary]="true">🔼 Card - Stat</app-button>
+  </div>
+</section>
+
+<section id="card-stat-singles">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔹 Singles</h1>
+    </div>
+    <app-card-stat [card]="cardItem02"></app-card-stat>
+    <app-card-stat [card]="cardItem02_01"></app-card-stat>
+    <app-card-stat [card]="cardItem02_02"></app-card-stat>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-stat" [isPrimary]="true">🔼 Card - Stat</app-button>
+  </div>
+</section>
+
+<section id="card-stat-list">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔹 List</h1>
+    </div>
+    <app-card-stat-list [cards]="cardItems01"></app-card-stat-list>
+    <br />
+    <br />
+    <app-card-stat-list [cards]="cardItems02"></app-card-stat-list>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-stat" [isPrimary]="true">🔼 Card - Stat</app-button>
+  </div>
+</section>

@@ -9,5 +9,5 @@ import { CardCommonItem } from './card-common-item.model';
   styleUrl: './card-common.scss',
 })
 export class CardCommon {
-  @Input() cardCommonItems: CardCommonItem[] = [];
+  @Input() card: CardCommonItem = { title: '', content: '' };
 }
