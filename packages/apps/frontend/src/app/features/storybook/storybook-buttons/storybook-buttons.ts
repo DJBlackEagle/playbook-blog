@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ButtonItem } from '../../../shared/components/button-list/button-item.model';
-import { ButtonList } from '../../../shared/components/button-list/button-list';
 import { Button } from '../../../shared/components/button/button';
+import { ButtonItem } from '../../../shared/components/button/button-item.model';
+import { ButtonList } from '../../../shared/components/button/button-list';
 
 @Component({
   selector: 'app-storybook-buttons',

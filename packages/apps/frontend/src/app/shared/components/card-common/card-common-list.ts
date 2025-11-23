@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CardCommon } from '../card-common/card-common';
-import { CardCommonItem } from '../card-common/card-common-item.model';
+import { CardCommon } from './card-common';
+import { CardCommonItem } from './card-common-item.model';
 
 @Component({
   selector: 'app-card-common-list',

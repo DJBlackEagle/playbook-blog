@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Button } from '../../../../shared/components/button/button';
-import { CardProgressList } from '../../../../shared/components/card-progress-list/card-progress-list';
 import { CardProgress } from '../../../../shared/components/card-progress/card-progress';
 import { CardProgressItem } from '../../../../shared/components/card-progress/card-progress-item.model';
+import { CardProgressList } from '../../../../shared/components/card-progress/card-progress-list';
 
 @Component({
   selector: 'app-storybook-cards-progress',

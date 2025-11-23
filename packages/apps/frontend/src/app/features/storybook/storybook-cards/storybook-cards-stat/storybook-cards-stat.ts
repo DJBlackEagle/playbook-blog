@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Button } from '../../../../shared/components/button/button';
-import { CardStatList } from '../../../../shared/components/card-stat-list/card-stat-list';
 import { CardStat } from '../../../../shared/components/card-stat/card-stat';
 import { CardStatItem } from '../../../../shared/components/card-stat/card-stat-item.model';
+import { CardStatList } from '../../../../shared/components/card-stat/card-stat-list';
 
 @Component({
   selector: 'app-storybook-cards-stat',

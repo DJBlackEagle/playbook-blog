@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CardProgress } from '../card-progress/card-progress';
-import { CardProgressItem } from '../card-progress/card-progress-item.model';
+import { CardProgress } from './card-progress';
+import { CardProgressItem } from './card-progress-item.model';
 
 @Component({
   selector: 'app-card-progress-list',

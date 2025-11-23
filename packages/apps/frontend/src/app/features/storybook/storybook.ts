@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AppRoutes } from '../../app.routes';
-import { ButtonItem } from '../../shared/components/button-list/button-item.model';
-import { ButtonList } from '../../shared/components/button-list/button-list';
 import { Button } from '../../shared/components/button/button';
+import { ButtonItem } from '../../shared/components/button/button-item.model';
+import { ButtonList } from '../../shared/components/button/button-list';
 import { Link } from '../../shared/components/link/link';
 import { StorybookButtons } from './storybook-buttons/storybook-buttons';
 import { StorybookCards } from './storybook-cards/storybook-cards';

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Button } from '../../../../shared/components/button/button';
-import { CardCommonList } from '../../../../shared/components/card-common-list/card-common-list';
 import { CardCommon } from '../../../../shared/components/card-common/card-common';
 import { CardCommonItem } from '../../../../shared/components/card-common/card-common-item.model';
+import { CardCommonList } from '../../../../shared/components/card-common/card-common-list';
 
 @Component({
   selector: 'app-storybook-cards-common',

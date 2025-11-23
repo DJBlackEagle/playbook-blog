@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CardStat } from '../card-stat/card-stat';
-import { CardStatItem } from '../card-stat/card-stat-item.model';
+import { CardStat } from './card-stat';
+import { CardStatItem } from './card-stat-item.model';
 
 @Component({
   selector: 'app-card-stat-list',
