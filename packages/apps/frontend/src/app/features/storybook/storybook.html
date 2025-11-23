@@ -15,15 +15,11 @@
     <div class="section-header">
       <h1 class="section-title">Table of content</h1>
       <p class="section-subtitle">
-        <app-button-primary link="#buttons">Buttons</app-button-primary>&nbsp;
-        <app-button-primary link="#cards">Cards</app-button-primary>&nbsp;
-        <app-button-primary link="#timeline">Timeline</app-button-primary>&nbsp;
-        <app-button-primary link="#formular">Formular</app-button-primary>&nbsp;
-        <app-button-primary link="#contact">Contact</app-button-primary>&nbsp;
+        <app-button-list [buttons]="tocButtons"></app-button-list>
       </p>
     </div>
   </div>
-  <div style="text-align: right;">
+  <div style="text-align: right; padding-top: 32px;">
     <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
   </div>
 </section>
@@ -33,15 +29,12 @@
     <div class="section-header">
       <h1 class="section-title">Buttons</h1>
       <p class="section-subtitle">
-        <app-button-primary link="#buttons-primary">Primary</app-button-primary>&nbsp;
-        <app-button-primary link="#buttons-secondary">Secondary</app-button-primary>&nbsp;
-        <app-button-primary link="#buttons-mixed">Mixed</app-button-primary>&nbsp;
-        <app-button-primary link="#buttons-single">Single</app-button-primary>&nbsp;
+        <app-button-list [buttons]="buttonsButtons"></app-button-list>
       </p>
     </div>
   </div>
   <app-storybook-buttons></app-storybook-buttons>
-  <div style="text-align: right;">
+  <div style="text-align: right; padding-top: 32px;">
     <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
   </div>
 </section>
@@ -51,17 +44,16 @@
     <div class="section-header">
       <h1 class="section-title">Cards</h1>
       <p class="section-subtitle">
-        <app-button-primary link="#cards-common">Common</app-button-primary>&nbsp;
-        <app-button-primary link="#cards-stats">Stats</app-button-primary>&nbsp;
+        <app-button-list [buttons]="cardsButtons"></app-button-list>
       </p>
     </div>
   </div>
   <app-storybook-cards></app-storybook-cards>
-  <div style="text-align: right;">
+  <div style="text-align: right; padding-top: 32px;">
     <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
   </div>
 </section>
-<hr />
+<!-- <hr />
 <section id="timeline">
   <div class="container">
     <div class="section-header">
@@ -70,11 +62,11 @@
     </div>
   </div>
   <app-storybook-timeline></app-storybook-timeline>
-  <div style="text-align: right;">
+  <div style="text-align: right; padding-top: 32px;">
     <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
   </div>
-</section>
-<hr />
+</section> -->
+<!-- <hr />
 <section id="formular">
   <div class="container">
     <div class="section-header">
@@ -85,10 +77,10 @@
   <div class="contact-form-container">
     <app-storybook-formular></app-storybook-formular>
   </div>
-  <div style="text-align: right;">
+  <div style="text-align: right; padding-top: 32px;">
     <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
   </div>
-</section>
+</section> -->
 <hr />
 <section id="contact">
   <div class="container">
@@ -98,9 +90,9 @@
     </div>
   </div>
   <app-storybook-contact></app-storybook-contact>
-  <div style="text-align: right;">
+  <div style="text-align: right; padding-top: 32px;">
     <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
   </div>
 </section>
 <!-- <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> -->
-<!-- <div style="text-align: right;"><app-button-secondary link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button-secondary></div> -->
+<!-- <div style="text-align: right; padding-top: 32px;"><app-button-secondary link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button-secondary></div> -->

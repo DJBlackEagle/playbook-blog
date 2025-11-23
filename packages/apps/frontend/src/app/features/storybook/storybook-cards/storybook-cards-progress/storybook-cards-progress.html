@@ -1,0 +1,36 @@
+<section id="card-progress-single">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔸 Single</h1>
+    </div>
+    <app-card-progress [cardProgressItem]="cardProgressItem01"></app-card-progress>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-progress" [isPrimary]="true">🔼 Card - Progress</app-button>
+  </div>
+</section>
+
+<section id="card-progress-singles">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔸 Singles</h1>
+    </div>
+    <app-card-progress [cardProgressItem]="cardProgressItem02"></app-card-progress>
+    <app-card-progress [cardProgressItem]="cardProgressItem02_01"></app-card-progress>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-progress" [isPrimary]="true">🔼 Card - Progress</app-button>
+  </div>
+</section>
+
+<section id="card-progress-list">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔸 List</h1>
+    </div>
+    <app-card-progress-list [cardProgressItems]="cardProgressItem03"></app-card-progress-list>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-progress" [isPrimary]="true">🔼 Card - Progress</app-button>
+  </div>
+</section>

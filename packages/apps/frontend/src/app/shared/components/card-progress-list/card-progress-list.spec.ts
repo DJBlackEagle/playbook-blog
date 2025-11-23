@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtonSecondary } from './button-secondary';
+import { CardCommon } from './card-common';
 
-describe('ButtonSecondary', () => {
-  let component: ButtonSecondary;
-  let fixture: ComponentFixture<ButtonSecondary>;
+describe('CardCommon', () => {
+  let component: CardCommon;
+  let fixture: ComponentFixture<CardCommon>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonSecondary]
+      imports: [CardCommon]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ButtonSecondary);
+    fixture = TestBed.createComponent(CardCommon);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

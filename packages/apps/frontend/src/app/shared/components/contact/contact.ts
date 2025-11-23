@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Formular } from '../formular/formular';
 import { FormularInputItem } from '../formular/formular-input-item.model';
 
 @Component({
   selector: 'app-contact',
-  imports: [Formular],
+  imports: [],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
