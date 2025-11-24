@@ -39,6 +39,21 @@
   </div>
 </section>
 <hr />
+<section id="container">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Container</h1>
+      <p class="section-subtitle">
+        <app-button-list [buttons]="containerButtons"></app-button-list>
+      </p>
+    </div>
+  </div>
+  <app-storybook-container></app-storybook-container>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section>
+<hr />
 <section id="cards">
   <div class="container">
     <div class="section-header">

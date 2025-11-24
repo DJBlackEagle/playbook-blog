@@ -40,19 +40,17 @@ p a {
   color: #fff;
 }
 
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
 /* Container */
+/* Need to remove duplication with container.scss in container component */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-}
-
-/* Navigation */
-
-/* Section styling */
-section {
-  padding: 5rem 0;
-  position: relative;
 }
 
 .section-header {
@@ -85,6 +83,7 @@ section {
     font-size: 1.8rem;
   }
 }
+/* End Container */
 
 @keyframes slideInUp {
   from {
