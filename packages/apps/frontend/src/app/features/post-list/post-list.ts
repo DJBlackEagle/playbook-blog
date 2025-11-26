@@ -63,26 +63,43 @@ export class PostList implements OnInit {
     }
   }
 
-  nextPage(): void {
+  async nextPage(): Promise<void> {
     const pi: PageInfo | null = this.pageInfo();
     if (this.loading() || !pi?.hasNextPage || typeof pi.endCursor !== 'string') return;
 
     this.currentPage.update((p) => p + 1);
-    void this.fetchPosts({
+    await this.fetchPosts({
       first: this.postsPerPage,
       after: pi.endCursor,
       sorting: [this.sort()],
     });
+
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
   }
 
-  previousPage(): void {
+  async previousPage(): Promise<void> {
     const pi: PageInfo | null = this.pageInfo();
     if (this.loading() || !pi?.hasPreviousPage || typeof pi.startCursor !== 'string') return;
 
     this.currentPage.update((p) => p - 1);
-    void this.fetchPosts({
+    await this.fetchPosts({
       last: this.postsPerPage,
       before: pi.startCursor,
+      sorting: [this.sort()],
+    });
+
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
+  }
+
+  onSortChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    const [field, direction] = select.value.split('-') as [PostSortFields, SortDirection];
+
+    this.sort.set({ field, direction });
+    this.currentPage.set(1);
+
+    void this.fetchPosts({
+      first: this.postsPerPage,
       sorting: [this.sort()],
     });
   }

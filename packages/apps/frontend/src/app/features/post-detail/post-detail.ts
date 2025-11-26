@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { AppRoutes } from '../../app.routes';
 import { Nl2brPipe } from '../../pipes/nl2br.pipe';
@@ -11,7 +11,7 @@ import { GetPostByIdGQL } from './generated/graphql';
 
 @Component({
   selector: 'app-post-detail',
-  imports: [CommonModule, RouterLink, Nl2brPipe, SafeHtmlPipe, Button],
+  imports: [CommonModule, Nl2brPipe, SafeHtmlPipe, Button],
   templateUrl: './post-detail.html',
   styleUrl: './post-detail.scss',
 })
