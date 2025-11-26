@@ -1,5 +1,6 @@
-import { Blog } from './features/blog/blog';
 import { Home } from './features/home/home';
+import { PostDetail } from './features/post-detail/post-detail';
+import { PostList } from './features/post-list/post-list';
 import { Storybook } from './features/storybook/storybook';
 
 /**
@@ -26,16 +27,22 @@ export const AppRoutes = {
     component: Home,
     showInNavbar: true,
   },
-  BLOG: {
-    title: 'Blog',
-    path: 'blog',
-    component: Blog,
+  POSTLIST: {
+    title: 'Posts',
+    path: 'posts',
+    component: PostList,
     showInNavbar: true,
+  },
+  POST_DETAIL: {
+    title: 'Post',
+    path: 'post/:id',
+    component: PostDetail,
+    showInNavbar: false,
   },
   STORYBOOK: {
     title: 'Storybook',
     path: 'storybook',
     component: Storybook,
-    showInNavbar: true,
+    showInNavbar: false,
   },
 } as const satisfies Record<string, IAppRoute>;

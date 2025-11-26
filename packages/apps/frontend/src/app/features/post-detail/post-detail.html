@@ -1,0 +1,51 @@
+<section id="news">
+  <div class="container">
+    <div *ngIf="post() as post; else loadingOrError">
+      <div class="post">
+        <div class="post-section-header">
+          <h1 class="post-section-title">
+            {{ post.title }}
+          </h1>
+          <p class="post-section-created-at">
+            Date Published: {{ post.createdAt | date:'longDate' }}
+            <span *ngIf="hasBeenUpdated(post)" class="updated-date">
+              , Last updated on {{ post.updatedAt | date:'longDate' }} {{ post.updatedAt | date:'shortTime' }}
+            </span>
+          </p>
+          <div *ngIf="post.teaser">
+            <p>
+              <em>{{ post.teaser }}</em>
+            </p>
+          </div>
+          <br />
+          <p class="post-section-content" [innerHTML]="post.content | nl2br | safeHtml"></p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loadingOrError>
+      <div *ngIf="status() === 'loading'; else notFound">
+        <div class="post">
+          <div class="post-section-header">
+            <p class="post-section-content loading">
+              Loading post...
+            </p>
+          </div>
+        </div>
+      </div>
+      <ng-template #notFound>
+        <div class="post">
+          <div class="post-section-header">
+            <p class="post-section-content notfound">
+              Post not found...
+            </p>
+          </div>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+
+  <div class="cta-buttons">
+    <app-button link="/posts" [isPrimary]="true">Back to Posts</app-button>
+  </div>
+</section>

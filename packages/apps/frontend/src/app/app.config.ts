@@ -5,7 +5,9 @@ import {
 } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
+import { provideHttpClient } from '@angular/common/http';
 import { AppRoutes } from './app.routes';
+import { graphqlProvider } from './graphql.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,5 +23,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       }),
     ),
+    provideHttpClient(),
+    graphqlProvider,
   ],
 };
