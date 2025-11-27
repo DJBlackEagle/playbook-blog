@@ -1,19 +1,6 @@
 <section id="top">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Latest Posts</h2>
-      <div class="sort-controls">
-        <label for="sort-select">Sort by:</label>
-        <select id="sort-select" (change)="onSortChange($event)">
-          <option value="createdAt-DESC">Newest First</option>
-          <option value="createdAt-ASC">Oldest First</option>
-          <option value="updatedAt-DESC">Newest updated First</option>
-          <option value="updatedAt-ASC">Oldest updated First</option>
-          <option value="title-ASC">Title (A-Z)</option>
-          <option value="title-DESC">Title (Z-A)</option>
-        </select>
-      </div>
-    </div>
+  <div class="section-header">
+    <h2 class="section-title">Latest Posts</h2>
   </div>
 
   <div *ngFor="let post of posts()" class="container">
@@ -28,6 +15,7 @@
         <p class="post-section-content">
           {{ post.teaser }}
         </p>
+        <div style="text-align: right;"><a [routerLink]="['/post', post.id]" rel="nofollow">[Read more]</a></div>
       </div>
     </div>
   </div>

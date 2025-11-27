@@ -20,6 +20,13 @@ const config: CodegenConfig = {
         addExplicitOverride: true,
       },
     },
+    'src/app/services/generated/graphql.ts': {
+      documents: 'src/app/services/gqls/*.gql.ts',
+      plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular'],
+      config: {
+        addExplicitOverride: true,
+      },
+    },
   },
 };
 

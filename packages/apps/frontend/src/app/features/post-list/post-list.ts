@@ -90,17 +90,4 @@ export class PostList implements OnInit {
 
     setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
   }
-
-  onSortChange(event: Event): void {
-    const select = event.target as HTMLSelectElement;
-    const [field, direction] = select.value.split('-') as [PostSortFields, SortDirection];
-
-    this.sort.set({ field, direction });
-    this.currentPage.set(1);
-
-    void this.fetchPosts({
-      first: this.postsPerPage,
-      sorting: [this.sort()],
-    });
-  }
 }

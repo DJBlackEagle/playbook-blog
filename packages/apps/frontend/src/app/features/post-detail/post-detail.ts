@@ -6,6 +6,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { AppRoutes } from '../../app.routes';
 import { Nl2brPipe } from '../../pipes/nl2br.pipe';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
+import { AuthService } from '../../services/auth.service';
 import { Button } from '../../shared/components/button/button';
 import { GetPostByIdGQL } from './generated/graphql';
 
@@ -21,6 +22,7 @@ export class PostDetail {
   private readonly route = inject(ActivatedRoute);
   private readonly getPostByIdGQL = inject(GetPostByIdGQL);
   private readonly router = inject(Router);
+  protected readonly authService = inject(AuthService);
 
   private readonly postResult = toSignal(
     this.route.paramMap.pipe(
@@ -44,5 +46,13 @@ export class PostDetail {
     if (!post.createdAt || !post.updatedAt) return false;
 
     return !!post.updatedAt && post.updatedAt !== post.createdAt;
+  }
+
+  protected edit(): void {
+    alert('Edit post functionality is not implemented yet.');
+  }
+
+  protected delete(): void {
+    alert('Delete post functionality is not implemented yet.');
   }
 }

@@ -1,11 +1,13 @@
 <nav id="navbar">
   <div class="nav-container">
-    <a href="/" class="logo">
+    <a routerLink="/" class="logo">
       <div class="logo-icon">⚡</div>
       <div class="logo-text">{{ siteName }}</div>
     </a>
     <ul class="nav-links">
-      <li *ngFor="let item of menuItems"><a [href]="item.href">{{ item.label }}</a></li>
+      <ng-container *ngFor="let item of menuItems">
+        <li *ngIf="shouldShow(item)"><a [routerLink]="item.href">{{ item.label }}</a></li>
+      </ng-container>
     </ul>
     <div class="mobile-menu-btn" id="mobileMenuBtn">
       <span></span>
@@ -15,7 +17,7 @@
   </div>
   <div class="mobile-nav" id="mobileNav">
     <ul>
-      <li *ngFor="let item of menuItems"><a [href]="item.href">{{ item.label }}</a></li>
+      <li *ngFor="let item of menuItems"><a [routerLink]="item.href">{{ item.label }}</a></li>
     </ul>
   </div>
 </nav>

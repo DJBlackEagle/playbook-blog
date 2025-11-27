@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutes } from './app.routes';
 import { Config } from './core/services/config';
+import { ToastComponent } from './features/toast/toast.component';
 import { Footer } from './shared/components/footer/footer';
 import { MenuItem } from './shared/components/navbar/menu-item.model';
 import { Navbar } from './shared/components/navbar/navbar';
@@ -10,7 +11,7 @@ import { Navbar } from './shared/components/navbar/navbar';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Navbar, Footer],
+  imports: [RouterOutlet, Navbar, Footer, ToastComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -31,6 +32,8 @@ export class App {
       .map((route) => ({
         label: route.title,
         href: route.path,
+        showInNavbarOnlyLoggedIn: route.showInNavbarOnlyLoggedIn,
+        showInNavbarOnlyLoggedOut: route.showInNavbarOnlyLoggedOut,
       }));
 
     this.titleService.setTitle(this.configService.siteName());

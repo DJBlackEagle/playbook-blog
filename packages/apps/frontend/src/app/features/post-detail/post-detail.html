@@ -1,30 +1,73 @@
-<section id="news">
-  <div class="container">
-    <div *ngIf="post() as post; else loadingOrError">
+<section id="top">
+  <ng-container *ngIf="post() as post; else loadingOrError">
+    <div class="container">
       <div class="post">
         <div class="post-section-header">
+          <div *ngIf="authService.isAuthenticated()" style="text-align: right;">
+            <span (click)="edit()" style="padding-right: 16px;">✏️</span>
+            <span (click)="delete()">🗑️</span>
+          </div>
           <h1 class="post-section-title">
             {{ post.title }}
           </h1>
           <p class="post-section-created-at">
-            Date Published: {{ post.createdAt | date:'longDate' }}
+            Date Published: {{ post.createdAt | date:'longDate' }} {{ post.createdAt | date:'shortTime' }}
             <span *ngIf="hasBeenUpdated(post)" class="updated-date">
               , Last updated on {{ post.updatedAt | date:'longDate' }} {{ post.updatedAt | date:'shortTime' }}
             </span>
           </p>
-          <div *ngIf="post.teaser">
-            <p>
-              <em>{{ post.teaser }}</em>
-            </p>
-          </div>
-          <br />
-          <p class="post-section-content" [innerHTML]="post.content | nl2br | safeHtml"></p>
         </div>
+        <div *ngIf="post.teaser">
+          <p>
+            <em>{{ post.teaser }}</em>
+          </p>
+        </div>
+        <br />
+        <p class="post-section-content" [innerHTML]="post.content | nl2br | safeHtml"></p>
       </div>
     </div>
 
-    <ng-template #loadingOrError>
-      <div *ngIf="status() === 'loading'; else notFound">
+    <div class="cta-buttons">
+      <app-button link="/posts" [isPrimary]="true">Back to Posts</app-button>
+    </div>
+
+    <ng-container *ngIf="post.comments && post.comments.totalCount && post.comments.totalCount > 0">
+      <div class="section-header">
+        <p class="section-title">Comments</p>
+      </div>
+
+      <ng-container *ngFor="let commentEdge of post.comments.edges">
+        <ng-container *ngIf="commentEdge?.node as comment">
+          <div class="container">
+            <div class="post">
+              <p class="comment-author" style="text-align: right;">
+                <!-- <em>
+                  <strong>comment.authorName</strong> on {{ comment.createdAt | date:'longDate' }} {{
+                  comment.createdAt | date:'shortTime' }}
+                </em> -->
+                <em>
+                  Date Published at {{ comment.createdAt | date:'longDate' }} {{
+                  comment.createdAt | date:'shortTime' }}
+                </em>
+              </p>
+              <br />
+              <div class="post-section-content ">
+                {{ comment.content }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <div class="cta-buttons">
+        <app-button link="/posts" [isPrimary]="true">Back to Posts</app-button>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loadingOrError>
+    <ng-container *ngIf="status() === 'loading'; else notFound">
+      <div class="container">
         <div class="post">
           <div class="post-section-header">
             <p class="post-section-content loading">
@@ -33,19 +76,18 @@
           </div>
         </div>
       </div>
-      <ng-template #notFound>
-        <div class="post">
-          <div class="post-section-header">
-            <p class="post-section-content notfound">
-              Post not found...
-            </p>
-          </div>
-        </div>
-      </ng-template>
-    </ng-template>
-  </div>
+    </ng-container>
+  </ng-template>
 
-  <div class="cta-buttons">
-    <app-button link="/posts" [isPrimary]="true">Back to Posts</app-button>
-  </div>
+  <ng-template #notFound>
+    <div class="container">
+      <div class="post">
+        <div class="post-section-header">
+          <p class="post-section-content notfound">
+            Post not found...
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </section>
