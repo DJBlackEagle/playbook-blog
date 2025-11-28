@@ -81,12 +81,8 @@ export class AuthService {
    * @param token The JWT to store.
    */
   private setToken(token: string): void {
-    console.log('Setting auth token');
-    console.log('Token:', token);
-    console.log('Current isAuthenticated before setting token:', this.isAuthenticated());
     localStorage.setItem(AUTH_TOKEN_KEY, token);
     this.isAuthenticated.set(true);
-    console.log('isAuthenticated after setting token:', this.isAuthenticated());
   }
 
   /**

@@ -61,7 +61,7 @@ export const AppRoutes = {
     title: 'Logout',
     path: 'logout',
     component: Logout,
-    showInNavbar: true,
+    showInNavbar: false,
     showInNavbarOnlyLoggedIn: true,
     showInNavbarOnlyLoggedOut: false,
   },

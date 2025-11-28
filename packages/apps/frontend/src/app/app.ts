@@ -3,15 +3,16 @@ import { Title } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutes } from './app.routes';
 import { Config } from './core/services/config';
-import { ToastComponent } from './features/toast/toast.component';
+import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog';
 import { Footer } from './shared/components/footer/footer';
 import { MenuItem } from './shared/components/navbar/menu-item.model';
 import { Navbar } from './shared/components/navbar/navbar';
+import { ToastComponent } from './shared/components/toast/toast.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Navbar, Footer, ToastComponent],
+  imports: [RouterOutlet, Navbar, Footer, ToastComponent, ConfirmationDialogComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
