@@ -1,6 +1,8 @@
 <section id="top">
   <div class="section-header">
     <h2 class="section-title">Latest Posts</h2>
+    <h2 *ngIf="authService.isAuthenticated()" class="section-subtitle"><a [routerLink]="['/post-create']"
+        style="text-decoration: none;">📝</a></h2>
   </div>
 
   <div *ngFor="let post of posts()" class="container">

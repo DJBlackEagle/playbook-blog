@@ -1158,13 +1158,6 @@ export type UserUpdateFilter = {
   username?: InputMaybe<StringFieldComparison>;
 };
 
-export type DeletePostMutationVariables = Exact<{
-  id: Scalars['ID']['input'];
-}>;
-
-
-export type DeletePostMutation = { __typename?: 'Mutation', deleteOnePost: { __typename?: 'PostDeleteResponse', id?: string | null, title?: string | null } };
-
 export type GetPostByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
@@ -1172,25 +1165,13 @@ export type GetPostByIdQueryVariables = Exact<{
 
 export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, updatedAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null, comments?: { __typename?: 'PostCommentsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage?: boolean | null, endCursor?: any | null }, edges: Array<{ __typename?: 'CommentEdge', node: { __typename?: 'Comment', id: string, createdAt?: any | null, content: string, deleted?: boolean | null, deletedAt?: any | null, updatedAt?: any | null } }> } | null } };
 
-export const DeletePostDocument = gql`
-    mutation DeletePost($id: ID!) {
-  deleteOnePost(input: {id: $id}) {
-    id
-    title
-  }
-}
-    `;
+export type UpdateOnePostMutationVariables = Exact<{
+  input: UpdateOnePostInput;
+}>;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class DeletePostGQL extends Apollo.Mutation<DeletePostMutation, DeletePostMutationVariables> {
-    override document = DeletePostDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
+
+export type UpdateOnePostMutation = { __typename?: 'Mutation', updateOnePost: { __typename?: 'Post', id: string } };
+
 export const GetPostByIdDocument = gql`
     query GetPostById($id: ID!) {
   post(id: $id) {
@@ -1227,6 +1208,24 @@ export const GetPostByIdDocument = gql`
   })
   export class GetPostByIdGQL extends Apollo.Query<GetPostByIdQuery, GetPostByIdQueryVariables> {
     override document = GetPostByIdDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const UpdateOnePostDocument = gql`
+    mutation UpdateOnePost($input: UpdateOnePostInput!) {
+  updateOnePost(input: $input) {
+    id
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UpdateOnePostGQL extends Apollo.Mutation<UpdateOnePostMutation, UpdateOnePostMutationVariables> {
+    override document = UpdateOnePostDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

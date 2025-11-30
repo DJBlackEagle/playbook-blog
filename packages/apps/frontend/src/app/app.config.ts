@@ -1,23 +1,27 @@
 import {
   ApplicationConfig,
+  ENVIRONMENT_INITIALIZER,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { provideHttpClient } from '@angular/common/http';
-import { AppRoutes } from './app.routes';
+import { routes } from './app.routes';
+import { authInitializerFactory } from './factories';
 import { graphqlProvider } from './graphql.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    {
+      provide: ENVIRONMENT_INITIALIZER,
+      useFactory: authInitializerFactory,
+      multi: true,
+    },
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
-      Object.values(AppRoutes).map((route) => ({
-        path: route.path,
-        component: route.component,
-      })),
+      routes,
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',

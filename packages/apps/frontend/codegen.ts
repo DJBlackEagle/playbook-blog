@@ -7,14 +7,28 @@ const config: CodegenConfig = {
   // Defines where the output is generated and which plugins to use.
   generates: {
     'src/app/features/post-list/generated/graphql.ts': {
-      documents: 'src/app/features/post-list/gqls/*.ts',
+      documents: 'src/app/features/post-list/gqls/*.gql.ts',
       plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular'],
       config: {
         addExplicitOverride: true,
       },
     },
     'src/app/features/post-detail/generated/graphql.ts': {
-      documents: 'src/app/features/post-detail/gqls/*.ts',
+      documents: 'src/app/features/post-detail/gqls/*.gql.ts',
+      plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular'],
+      config: {
+        addExplicitOverride: true,
+      },
+    },
+    'src/app/features/post-create/generated/graphql.ts': {
+      documents: 'src/app/features/post-create/gqls/*.gql.ts',
+      plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular'],
+      config: {
+        addExplicitOverride: true,
+      },
+    },
+    'src/app/features/post-edit/generated/graphql.ts': {
+      documents: 'src/app/features/post-edit/gqls/*.gql.ts',
       plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular'],
       config: {
         addExplicitOverride: true,

@@ -1158,25 +1158,17 @@ export type UserUpdateFilter = {
   username?: InputMaybe<StringFieldComparison>;
 };
 
-export type DeletePostMutationVariables = Exact<{
-  id: Scalars['ID']['input'];
+export type CreateOnePostMutationVariables = Exact<{
+  input: CreateOnePostInput;
 }>;
 
 
-export type DeletePostMutation = { __typename?: 'Mutation', deleteOnePost: { __typename?: 'PostDeleteResponse', id?: string | null, title?: string | null } };
+export type CreateOnePostMutation = { __typename?: 'Mutation', createOnePost: { __typename?: 'Post', id: string } };
 
-export type GetPostByIdQueryVariables = Exact<{
-  id: Scalars['ID']['input'];
-}>;
-
-
-export type GetPostByIdQuery = { __typename?: 'Query', post: { __typename?: 'Post', id: string, createdAt?: any | null, updatedAt?: any | null, title: string, teaser: string, content: string, sources?: Array<string> | null, comments?: { __typename?: 'PostCommentsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasNextPage?: boolean | null, endCursor?: any | null }, edges: Array<{ __typename?: 'CommentEdge', node: { __typename?: 'Comment', id: string, createdAt?: any | null, content: string, deleted?: boolean | null, deletedAt?: any | null, updatedAt?: any | null } }> } | null } };
-
-export const DeletePostDocument = gql`
-    mutation DeletePost($id: ID!) {
-  deleteOnePost(input: {id: $id}) {
+export const CreateOnePostDocument = gql`
+    mutation CreateOnePost($input: CreateOnePostInput!) {
+  createOnePost(input: $input) {
     id
-    title
   }
 }
     `;
@@ -1184,49 +1176,8 @@ export const DeletePostDocument = gql`
   @Injectable({
     providedIn: 'root'
   })
-  export class DeletePostGQL extends Apollo.Mutation<DeletePostMutation, DeletePostMutationVariables> {
-    override document = DeletePostDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const GetPostByIdDocument = gql`
-    query GetPostById($id: ID!) {
-  post(id: $id) {
-    id
-    createdAt
-    updatedAt
-    title
-    teaser
-    content
-    sources
-    comments(paging: {first: 5}, sorting: [{field: createdAt, direction: DESC}]) {
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-      totalCount
-      edges {
-        node {
-          id
-          createdAt
-          content
-          deleted
-          deletedAt
-          updatedAt
-        }
-      }
-    }
-  }
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetPostByIdGQL extends Apollo.Query<GetPostByIdQuery, GetPostByIdQueryVariables> {
-    override document = GetPostByIdDocument;
+  export class CreateOnePostGQL extends Apollo.Mutation<CreateOnePostMutation, CreateOnePostMutationVariables> {
+    override document = CreateOnePostDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

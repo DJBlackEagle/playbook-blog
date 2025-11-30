@@ -1,4 +1,4 @@
-import { Injectable, WritableSignal, inject, signal } from '@angular/core';
+import { Injectable, Signal, WritableSignal, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { firstValueFrom, tap } from 'rxjs';
@@ -17,12 +17,14 @@ export class AuthService {
   private readonly apollo = inject(Apollo);
   private readonly notificationService = inject(NotificationService);
 
-  readonly isAuthenticated: WritableSignal<boolean> = signal<boolean>(false);
-  readonly currentUser: WritableSignal<Partial<User> | null> = signal<Partial<User> | null>(null);
+  #isAuthenticated: WritableSignal<boolean> = signal(false);
+  readonly isAuthenticated: Signal<boolean> = this.#isAuthenticated.asReadonly();
 
-  constructor() {
-    void this.initializeAuthState();
-  }
+  #currentUser: WritableSignal<Partial<User> | null> = signal(null);
+  readonly currentUser: Signal<Partial<User> | null> = this.#currentUser.asReadonly();
+
+  #isInitialized: WritableSignal<boolean> = signal(false);
+  readonly isInitialized: Signal<boolean> = this.#isInitialized.asReadonly();
 
   /**
    * Performs the login mutation and handles the response.
@@ -37,7 +39,7 @@ export class AuthService {
           const loginData = res.data?.login;
           if (loginData?.accessToken) {
             this.setToken(loginData.accessToken);
-            this.currentUser.set(loginData.user);
+            this.#currentUser.set(loginData.user);
           }
         }),
       ),
@@ -60,8 +62,8 @@ export class AuthService {
       console.error('Logout mutation failed, proceeding with client-side logout:', error);
     } finally {
       localStorage.removeItem(AUTH_TOKEN_KEY);
-      this.isAuthenticated.set(false);
-      this.currentUser.set(null);
+      this.#isAuthenticated.set(false);
+      this.#currentUser.set(null);
       await this.apollo.client.resetStore();
       await this.router.navigate(['/']);
       this.notificationService.show('You have been logged out.');
@@ -82,25 +84,32 @@ export class AuthService {
    */
   private setToken(token: string): void {
     localStorage.setItem(AUTH_TOKEN_KEY, token);
-    this.isAuthenticated.set(true);
+    this.#isAuthenticated.set(true);
   }
 
   /**
    * Checks for an existing token on app startup and fetches the user.
    */
-  private async initializeAuthState(): Promise<void> {
+  public async initializeAuthState(): Promise<void> {
     const token = this.getToken();
-    if (token) {
-      try {
-        const result = await firstValueFrom(this.meGQL.fetch());
-        if (result?.data?.me) {
-          this.isAuthenticated.set(true);
-          this.currentUser.set(result.data.me);
-        }
-      } catch (error) {
-        console.error('Auto login with token failed', error);
+    if (!token) {
+      this.#isInitialized.set(true);
+      return;
+    }
+
+    try {
+      const result = await firstValueFrom(this.meGQL.fetch({ fetchPolicy: 'network-only' }));
+      if (result?.data?.me) {
+        this.#isAuthenticated.set(true);
+        this.#currentUser.set(result.data.me);
+      } else {
         await this.logout();
       }
+    } catch (error) {
+      console.error('Auto login with token failed', error);
+      await this.logout();
+    } finally {
+      this.#isInitialized.set(true);
     }
   }
 }

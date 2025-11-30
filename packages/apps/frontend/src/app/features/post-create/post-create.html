@@ -1,0 +1,35 @@
+<section id="top">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ componentTitle }}</h2>
+      <!-- <p class="section-subtitle">Welcome back! Please enter your credentials to access your account.</p> -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="contact-form-container">
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div *ngIf="errorMessage()" class="error-message general-error">{{ errorMessage() }}</div>
+        <div class="form-group">
+          <input id="title" formControlName="title" type="text" class="form-input" placeholder="Post Title" required>
+          <div *ngIf="isFieldInvalid('title')" class="error-message">Post title is required.</div>
+        </div>
+        <div class="form-group">
+          <input id="teaser" formControlName="teaser" type="text" class="form-input" placeholder="Post Teaser" required>
+          <div *ngIf="isFieldInvalid('teaser')" class="error-message">Post teaser is required.</div>
+        </div>
+        <div class="form-group">
+          <textarea id="content" formControlName="content" class="form-input" placeholder="Post Content" rows="16"
+            required></textarea>
+          <div *ngIf="isFieldInvalid('content')" class="error-message">Post content is required.</div>
+        </div>
+        <button type="submit" class="submit-btn"
+          [disabled]="!authService.isAuthenticated() || postForm.invalid || loading()">
+          <span *ngIf="!authService.isAuthenticated()">You must be logged in to create a post.</span>
+          <span *ngIf="loading()">Creating...</span>
+          <span *ngIf="!loading() && authService.isAuthenticated()">Create</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

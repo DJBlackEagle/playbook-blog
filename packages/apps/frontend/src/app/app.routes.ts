@@ -1,9 +1,11 @@
+import { CanActivateFn, Routes } from '@angular/router';
 import { Home } from './features/home/home';
-import { Login } from './features/login/login';
-import { Logout } from './features/logout/logout';
+import { PostCreate } from './features/post-create/post-create';
 import { PostDetail } from './features/post-detail/post-detail';
+import { PostEdit } from './features/post-edit/post-edit';
 import { PostList } from './features/post-list/post-list';
 import { Storybook } from './features/storybook/storybook';
+import { publicGuard } from './guards';
 
 /**
  * Defines the shape for application route configuration.
@@ -12,10 +14,12 @@ import { Storybook } from './features/storybook/storybook';
 interface IAppRoute {
   title: string;
   path: string;
-  component: any;
+  component?: any;
+  loadComponent?: any;
   showInNavbar: boolean;
   showInNavbarOnlyLoggedIn: boolean;
   showInNavbarOnlyLoggedOut: boolean;
+  canActivate?: CanActivateFn[];
 }
 
 /**
@@ -33,7 +37,7 @@ export const AppRoutes = {
     showInNavbarOnlyLoggedIn: false,
     showInNavbarOnlyLoggedOut: false,
   },
-  POSTLIST: {
+  POST_LIST: {
     title: 'Posts',
     path: 'posts',
     component: PostList,
@@ -49,21 +53,30 @@ export const AppRoutes = {
     showInNavbarOnlyLoggedIn: false,
     showInNavbarOnlyLoggedOut: false,
   },
+  POST_CREATE: {
+    title: 'Create Post',
+    path: 'post-create',
+    component: PostCreate,
+    showInNavbar: false,
+    showInNavbarOnlyLoggedIn: false,
+    showInNavbarOnlyLoggedOut: false,
+  },
+  POST_EDIT: {
+    title: 'Edit Post',
+    path: 'post-edit/:id',
+    component: PostEdit,
+    showInNavbar: false,
+    showInNavbarOnlyLoggedIn: false,
+    showInNavbarOnlyLoggedOut: false,
+  },
   LOGIN: {
     title: 'Login',
     path: 'login',
-    component: Login,
     showInNavbar: true,
     showInNavbarOnlyLoggedIn: false,
     showInNavbarOnlyLoggedOut: true,
-  },
-  LOGOUT: {
-    title: 'Logout',
-    path: 'logout',
-    component: Logout,
-    showInNavbar: false,
-    showInNavbarOnlyLoggedIn: true,
-    showInNavbarOnlyLoggedOut: false,
+    loadComponent: () => import('./features/login/login').then((m) => m.Login),
+    canActivate: [publicGuard],
   },
   STORYBOOK: {
     title: 'Storybook',
@@ -74,3 +87,5 @@ export const AppRoutes = {
     showInNavbarOnlyLoggedOut: false,
   },
 } as const satisfies Record<string, IAppRoute>;
+
+export const routes: Routes = Object.values(AppRoutes);

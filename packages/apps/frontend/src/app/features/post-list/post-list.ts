@@ -3,6 +3,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { AppRoutes } from '../../app.routes';
+import { AuthService } from '../../services/auth.service';
 import { Button } from '../../shared/components/button/button';
 import {
   GetPostsGQL,
@@ -21,8 +22,9 @@ import {
 })
 export class PostList implements OnInit {
   readonly R = AppRoutes;
-  readonly componentTitle = this.R.POSTLIST.title;
+  readonly componentTitle = this.R.POST_LIST.title;
   private readonly getPostsGQL = inject(GetPostsGQL);
+  protected readonly authService = inject(AuthService);
 
   protected readonly posts = signal<Partial<Post>[]>([]);
   protected readonly pageInfo = signal<PageInfo | null>(null);

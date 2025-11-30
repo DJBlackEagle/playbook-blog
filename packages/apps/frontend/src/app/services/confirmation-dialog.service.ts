@@ -37,7 +37,9 @@ export class ConfirmationDialogService implements OnDestroy {
         ),
       );
     }
+
     this.state.set({ message, visible: true });
+
     return new Promise<boolean>((resolve) => {
       this.pendingResolve = (confirmed: boolean) => {
         this.state.set({ message: '', visible: false });
