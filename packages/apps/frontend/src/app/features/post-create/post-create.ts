@@ -56,16 +56,6 @@ export class PostCreate {
     }),
   });
 
-  constructor() {
-    // For demo purposes, pre-fill the form with default credentials.
-    const date = new Date();
-    this.postForm.setValue({
-      title: `My First Post ${date.toISOString()}`,
-      teaser: 'This is a teaser.',
-      content: 'Hello, world!',
-    });
-  }
-
   /**
    * Handles the form submission by calling the AuthService.
    */
