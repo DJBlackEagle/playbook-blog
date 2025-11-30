@@ -1,11 +1,9 @@
 import { CanActivateFn, Routes } from '@angular/router';
 import { Home } from './features/home/home';
-import { PostCreate } from './features/post-create/post-create';
+import { NotFound } from './features/not-found/not-found';
 import { PostDetail } from './features/post-detail/post-detail';
-import { PostEdit } from './features/post-edit/post-edit';
 import { PostList } from './features/post-list/post-list';
-import { Storybook } from './features/storybook/storybook';
-import { publicGuard } from './guards';
+import { authGuard, publicGuard } from './guards';
 
 /**
  * Defines the shape for application route configuration.
@@ -56,18 +54,20 @@ export const AppRoutes = {
   POST_CREATE: {
     title: 'Create Post',
     path: 'post-create',
-    component: PostCreate,
     showInNavbar: false,
     showInNavbarOnlyLoggedIn: false,
     showInNavbarOnlyLoggedOut: false,
+    loadComponent: () => import('./features/post-create/post-create').then((m) => m.PostCreate),
+    canActivate: [authGuard],
   },
   POST_EDIT: {
     title: 'Edit Post',
     path: 'post-edit/:id',
-    component: PostEdit,
     showInNavbar: false,
     showInNavbarOnlyLoggedIn: false,
     showInNavbarOnlyLoggedOut: false,
+    loadComponent: () => import('./features/post-edit/post-edit').then((m) => m.PostEdit),
+    canActivate: [authGuard],
   },
   LOGIN: {
     title: 'Login',
@@ -81,7 +81,16 @@ export const AppRoutes = {
   STORYBOOK: {
     title: 'Storybook',
     path: 'storybook',
-    component: Storybook,
+    showInNavbar: false,
+    showInNavbarOnlyLoggedIn: false,
+    showInNavbarOnlyLoggedOut: false,
+    loadComponent: () => import('./features/storybook/storybook').then((m) => m.Storybook),
+    canActivate: [authGuard],
+  },
+  NOT_FOUND: {
+    title: 'Not Found',
+    path: '**',
+    component: NotFound,
     showInNavbar: false,
     showInNavbarOnlyLoggedIn: false,
     showInNavbarOnlyLoggedOut: false,
