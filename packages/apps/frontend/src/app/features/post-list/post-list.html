@@ -1,0 +1,32 @@
+<section id="top">
+  <div class="section-header">
+    <h2 class="section-title">Latest Posts</h2>
+    <h2 *ngIf="authService.isAuthenticated()" class="section-subtitle"><a [routerLink]="['/post-create']"
+        style="text-decoration: none;">📝</a></h2>
+  </div>
+
+  <div *ngFor="let post of posts()" class="container">
+    <div class="post">
+      <div class="post-section-header">
+        <h1 class="post-section-title">
+          <a [routerLink]="['/post', post.id]" rel="nofollow">{{ post.title }}</a>
+        </h1>
+        <p class="post-section-created-at">
+          Date Published: {{ post.createdAt | date:'longDate' }}
+        </p>
+        <p class="post-section-content">
+          {{ post.teaser }}
+        </p>
+        <div style="text-align: right;"><a [routerLink]="['/post', post.id]" rel="nofollow">[Read more]</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="pagination-controls">
+      <app-button [isPrimary]="pageInfo()?.hasPreviousPage || false" (click)="previousPage()">Previous</app-button>
+      <span>Page {{ currentPage() }} / {{ totalPages() }}</span>
+      <app-button [isPrimary]="pageInfo()?.hasNextPage || false" (click)="nextPage()">Next</app-button>
+    </div>
+  </div>
+</section>

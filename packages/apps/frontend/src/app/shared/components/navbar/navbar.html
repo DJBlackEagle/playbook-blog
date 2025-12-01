@@ -1,0 +1,28 @@
+<nav id="navbar" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+    <a routerLink="/" class="logo">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">{{ siteName }}</div>
+    </a>
+    <ul class="nav-links">
+      <ng-container *ngFor="let item of menuItems">
+        <li *ngIf="shouldShow(item)"><a [routerLink]="item.href">{{ item.label }}</a></li>
+      </ng-container>
+      <li *ngIf="isAuthenticated()" (click)="onClickLogout()"><a style="cursor: pointer;">Logout</a></li>
+    </ul>
+    <div class="mobile-menu-btn" id="mobileMenuBtn" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav" [class.active]="isMobileMenuOpen">
+    <ul>
+      <ng-container *ngFor="let item of menuItems">
+        <li *ngIf="shouldShow(item)"><a [routerLink]="item.href" (click)="closeMobileMenu()">{{ item.label }}</a></li>
+      </ng-container>
+      <li *ngIf="isAuthenticated()" (click)="closeMobileMenu();onClickLogout()"><a style="cursor: pointer;">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

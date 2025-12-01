@@ -1,0 +1,30 @@
+<section id="top">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ componentTitle }}</h2>
+      <p class="section-subtitle">Welcome back! Please enter your credentials to access your account.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="contact-form-container">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="contact-form">
+        <div *ngIf="errorMessage()" class="error-message general-error">{{ errorMessage() }}</div>
+        <div class="form-group">
+          <input id="identifier" formControlName="identifier" type="text" class="form-input"
+            placeholder="Email / Username" required>
+          <div *ngIf="isFieldInvalid('identifier')" class="error-message">A valid email or username is required.</div>
+        </div>
+        <div class="form-group">
+          <input id="password" formControlName="password" type="password" class="form-input" placeholder="Password"
+            required>
+          <div *ngIf="isFieldInvalid('password')" class="error-message">Password is required.</div>
+        </div>
+        <button type="submit" class="submit-btn" [disabled]="loginForm.invalid || loading()">
+          <span *ngIf="loading()">Signing In...</span>
+          <span *ngIf="!loading()">Sign In</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

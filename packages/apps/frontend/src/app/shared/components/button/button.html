@@ -1,0 +1,35 @@
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+
+<ng-container [ngSwitch]="true">
+  <!-- Case 1: External Link (e.g., https://google.com) -->
+  <a *ngSwitchCase="isExternal" [href]="link" target="_blank" rel="noopener noreferrer"
+    [ngClass]="{ 'cta-primary': isPrimary, 'cta-secondary': !isPrimary }">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+
+  <!-- Case 2: Anchor Link (e.g., /page#section or #section) -->
+  <a *ngSwitchCase="isAnchor" [routerLink]="path" [fragment]="fragment"
+    [ngClass]="{ 'cta-primary': isPrimary, 'cta-secondary': !isPrimary }">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+
+  <!-- Case 3: Internal Link (e.g., /home) -->
+  <a *ngSwitchCase="!!link && !isExternal && !isAnchor" [routerLink]="path"
+    [ngClass]="{ 'cta-primary': isPrimary, 'cta-secondary': !isPrimary }">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+
+  <!-- Case 4: No Link (renders a button) -->
+  <a *ngSwitchDefault [ngClass]="{ 'cta-primary': isPrimary, 'cta-secondary': !isPrimary }">
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+</ng-container>
+
+<!--
+  <a *ngFor="let button of buttons" [routerLink]="button.link"
+    [ngClass]="{ 'cta-primary': button.isPrimary, 'cta-secondary': !button.isPrimary }">
+    {{ button.text }}
+  </a>
+-->

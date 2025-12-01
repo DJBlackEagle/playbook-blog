@@ -1,0 +1,19 @@
+<!-- <div class="contact-form-container"> -->
+<form class="contact-form" [attr.action]="formAction" [attr.method]="formMethod">
+  <div *ngFor="let item of inputItems" class="form-group">
+    @switch (item.type) {
+    @case('textarea') {
+    <textarea [attr.name]="item.name" [attr.placeholder]="item.placeholder"
+      [attr.required]="item.required ? 'true' : null" [attr.disabled]="item.disabled ? 'true' : null"
+      [attr.rows]="item.rows" [attr.cols]="item.cols" class="form-textarea"></textarea>
+    }
+    @default {
+    <input [attr.type]="item.type" [attr.name]="item.name" [attr.placeholder]="item.placeholder"
+      [attr.required]="item.required ? 'true' : null" [attr.disabled]="item.disabled ? 'true' : null" row="5"
+      class="form-input">
+    }
+    }
+  </div>
+  <button type="submit" class="submit-btn">Send Message</button>
+</form>
+<!-- </div> -->

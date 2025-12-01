@@ -1,0 +1,29 @@
+<div class="timeline-controls">
+  <button class="timeline-filter active" data-filter="all">All</button>
+  <button *ngFor="let control of controlItems" class="timeline-filter" [attr.data-filter]="control.category">
+    {{ control.title }}
+  </button>
+</div>
+
+<div class="timeline-container">
+  <div class="timeline-line"></div>
+  <div class="timeline-progress"></div>
+
+  <div *ngFor="let item of timelineItems" class="timeline-item" [attr.data-category]="item.category">
+    <div class="timeline-node">{{ item.icon }}</div>
+
+    <div class="timeline-content">
+      <div class="timeline-year">
+        {{ item.yearFrom }}<ng-container *ngIf="item.yearTo"> - {{ item.yearTo }}</ng-container></div>
+      <h3 class="timeline-title">{{ item.title }}</h3>
+      <div *ngIf="item.company" class="timeline-company">{{ item.company }}</div>
+      <p class="timeline-description">{{ item.description }}</p>
+      <div *ngIf="item.skills?.length" class="timeline-skills">
+        <span *ngFor="let skill of item.skills" class="timeline-skill">{{ skill }}</span>
+      </div>
+      <div *ngIf="item.achievements?.length" class="timeline-achievements">
+        <div *ngFor="let achievement of item.achievements" class="timeline-achievement">{{ achievement }}</div>
+      </div>
+    </div>
+  </div>
+</div>

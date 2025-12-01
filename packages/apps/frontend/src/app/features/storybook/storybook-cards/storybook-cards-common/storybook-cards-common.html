@@ -1,0 +1,40 @@
+<section id="card-common-single">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔹 Single</h1>
+    </div>
+    <app-card-common [card]="card01"></app-card-common>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-common" [isPrimary]="true">🔼 Card - Common</app-button>
+  </div>
+</section>
+
+<section id="card-common-singles">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔹 Singles</h1>
+    </div>
+    <app-card-common [card]="card02"></app-card-common>
+    <app-card-common [card]="card02_01"></app-card-common>
+    <app-card-common [card]="card02_02"></app-card-common>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-common" [isPrimary]="true">🔼 Card - Common</app-button>
+  </div>
+</section>
+
+<section id="card-common-list">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔹 List</h1>
+    </div>
+    <app-card-common-list [cards]="cardItems01"></app-card-common-list>
+    <br />
+    <br />
+    <app-card-common-list [cards]="cardItems02"></app-card-common-list>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="#cards-common" [isPrimary]="true">🔼 Card - Common</app-button>
+  </div>
+</section>

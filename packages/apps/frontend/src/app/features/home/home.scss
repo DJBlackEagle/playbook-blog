@@ -1,0 +1,277 @@
+@media (max-width: 1000px) {
+  .hero {
+    padding-top: 240px;
+  }
+}
+
+@media (max-width: 880px) {
+  .hero {
+    padding-top: 160px;
+  }
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 160px 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background elements */
+.hero-bg-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.6;
+  animation: float 25s infinite ease-in-out;
+}
+
+.shape-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(118, 169, 250, 0.4) 0%, transparent 70%);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(79, 131, 247, 0.3) 0%, transparent 70%);
+  top: 50%;
+  right: -150px;
+  animation-delay: 7s;
+}
+
+.shape-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(118, 169, 250, 0.35) 0%, transparent 70%);
+  bottom: -100px;
+  left: 20%;
+  animation-delay: 14s;
+}
+
+/* Geometric shapes */
+.geo-shape {
+  position: absolute;
+  opacity: 0.1;
+  animation: rotate-float 30s infinite linear;
+}
+
+.geo-1 {
+  width: 300px;
+  height: 300px;
+  top: 20%;
+  right: 10%;
+  background: linear-gradient(45deg, var(--accent-blue) 0%, transparent 100%);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.geo-2 {
+  width: 250px;
+  height: 250px;
+  bottom: 20%;
+  left: 5%;
+  background: linear-gradient(135deg, var(--accent-blue-dark) 0%, transparent 100%);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(100px, -80px) scale(1.1) rotate(90deg);
+  }
+  50% {
+    transform: translate(-60px, 60px) scale(0.9) rotate(180deg);
+  }
+  75% {
+    transform: translate(80px, 100px) scale(1.05) rotate(270deg);
+  }
+}
+
+@keyframes rotate-float {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(180deg) translateY(-50px);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0);
+  }
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-rise 10s infinite ease-out;
+}
+
+@keyframes particle-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) scale(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1);
+  }
+}
+
+/* Generate multiple particles */
+.particle:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+.particle:nth-child(2) {
+  left: 20%;
+  animation-delay: 1s;
+}
+.particle:nth-child(3) {
+  left: 30%;
+  animation-delay: 2s;
+}
+.particle:nth-child(4) {
+  left: 40%;
+  animation-delay: 3s;
+}
+.particle:nth-child(5) {
+  left: 50%;
+  animation-delay: 4s;
+}
+.particle:nth-child(6) {
+  left: 60%;
+  animation-delay: 5s;
+}
+.particle:nth-child(7) {
+  left: 70%;
+  animation-delay: 6s;
+}
+.particle:nth-child(8) {
+  left: 80%;
+  animation-delay: 7s;
+}
+.particle:nth-child(9) {
+  left: 90%;
+  animation-delay: 8s;
+}
+.particle:nth-child(10) {
+  left: 95%;
+  animation-delay: 9s;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 25% 25%, var(--accent-glow) 0%, transparent 50%);
+  animation: hero-glow 8s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes hero-glow {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1) rotate(2deg);
+    opacity: 1;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  animation: slideInUp 1s ease-out;
+}
+
+.hero .subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 1px;
+  animation: slideInUp 1s ease-out 0.3s both;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 200px;
+  }
+
+  .hero {
+    padding-top: 150px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+  }
+
+  .hero .subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+}

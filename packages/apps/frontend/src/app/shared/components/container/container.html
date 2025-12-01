@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="section-header">
+    <h2 class="section-title">{{ containerItem.title }}</h2>
+    <p class="section-subtitle">{{ containerItem.subTitle }}</p>
+    <!-- <p>{{ containerItem.content }}</p> -->
+    <!-- If content is a string, display it -->
+    <p *ngIf="isString(containerItem.content)">
+      {{ containerItem.content }}
+    </p>
+
+    <!-- If content is a component, render it dynamically -->
+    <p *ngIf="!isString(containerItem.content)" style="text-align: left;">
+      <ng-container *ngComponentOutlet="containerItem.content.component; inputs: containerItem.content.inputs">
+      </ng-container>
+    </p>
+  </div>
+</div>

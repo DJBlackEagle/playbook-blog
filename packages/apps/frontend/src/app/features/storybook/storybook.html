@@ -1,0 +1,113 @@
+<section id="top">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">{{ componentTitle }}</h1>
+      <p class="section-subtitle">
+        This is a storybook page to test components.<br />
+        <app-link link="/{{ R.STORYBOOK.path }}/#toc">Go to TOC</app-link>
+      </p>
+    </div>
+  </div>
+</section>
+<hr />
+<section id="toc">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Table of content</h1>
+      <p class="section-subtitle">
+        <app-button-list [buttons]="tocButtons"></app-button-list>
+      </p>
+    </div>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section>
+<hr />
+<section id="buttons">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Buttons</h1>
+      <p class="section-subtitle">
+        <app-button-list [buttons]="buttonsButtons"></app-button-list>
+      </p>
+    </div>
+  </div>
+  <app-storybook-buttons></app-storybook-buttons>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section>
+<hr />
+<section id="container">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Container</h1>
+      <p class="section-subtitle">
+        <app-button-list [buttons]="containerButtons"></app-button-list>
+      </p>
+    </div>
+  </div>
+  <app-storybook-container></app-storybook-container>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section>
+<hr />
+<section id="cards">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Cards</h1>
+      <p class="section-subtitle">
+        <app-button-list [buttons]="cardsButtons"></app-button-list>
+      </p>
+    </div>
+  </div>
+  <app-storybook-cards></app-storybook-cards>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section>
+<!-- <hr />
+<section id="timeline">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Timeline</h1>
+      <p class="section-subtitle">From curious beginner to seasoned developer - here's how I got here</p>
+    </div>
+  </div>
+  <app-storybook-timeline></app-storybook-timeline>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section> -->
+<!-- <hr />
+<section id="formular">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Formular</h1>
+      <p class="section-subtitle"></p>
+    </div>
+  </div>
+  <div class="contact-form-container">
+    <app-storybook-formular></app-storybook-formular>
+  </div>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section> -->
+<hr />
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Contact</h1>
+      <p class="section-subtitle"></p>
+    </div>
+  </div>
+  <app-storybook-contact></app-storybook-contact>
+  <div style="text-align: right; padding-top: 32px;">
+    <app-button link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button>
+  </div>
+</section>
+<!-- <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> -->
+<!-- <div style="text-align: right; padding-top: 32px;"><app-button-secondary link="/{{ R.STORYBOOK.path }}">⏫ TOP</app-button-secondary></div> -->

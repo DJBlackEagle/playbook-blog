@@ -1,0 +1,46 @@
+<section id="buttons-primary">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔸 Primary</h1>
+    </div>
+    <app-button-list [buttons]="buttonsPrimary"></app-button-list>
+  </div>
+  <div style="text-align: right;">
+    <app-button link="#buttons" [isPrimary]="true">🔼 Buttons</app-button>
+  </div>
+</section>
+<section id="buttons-secondary">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔸 Secondary</h1>
+    </div>
+    <app-button-list [buttons]="buttonsSecondary"></app-button-list>
+  </div>
+  <div style="text-align: right;">
+    <app-button link="#buttons" [isPrimary]="true">🔼 Buttons</app-button>
+  </div>
+</section>
+<section id="buttons-mixed">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔸 Mixed</h1>
+    </div>
+    <app-button-list [buttons]="buttonsMixed"></app-button-list>
+  </div>
+  <div style="text-align: right;">
+    <app-button link="#buttons" [isPrimary]="true">🔼 Buttons</app-button>
+  </div>
+</section>
+<section id="buttons-single">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">🔸 Single</h1>
+    </div>
+    <app-button-list [buttons]="buttonsTest01"></app-button-list>
+    <app-button-list [buttons]="buttonsTest02"></app-button-list>
+    <app-button-list [buttons]="buttonsTest03"></app-button-list>
+  </div>
+  <div style="text-align: right;">
+    <app-button link="#buttons" [isPrimary]="true">🔼 Buttons</app-button>
+  </div>
+</section>

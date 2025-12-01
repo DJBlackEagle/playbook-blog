@@ -1,0 +1,12 @@
+<ng-container *ngIf="dialogService.state().visible">
+  <div class="dialog-overlay" (click)="dialogService.cancel()">
+    <div class="dialog-box" (click)="$event.stopPropagation()" role="dialog" aria-modal="true"
+      aria-labelledby="dialog-message">
+      <p class="dialog-message" id="dialog-message">{{ dialogService.state().message }}</p>
+      <div class="dialog-actions">
+        <button #cancelButton class="cancel-button" (click)="dialogService.cancel()" tabindex="0">Cancel</button>
+        <button class="confirm-button" (click)="dialogService.confirm()" tabindex="0">Confirm</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
