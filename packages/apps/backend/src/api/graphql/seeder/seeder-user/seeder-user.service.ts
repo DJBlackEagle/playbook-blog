@@ -100,7 +100,7 @@ export class SeederUserService {
         return data;
       }
 
-      users[index].role = role[0]._id as string;
+      users[index].role = role[0]._id.toString();
     }
 
     try {

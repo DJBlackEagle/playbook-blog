@@ -22,18 +22,17 @@ import { UserSessionEntity } from './user-session.entity';
  */
 async function hashOnUpdate(
   this: Query<UserEntity, UserEntity>,
-  next: () => void,
 ): Promise<void> {
   const update = this.getUpdate();
 
-  if (!update || Array.isArray(update)) return next();
+  if (!update || Array.isArray(update)) return;
 
   const pwd =
     update.$set?.password ??
     (update as Partial<UserEntity>).password ??
     update.$setOnInsert?.password;
 
-  if (!pwd) return next();
+  if (!pwd) return;
 
   const environmentConfigService = new EnvironmentConfigService(
     new ConfigService(),
@@ -47,8 +46,6 @@ async function hashOnUpdate(
 
   if (update.$set?.password) update.$set.password = hashed;
   if (update.$setOnInsert?.password) update.$setOnInsert.password = hashed;
-
-  next();
 }
 
 /**
@@ -163,15 +160,14 @@ UserEntitySchema.pre('find', function (this: Query<any, any>): void {
  *
  * @param next - Callback to proceed to the next middleware or operation.
  */
-UserEntitySchema.pre('save', async function (next): Promise<void> {
-  if (!this.isModified('password')) return next();
+UserEntitySchema.pre('save', async function (): Promise<void> {
+  if (!this.isModified('password')) return;
 
   const environmentConfigService = new EnvironmentConfigService(
     new ConfigService(),
   );
   const encryptionService = new EncryptionService(environmentConfigService);
   this.password = await encryptionService.hash(this.password);
-  next();
 });
 
 /**
