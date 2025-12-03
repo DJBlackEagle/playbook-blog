@@ -23,17 +23,19 @@
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
     "docker:down:clean": "docker compose down --volumes --remove-orphans",
-    "docker:reset": "pnpm docker:down:clean && pnpm docker:up"
+    "docker:reset": "pnpm docker:down:clean && pnpm docker:up",
+    "deps:outdated": "pnpm outdated -r",
+    "deps:upgrade": "pnpm up -r -i -L"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.29.0",
-    "eslint": "^9.29.0",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-prettier": "^5.5.0",
-    "globals": "^16.2.0",
-    "prettier": "^3.5.3",
-    "turbo": "^2.5.4",
-    "typescript-eslint": "^8.34.1"
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.5.0",
+    "prettier": "^3.7.4",
+    "turbo": "^2.6.2",
+    "typescript-eslint": "^8.48.1"
   }
 }

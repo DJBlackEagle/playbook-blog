@@ -79,7 +79,7 @@ export class SeederCommentService {
         return data;
       }
 
-      comment.post = post[0]._id as string;
+      comment.post = post[0]._id.toString();
     }
 
     try {

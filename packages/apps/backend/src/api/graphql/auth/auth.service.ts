@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { plainToClass } from 'class-transformer';
 import { Types } from 'mongoose';
+import { type StringValue } from 'ms';
 import { EnvironmentConfigService } from '../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../modules/encryption';
 import { DateCalc } from '../../../shared';
@@ -13,6 +15,7 @@ import { RefreshTokenInput } from './inputs/refresh-token.input';
 import { Login } from './models/login.model';
 import { Logout } from './models/logout.model';
 import { JwtPayload } from './strategies/jwt.strategy';
+import ms = require('ms');
 
 /**
  * Service for handling authentication logic, including login, logout, and token refresh.
@@ -47,7 +50,9 @@ export class AuthService {
   private async signAccessToken(payload: JwtPayload): Promise<string> {
     return this.jwtService.signAsync(payload, {
       secret: this.environmentConfigService.jwt.token.secret(),
-      expiresIn: this.environmentConfigService.jwt.token.expiresIn(),
+      expiresIn: ms(
+        this.environmentConfigService.jwt.token.expiresIn() as StringValue,
+      ),
       issuer: this.environmentConfigService.jwt.issuer(),
       audience: this.environmentConfigService.jwt.audience(),
     });
@@ -62,7 +67,9 @@ export class AuthService {
   private async signRefreshToken(payload: JwtPayload): Promise<string> {
     return this.jwtService.signAsync(payload, {
       secret: this.environmentConfigService.jwt.refresh.secret(),
-      expiresIn: this.environmentConfigService.jwt.refresh.expiresIn(),
+      expiresIn: ms(
+        this.environmentConfigService.jwt.refresh.expiresIn() as StringValue,
+      ),
       issuer: this.environmentConfigService.jwt.issuer(),
       audience: this.environmentConfigService.jwt.audience(),
     });
@@ -79,7 +86,7 @@ export class AuthService {
    */
   private async issueTokenPair(user: UserEntity): Promise<Login> {
     const payload: JwtPayload = {
-      sub: `${user.id}`,
+      sub: `${user._id.toString()}`,
       username: user.username,
       token_id: new Types.ObjectId().toHexString(),
     };
@@ -102,10 +109,10 @@ export class AuthService {
     );
     const refreshTokenHash = await this.encryptionService.hash(refreshToken);
 
-    this.logger.debug(`Creating session for userId: ${user.id}`);
+    this.logger.debug(`Creating session for userId: ${user._id.toString()}`);
 
     const userCreatedSession = await this.userService.createSession(
-      `${user.id}`,
+      `${user._id.toString()}`,
       payload.token_id,
       tokenValidSince,
       tokenValidUntil,
@@ -135,13 +142,13 @@ export class AuthService {
     if (!user) throw new UnauthorizedException('Invalid credentials');
 
     const passwordValid = await this.userService.verifyPassword(
-      `${user.id}`,
+      `${user._id.toString()}`,
       loginInput.password,
     );
     if (!passwordValid) throw new UnauthorizedException('Invalid credentials');
 
     const response = await this.issueTokenPair(user);
-    if (!(await this.userService.setLastLogin(`${user.id}`)))
+    if (!(await this.userService.setLastLogin(`${user._id.toString()}`)))
       throw new Error('Failed to set last login');
 
     return response;
