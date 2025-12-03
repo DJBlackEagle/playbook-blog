@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryMongooseModule } from '@ptc-org/nestjs-query-mongoose';
+import { GqlAuthGuard } from '../../../common/guards';
 import { CommentEntity, CommentEntityModel } from './entities/comment.entity';
 import { CreateCommentInput } from './inputs/create-comment.input';
 import { Comment } from './models/comment.model';
@@ -30,10 +31,15 @@ const nestjsQueryMongooseModule = NestjsQueryMongooseModule.forFeature([
           EntityClass: CommentEntity,
           create: {
             CreateDTOClass: CreateCommentInput,
+            guards: [GqlAuthGuard],
           },
-          update: { disabled: true },
+          update: {
+            disabled: true,
+            guards: [GqlAuthGuard],
+          },
           delete: {
             useSoftDelete: true,
+            guards: [GqlAuthGuard],
           },
           enableTotalCount: true,
         },

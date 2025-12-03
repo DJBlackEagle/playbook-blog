@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { NestjsQueryGraphQLModule } from '@ptc-org/nestjs-query-graphql';
 import { NestjsQueryMongooseModule } from '@ptc-org/nestjs-query-mongoose';
+import { GqlAuthGuard } from '../../../common/guards';
 import { PostEntity, PostEntityModel } from './entities/post.entity';
 import { CreatePostInput } from './inputs/create-post.input';
 import { UpdatePostInput } from './inputs/update-post.input';
@@ -31,12 +32,15 @@ const nestjsQueryMongooseModule = NestjsQueryMongooseModule.forFeature([
           EntityClass: PostEntity,
           create: {
             CreateDTOClass: CreatePostInput,
+            guards: [GqlAuthGuard],
           },
           update: {
             UpdateDTOClass: UpdatePostInput,
+            guards: [GqlAuthGuard],
           },
           delete: {
             useSoftDelete: true,
+            guards: [GqlAuthGuard],
           },
           enableTotalCount: true,
         },
