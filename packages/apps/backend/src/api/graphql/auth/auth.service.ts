@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { plainToClass } from 'class-transformer';
 import { Types } from 'mongoose';
-import { type StringValue } from 'ms';
+import ms, { type StringValue } from 'ms';
 import { EnvironmentConfigService } from '../../../config/environment-config/environment-config.service';
 import { EncryptionService } from '../../../modules/encryption';
 import { DateCalc } from '../../../shared';
@@ -15,7 +14,6 @@ import { RefreshTokenInput } from './inputs/refresh-token.input';
 import { Login } from './models/login.model';
 import { Logout } from './models/logout.model';
 import { JwtPayload } from './strategies/jwt.strategy';
-import ms = require('ms');
 
 /**
  * Service for handling authentication logic, including login, logout, and token refresh.
