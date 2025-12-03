@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { type StringValue } from 'ms';
+import ms, { type StringValue } from 'ms';
 import { EnvironmentConfigModule } from '../../../config/environment-config/environment-config.module';
 import { EnvironmentConfigService } from '../../../config/environment-config/environment-config.service';
 import { EncryptionModule } from '../../../modules/encryption';
@@ -10,8 +9,6 @@ import { UserModule } from '../user/user.module';
 import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import ms = require('ms');
-
 /**
  * NestJS module for authentication and authorization.
  *
