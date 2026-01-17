@@ -32,7 +32,7 @@ dependencies and services are defined within the container configuration.
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/playbook-blog.git
+    git clone https://github.com/DJBlackEagle/playbook-blog.git
     ```
 
 2. Open the project in VS Code.
