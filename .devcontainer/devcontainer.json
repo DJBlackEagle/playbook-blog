@@ -1,0 +1,36 @@
+{
+  "name": "playbook-blog",
+  "dockerComposeFile": ["../docker-compose.yaml", "docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace/",
+  "features": {
+    "ghcr.io/devcontainers/features/git-lfs:1": {}
+  },
+  "postCreateCommand": "echo \"alias l='ls -lha'\" >> ~/.bashrc && echo \"alias ..='cd ..'\" >> ~/.bashrc && echo \"alias p='pnpm'\" >> ~/.bashrc && echo \"alias pi='pnpm install'\" >> ~/.bashrc",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "JannisX11.batch-rename-extension",
+        "mikestead.dotenv",
+        "dbaeumer.vscode-eslint",
+        "mhutchie.git-graph",
+        "oderwat.indent-rainbow",
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "YoavBls.pretty-ts-errors",
+        "Gruntfuggly.todo-tree"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.npmrc,target=/home/node/.npmrc,type=bind,consistency=cached"
+  ]
+}

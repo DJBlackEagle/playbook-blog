@@ -2,6 +2,7 @@ temp/
 **/node_modules/
 **/dist/
 **/schema.gql
+.pnpm-store/
 
 # testing
 **/artifacts/

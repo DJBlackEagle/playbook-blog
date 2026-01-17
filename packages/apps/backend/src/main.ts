@@ -22,14 +22,14 @@ async function bootstrap() {
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
+  app.setGlobalPrefix('api');
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
     }),
   );
 
-  await app.listen(process.env.PORT ?? 3000, '127.0.0.1');
-  // await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 3001, '127.0.0.1');
 }
 
 void bootstrap();

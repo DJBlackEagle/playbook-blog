@@ -27,6 +27,7 @@ export class GraphQLConfigService implements ApolloDriverConfigFactory {
 
     return {
       autoSchemaFile: 'schema.gql',
+      path: '/api/graphql',
       playground: false,
       debug: isDevelopment,
       plugins: [

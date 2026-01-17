@@ -1,15 +1,15 @@
 name: dev_blog
 
 services:
-  mongodb:
+  database:
     image: docker.io/mongo:latest
     restart: no
     volumes:
-      - mongodb-configdb:/data/configdb
-      - mongodb-db:/data/db
+      - database-configdb:/data/configdb
+      - database-db:/data/db
     ports:
       - '127.0.0.1:27017:27017'
 
 volumes:
-  mongodb-configdb:
-  mongodb-db:
+  database-configdb:
+  database-db:

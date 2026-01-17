@@ -1,0 +1,15 @@
+name: dev_blog
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/javascript-node:24-bookworm
+    restart: no
+    depends_on:
+      - database
+    environment:
+      - NG_ANALYTICS=false
+      - TURBO_TELEMETRY_DISABLED=1
+      - DO_NOT_TRACK=1
+    volumes:
+      - .:/workspace:cached
+    command: sleep infinity

@@ -16,7 +16,7 @@ describe('DatabaseConfigService', () => {
             get: jest
               .fn()
               .mockImplementation((key: string, defaultValue?: string) => {
-                if (key === 'MONGODB_URI') return 'mongodb://test-uri';
+                if (key === 'DATABASE_URL') return 'mongodb://test-uri';
                 return defaultValue;
               }),
           },

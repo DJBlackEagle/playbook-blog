@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { EnvironmentConfigModule } from '../environment-config/environment-config.module';
 import { DatabaseConfigService } from './database-config.service';
 
 /**
@@ -11,9 +11,9 @@ import { DatabaseConfigService } from './database-config.service';
  */
 @Module({
   imports: [
-    ConfigModule,
+    EnvironmentConfigModule,
     MongooseModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [EnvironmentConfigModule],
       inject: [DatabaseConfigService],
       useClass: DatabaseConfigService,
     }),

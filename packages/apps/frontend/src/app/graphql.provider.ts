@@ -4,7 +4,7 @@ import { setContext } from '@apollo/client/link/context';
 import { Apollo, APOLLO_OPTIONS } from 'apollo-angular';
 import { AUTH_TOKEN_KEY } from './constants/auth.constants';
 
-const uri = 'http://localhost:3000/graphql';
+const uri = 'http://127.0.0.1:3000/api/graphql';
 
 export function apolloOptionsFactory() {
   const httpLink = createHttpLink({ uri });
