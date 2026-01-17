@@ -26,8 +26,13 @@
         "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
         "YoavBls.pretty-ts-errors",
-        "Gruntfuggly.todo-tree"
-      ]
+        "Gruntfuggly.todo-tree",
+        "ms-azuretools.vscode-containers"
+      ],
+      "settings": {
+        "extensions.ignoreRecommendations": true,
+        "remote.autoForwardPorts": false
+      }
     }
   },
   "mounts": [
