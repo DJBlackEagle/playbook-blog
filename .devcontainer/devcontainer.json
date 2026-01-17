@@ -6,7 +6,7 @@
   "features": {
     "ghcr.io/devcontainers/features/git-lfs:1": {}
   },
-  "postCreateCommand": "echo \"alias l='ls -lha'\" >> ~/.bashrc && echo \"alias ..='cd ..'\" >> ~/.bashrc && echo \"alias p='pnpm'\" >> ~/.bashrc && echo \"alias pi='pnpm install'\" >> ~/.bashrc",
+  "postCreateCommand": "pnpm completion bash > ~/completion-for-pnpm.bash && echo \"\" >> ~/.bashrc && echo \"source ~/completion-for-pnpm.bash\" >> ~/.bashrc && echo \"alias l='ls -lha'\" >> ~/.bashrc && echo \"alias ..='cd ..'\" >> ~/.bashrc && echo \"alias p='pnpm'\" >> ~/.bashrc && echo \"alias pi='pnpm install'\" >> ~/.bashrc",
   "forwardPorts": [3000],
   "portsAttributes": {
     "3000": {
