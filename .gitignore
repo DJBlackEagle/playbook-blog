@@ -3,6 +3,7 @@ temp/
 **/dist/
 **/schema.gql
 .pnpm-store/
+.devcontainer/devcontainer-lock.json
 
 # testing
 **/artifacts/
